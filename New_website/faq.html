@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="./bluebonnet-logo.png">
+
+<title>Bluebonnet Driving School</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;}
+  body{margin:0;background:#fff;font-family:'Hanken Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased;color:#14171C;}
+  a{text-decoration:none;color:inherit;}
+  .navlink:hover{color:#0B5BD3;}
+  .lk{transition:opacity .15s;}
+  .lk:hover{opacity:.6;}
+  .faqq:hover{color:#0B5BD3;}
+  @media(max-width:760px){
+    .pad{padding-left:22px !important;padding-right:22px !important;}
+    .navmenu,.navphone{display:none !important;}
+    .split{grid-template-columns:1fr !important;gap:32px !important;}
+    .footgrid{grid-template-columns:1fr 1fr !important;gap:34px !important;}
+    .h1{font-size:42px !important;line-height:1.06 !important;}
+    .secpad{padding-top:56px !important;padding-bottom:64px !important;}
+    .colstack{flex-direction:column !important;align-items:flex-start !important;}
+  }
+  @media(max-width:480px){
+    .footgrid{grid-template-columns:1fr !important;}
+    .h1{font-size:34px !important;}
+  }
+</style>
+</helmet>
+
+<div data-screen-label="FAQ" style="background:#fff;">
+
+  <!-- NAV -->
+  <header style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,.86);backdrop-filter:saturate(1.5) blur(12px);border-bottom:1px solid #ECEDEF;">
+    <nav class="pad" style="max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:32px;padding:18px 56px;">
+      <a href="home.html" style="display:flex;align-items:center;gap:12px;flex:0 0 auto;">
+        <img src="./bluebonnet-logo.png" alt="Bluebonnet logo" style="width:52px;height:52px;object-fit:contain;display:block;filter:drop-shadow(0 6px 16px rgba(11,91,211,.16));">
+        <span style="display:flex;flex-direction:column;">
+          <span style="font-size:23px;font-weight:800;letter-spacing:-.02em;line-height:1;">Bluebonnet</span>
+          <span style="font-size:9.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#9AA1AB;margin-top:5px;">Driving School &middot; Plano, TX</span>
+        </span>
+      </a>
+      <div class="navmenu" style="flex:1;display:flex;justify-content:center;gap:30px;">
+        <a class="navlink" href="courses.html" style="font-size:14px;font-weight:600;color:#4A515C;">Courses</a>
+        <a class="navlink" href="pricing.html" style="font-size:14px;font-weight:600;color:#4A515C;">Pricing</a>
+        <a class="navlink" href="serviceareas.html" style="font-size:14px;font-weight:600;color:#4A515C;">Service Areas</a>
+        <a class="navlink" href="about.html" style="font-size:14px;font-weight:600;color:#4A515C;">About</a>
+        <a class="navlink" href="reviews.html" style="font-size:14px;font-weight:600;color:#4A515C;">Reviews</a>
+      </div>
+      <div style="display:flex;align-items:center;gap:22px;flex:1;justify-content:flex-end;">
+        <a class="navphone" href="tel:+12145457529" style="font-size:14px;font-weight:700;color:#14171C;">(214) 545-7529</a>
+        <a class="lk" href="book.html" style="font-size:14px;font-weight:600;color:#fff;background:#0B5BD3;padding:11px 20px;border-radius:9px;">Book a lesson</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- PAGE HEADER -->
+  <section style="border-bottom:1px solid #ECEDEF;">
+    <div class="pad" style="max-width:1200px;margin:0 auto;padding:60px 56px 56px;">
+      <div style="font-size:13px;font-weight:600;color:#9AA1AB;display:flex;gap:9px;align-items:center;">
+        <a class="lk" href="home.html">Home</a><span>/</span><span style="color:#4A515C;">FAQ</span>
+      </div>
+      <div style="margin-top:24px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#0B5BD3;">Questions &amp; answers</div>
+      <h1 class="h1" style="font-weight:600;font-size:58px;line-height:1.04;letter-spacing:-.03em;margin:16px 0 0;max-width:16ch;">Frequently asked questions.</h1>
+      <p style="max-width:64ch;margin:20px 0 0;font-size:19px;line-height:1.62;color:#4A515C;">Everything parents and adult learners ask us most. Can't find your answer? <a class="lk" href="contact.html" style="color:#0B5BD3;font-weight:600;">Get in touch</a> — we're glad to help.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="pad secpad" style="max-width:1200px;margin:0 auto;padding:72px 56px 96px;">
+    <div class="split" style="display:grid;grid-template-columns:.8fr 1.2fr;gap:64px;align-items:start;">
+      <div style="position:sticky;top:110px;">
+        <h2 style="font-weight:600;font-size:30px;line-height:1.1;letter-spacing:-.02em;margin:0 0 14px;">Still wondering something?</h2>
+        <p style="font-size:16px;line-height:1.6;color:#4A515C;margin:0 0 22px;">We're a phone call away and happy to talk through any of it — no pressure.</p>
+        <a class="lk" href="tel:+12145457529" style="font-size:15.5px;font-weight:600;color:#fff;background:#0B5BD3;padding:14px 24px;border-radius:10px;display:inline-block;">Call (214) 545-7529</a>
+      </div>
+      <div style="border-top:1px solid #E2E3E6;">
+        <sc-for list="{{ faqs }}" as="item" hint-placeholder-count="6">
+          <div style="border-bottom:1px solid #ECEDEF;">
+            <button class="faqq" onClick="{{ item.toggle }}" style="width:100%;background:none;border:none;cursor:pointer;text-align:left;font-family:inherit;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:26px 0;color:#14171C;transition:color .15s;">
+              <span style="font-size:19px;font-weight:700;letter-spacing:-.01em;">{{ item.q }}</span>
+              <span style="font-size:26px;font-weight:400;color:#0B5BD3;flex:0 0 auto;line-height:1;">{{ item.sign }}</span>
+            </button>
+            <div style="{{ item.bodyStyle }}">
+              <p style="font-size:16px;line-height:1.65;color:#4A515C;margin:0;padding:0 0 26px;max-width:64ch;">{{ item.a }}</p>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="background:#14171C;color:#fff;">
+    <div class="pad footgrid" style="max-width:1200px;margin:0 auto;padding:80px 56px 56px;display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr;gap:48px;">
+      <div>
+        <div style="font-size:22px;font-weight:800;letter-spacing:-.02em;">Bluebonnet</div>
+        <p style="font-size:14.5px;line-height:1.65;color:#9AA1AB;margin:16px 0 0;max-width:34ch;">Patient, TDLR-licensed driving instruction for teens and adults across Plano and the North Dallas area. From first lesson to DPS road test.</p>
+      </div>
+      <div>
+        <h5 style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#6B7280;margin:0 0 16px;">Courses</h5>
+        <a class="lk" href="teen.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">Teen Driver Education</a>
+        <a class="lk" href="adult.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">Adult Driving Lessons</a>
+        <a class="lk" href="courses.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">Road Test Service</a>
+        <a class="lk" href="pricing.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">Pricing</a>
+      </div>
+      <div>
+        <h5 style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#6B7280;margin:0 0 16px;">Company</h5>
+        <a class="lk" href="about.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">About Us</a>
+        <a class="lk" href="instructors.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">Instructors</a>
+        <a class="lk" href="reviews.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">Reviews</a>
+        <a class="lk" href="serviceareas.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">Service Areas</a>
+      </div>
+      <div>
+        <h5 style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#6B7280;margin:0 0 16px;">Get in touch</h5>
+        <a class="lk" href="faq.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">FAQ</a>
+        <a class="lk" href="book.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">Book a Lesson</a>
+        <a class="lk" href="contact.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">Contact</a>
+        <a class="lk" href="tel:+12145457529" style="display:block;font-size:14px;font-weight:700;color:#fff;padding:6px 0;">(214) 545-7529</a>
+      </div>
+    </div>
+    <div style="border-top:1px solid #2A2E36;">
+      <div class="pad colstack" style="max-width:1200px;margin:0 auto;padding:22px 56px;display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;font-size:12.5px;color:#6B7280;">
+        <span>© 2026 Bluebonnet Driving School · TDLR School #C-XXXXXX · 820 W. Spring Creek Pkwy, Plano, TX 75023</span>
+        <span style="display:flex;gap:20px;"><a class="lk" href="legal.html">Privacy Policy</a><a class="lk" href="legal.html">Terms &amp; Conditions</a></span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { open: 0 };
+  renderVals() {
+    const data = [
+      { q: "How old does my teen need to be to start?", a: "In Texas, teens can begin driver education at 14 and apply for a learner license once they've completed the classroom portion and passed the written test. We'll guide you through the exact timing." },
+      { q: "Do you provide the car for lessons and the road test?", a: "Yes. Every lesson and road test uses our safe, dual-control vehicles — no need to use your own car or add anyone to your insurance." },
+      { q: "Can I take my DPS road test with you?", a: "Yes. As an approved provider we administer the road test ourselves, so you can skip the long wait at the DPS office. It's included in most of our packages." },
+      { q: "What if I'm an adult who has never driven?", a: "You're in good company — many of our students learn as adults. We start with the absolute basics at a relaxed pace, with zero judgment." },
+      { q: "Do you offer lessons in Spanish?", a: "Yes. We have bilingual instructors available. Just let us know your preference when you book and we'll match you accordingly." },
+      { q: "What's your reschedule and refund policy?", a: "Reschedules are free with 24 hours' notice. Refund terms for unused sessions are summarized in our Terms & Conditions — just ask and we'll walk you through them." },
+      { q: "How quickly can we get started?", a: "Most students have a first lesson scheduled within a few days of booking. We confirm your schedule within one business day." }
+    ];
+    const open = this.state.open;
+    return {
+      faqs: data.map((d, i) => ({
+        q: d.q,
+        a: d.a,
+        sign: open === i ? "\u2212" : "+",
+        bodyStyle: open === i ? "overflow:hidden;max-height:600px;transition:max-height .3s ease;" : "overflow:hidden;max-height:0;transition:max-height .3s ease;",
+        toggle: () => this.setState({ open: open === i ? -1 : i })
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>
+

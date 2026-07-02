@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="./bluebonnet-logo.png">
+
+<title>Bluebonnet Driving School</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;}
+  body{margin:0;background:#fff;font-family:'Hanken Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased;color:#14171C;}
+  a{text-decoration:none;color:inherit;}
+  .navlink:hover{color:#0B5BD3;}
+  .pathrow:hover .patharrow{transform:translateX(5px);}
+  .patharrow{transition:transform .2s ease;}
+  .lk{transition:opacity .15s;}
+  .lk:hover{opacity:.6;}
+  .pkg:hover{border-color:#C7CDD5;}
+  @media(max-width:980px){
+    .g3{grid-template-columns:repeat(2,1fr) !important;}
+    .g4{grid-template-columns:repeat(2,1fr) !important;}
+  }
+  @media(max-width:760px){
+    .pad{padding-left:22px !important;padding-right:22px !important;}
+    .navmenu,.navphone{display:none !important;}
+    .g2,.g3,.g4,.split{grid-template-columns:1fr !important;}
+    .footgrid{grid-template-columns:1fr 1fr !important;gap:34px !important;}
+    .h1{font-size:42px !important;line-height:1.06 !important;}
+    .h2{font-size:30px !important;}
+    .secpad{padding-top:64px !important;padding-bottom:64px !important;}
+    .colstack{flex-direction:column !important;align-items:flex-start !important;}
+  }
+  @media(max-width:480px){
+    .footgrid{grid-template-columns:1fr !important;}
+    .h1{font-size:34px !important;}
+  }
+</style>
+</helmet>
+
+<div data-screen-label="Courses" style="background:#fff;">
+
+  <!-- NAV -->
+  <header style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,.86);backdrop-filter:saturate(1.5) blur(12px);border-bottom:1px solid #ECEDEF;">
+    <nav class="pad" style="max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:32px;padding:18px 56px;">
+      <a href="home.html" style="display:flex;align-items:center;gap:12px;flex:0 0 auto;">
+        <img src="./bluebonnet-logo.png" alt="Bluebonnet logo" style="width:52px;height:52px;object-fit:contain;display:block;filter:drop-shadow(0 6px 16px rgba(11,91,211,.16));">
+        <span style="display:flex;flex-direction:column;">
+          <span style="font-size:23px;font-weight:800;letter-spacing:-.02em;line-height:1;">Bluebonnet</span>
+          <span style="font-size:9.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#9AA1AB;margin-top:5px;">Driving School &middot; Plano, TX</span>
+        </span>
+      </a>
+      <div class="navmenu" style="flex:1;display:flex;justify-content:center;gap:30px;">
+        <a class="navlink" href="courses.html" style="font-size:14px;font-weight:600;color:#0B5BD3;">Courses</a>
+        <a class="navlink" href="pricing.html" style="font-size:14px;font-weight:600;color:#4A515C;">Pricing</a>
+        <a class="navlink" href="serviceareas.html" style="font-size:14px;font-weight:600;color:#4A515C;">Service Areas</a>
+        <a class="navlink" href="about.html" style="font-size:14px;font-weight:600;color:#4A515C;">About</a>
+        <a class="navlink" href="reviews.html" style="font-size:14px;font-weight:600;color:#4A515C;">Reviews</a>
+      </div>
+      <div style="display:flex;align-items:center;gap:22px;flex:1;justify-content:flex-end;">
+        <a class="navphone" href="tel:+12145457529" style="font-size:14px;font-weight:700;color:#14171C;">(214) 545-7529</a>
+        <a class="lk" href="book.html" style="font-size:14px;font-weight:600;color:#fff;background:#0B5BD3;padding:11px 20px;border-radius:9px;">Book a lesson</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- PAGE HEADER -->
+  <section style="border-bottom:1px solid #ECEDEF;">
+    <div class="pad" style="max-width:1200px;margin:0 auto;padding:60px 56px 56px;">
+      <div style="font-size:13px;font-weight:600;color:#9AA1AB;display:flex;gap:9px;align-items:center;">
+        <a class="lk" href="home.html">Home</a><span>/</span><span style="color:#4A515C;">Courses</span>
+      </div>
+      <div style="margin-top:24px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#0B5BD3;">Courses · Packages 1 → 5</div>
+      <h1 class="h1" style="font-weight:600;font-size:58px;line-height:1.04;letter-spacing:-.03em;margin:16px 0 0;max-width:17ch;">Find the course that fits — in one click.</h1>
+      <p style="max-width:64ch;margin:20px 0 0;font-size:19px;line-height:1.62;color:#4A515C;">Whether you're a teen getting your first license, an adult brushing up, or you just need to take your road test, there's a Bluebonnet package built for it. Start by picking who you are, or browse every option below.</p>
+    </div>
+  </section>
+
+  <!-- AUDIENCE ENTRY -->
+  <section class="pad secpad" style="max-width:1200px;margin:0 auto;padding:80px 56px;">
+    <div class="g3" style="display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid #E2E3E6;border-bottom:1px solid #E2E3E6;">
+      <a class="pathrow" href="teen.html" style="display:flex;flex-direction:column;padding:44px 40px 40px;cursor:pointer;">
+        <span style="font-size:13px;font-weight:800;color:#C5CAD2;letter-spacing:.04em;">01</span>
+        <span style="margin-top:28px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#0B5BD3;">Ages 14–17</span>
+        <h3 style="font-size:27px;font-weight:700;letter-spacing:-.02em;margin:12px 0 0;">Teen Driver Education</h3>
+        <p style="font-size:15px;line-height:1.6;color:#7A828F;margin:12px 0 0;">State-approved program — the three teen packages, permit to license.</p>
+        <span style="margin-top:28px;font-size:14px;font-weight:700;color:#0B5BD3;display:inline-flex;align-items:center;gap:9px;">Explore teen courses <span class="patharrow">→</span></span>
+      </a>
+      <a class="pathrow" href="adult.html" style="display:flex;flex-direction:column;padding:44px 40px 40px;border-left:1px solid #E2E3E6;cursor:pointer;">
+        <span style="font-size:13px;font-weight:800;color:#C5CAD2;letter-spacing:.04em;">02</span>
+        <span style="margin-top:28px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#0B5BD3;">Ages 18+</span>
+        <h3 style="font-size:27px;font-weight:700;letter-spacing:-.02em;margin:12px 0 0;">Adult Driving Lessons</h3>
+        <p style="font-size:15px;line-height:1.6;color:#7A828F;margin:12px 0 0;">Lessons &amp; the required adult course — Packages 1, 3, and 5.</p>
+        <span style="margin-top:28px;font-size:14px;font-weight:700;color:#0B5BD3;display:inline-flex;align-items:center;gap:9px;">Explore adult courses <span class="patharrow">→</span></span>
+      </a>
+      <a class="pathrow" href="book.html" style="display:flex;flex-direction:column;padding:44px 40px 40px;border-left:1px solid #E2E3E6;cursor:pointer;">
+        <span style="font-size:13px;font-weight:800;color:#C5CAD2;letter-spacing:.04em;">03</span>
+        <span style="margin-top:28px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#0B5BD3;">Road test</span>
+        <h3 style="font-size:27px;font-weight:700;letter-spacing:-.02em;margin:12px 0 0;">DPS Road Test Service</h3>
+        <p style="font-size:15px;line-height:1.6;color:#7A828F;margin:12px 0 0;">Already drive? Take your test with us — Package 4, skip the wait.</p>
+        <span style="margin-top:28px;font-size:14px;font-weight:700;color:#0B5BD3;display:inline-flex;align-items:center;gap:9px;">Book the road test <span class="patharrow">→</span></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ALL PACKAGES -->
+  <section style="background:#FAFAFB;border-top:1px solid #ECEDEF;border-bottom:1px solid #ECEDEF;">
+    <div class="pad secpad" style="max-width:1200px;margin:0 auto;padding:96px 56px;">
+      <div style="max-width:64ch;margin-bottom:52px;">
+        <div style="font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#8A919B;">All packages</div>
+        <h2 class="h2" style="font-weight:600;font-size:44px;line-height:1.06;letter-spacing:-.025em;margin:16px 0 14px;">Every option, in order — Package 1 to 5.</h2>
+        <p style="font-size:18px;line-height:1.6;color:#4A515C;margin:0;">Each package includes a certified instructor, a dual-control vehicle, and your completion certificate.</p>
+      </div>
+      <div class="g3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+        <div class="pkg" style="background:#fff;border:1px solid #E2E3E6;border-radius:14px;padding:32px 28px;display:flex;flex-direction:column;transition:border-color .2s;">
+          <span style="font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#1E9D5B;">Adult</span>
+          <h3 style="font-size:20px;font-weight:700;letter-spacing:-.01em;margin:12px 0 0;">Package 1 — Complete</h3>
+          <div style="font-size:38px;font-weight:800;letter-spacing:-.03em;margin:14px 0 8px;">$450</div>
+          <p style="font-size:14px;color:#7A828F;margin:0 0 20px;line-height:1.55;">Behind-the-wheel training plus your DPS road test, start to finish.</p>
+          <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px;">
+            <div style="display:flex;gap:10px;font-size:14px;color:#4A515C;"><span style="color:#0B5BD3;font-weight:800;">✓</span>Full lesson series</div>
+            <div style="display:flex;gap:10px;font-size:14px;color:#4A515C;"><span style="color:#0B5BD3;font-weight:800;">✓</span>Road test included</div>
+          </div>
+          <a class="lk" href="adult.html" style="margin-top:auto;text-align:center;font-size:14.5px;font-weight:600;color:#14171C;border:1.5px solid #D5D8DD;border-radius:10px;padding:12px;">View details</a>
+        </div>
+        <div style="background:#fff;border:1.5px solid #0B5BD3;border-radius:14px;padding:32px 28px;display:flex;flex-direction:column;position:relative;box-shadow:0 20px 50px -24px rgba(11,91,211,.4);">
+          <span style="position:absolute;top:-12px;left:28px;background:#0B5BD3;color:#fff;font-size:12px;font-weight:700;padding:6px 13px;border-radius:999px;">★ Most popular</span>
+          <span style="font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#0B5BD3;">Teen</span>
+          <h3 style="font-size:20px;font-weight:700;letter-spacing:-.01em;margin:12px 0 0;">Package 2 · Teen #2</h3>
+          <div style="font-size:38px;font-weight:800;letter-spacing:-.03em;margin:14px 0 8px;">$450</div>
+          <p style="font-size:14px;color:#7A828F;margin:0 0 20px;line-height:1.55;">Our most popular teen package — more hours plus road-test prep.</p>
+          <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px;">
+            <div style="display:flex;gap:10px;font-size:14px;color:#4A515C;"><span style="color:#0B5BD3;font-weight:800;">✓</span>Extended in-car hours</div>
+            <div style="display:flex;gap:10px;font-size:14px;color:#4A515C;"><span style="color:#0B5BD3;font-weight:800;">✓</span>Mock + DPS road test</div>
+          </div>
+          <a class="lk" href="book.html" style="margin-top:auto;text-align:center;font-size:14.5px;font-weight:600;color:#fff;background:#0B5BD3;border-radius:10px;padding:13px;">Book now</a>
+        </div>
+        <div class="pkg" style="background:#fff;border:1px solid #E2E3E6;border-radius:14px;padding:32px 28px;display:flex;flex-direction:column;transition:border-color .2s;">
+          <span style="font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#0B5BD3;">Teen</span>
+          <h3 style="font-size:20px;font-weight:700;letter-spacing:-.01em;margin:12px 0 0;">Package 2 · Teen #1</h3>
+          <div style="font-size:38px;font-weight:800;letter-spacing:-.03em;margin:14px 0 8px;">$400</div>
+          <p style="font-size:14px;color:#7A828F;margin:0 0 20px;line-height:1.55;">The teen starter — core hours to build first-time confidence.</p>
+          <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px;">
+            <div style="display:flex;gap:10px;font-size:14px;color:#4A515C;"><span style="color:#0B5BD3;font-weight:800;">✓</span>Essential in-car hours</div>
+            <div style="display:flex;gap:10px;font-size:14px;color:#4A515C;"><span style="color:#0B5BD3;font-weight:800;">✓</span>State certificate</div>
+          </div>
+          <a class="lk" href="teen.html" style="margin-top:auto;text-align:center;font-size:14.5px;font-weight:600;color:#14171C;border:1.5px solid #D5D8DD;border-radius:10px;padding:12px;">View details</a>
+        </div>
+        <div class="pkg" style="background:#fff;border:1px solid #E2E3E6;border-radius:14px;padding:32px 28px;display:flex;flex-direction:column;transition:border-color .2s;">
+          <span style="font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#0B5BD3;">Teen</span>
+          <h3 style="font-size:20px;font-weight:700;letter-spacing:-.01em;margin:12px 0 0;">Package 2 · Teen #3</h3>
+          <div style="font-size:38px;font-weight:800;letter-spacing:-.03em;margin:14px 0 8px;">$470</div>
+          <p style="font-size:14px;color:#7A828F;margin:0 0 20px;line-height:1.55;">The full teen package — maximum practice plus the road test.</p>
+          <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px;">
+            <div style="display:flex;gap:10px;font-size:14px;color:#4A515C;"><span style="color:#0B5BD3;font-weight:800;">✓</span>Maximum hours</div>
+            <div style="display:flex;gap:10px;font-size:14px;color:#4A515C;"><span style="color:#0B5BD3;font-weight:800;">✓</span>DPS road test included</div>
+          </div>
+          <a class="lk" href="teen.html" style="margin-top:auto;text-align:center;font-size:14.5px;font-weight:600;color:#14171C;border:1.5px solid #D5D8DD;border-radius:10px;padding:12px;">View details</a>
+        </div>
+        <div class="pkg" style="background:#fff;border:1px solid #E2E3E6;border-radius:14px;padding:32px 28px;display:flex;flex-direction:column;transition:border-color .2s;">
+          <span style="font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#1E9D5B;">Adult</span>
+          <h3 style="font-size:20px;font-weight:700;letter-spacing:-.01em;margin:12px 0 0;">Package 3 — Extended</h3>
+          <div style="font-size:38px;font-weight:800;letter-spacing:-.03em;margin:14px 0 8px;">$450</div>
+          <p style="font-size:14px;color:#7A828F;margin:0 0 20px;line-height:1.55;">Extra time for drivers who want more practice before testing.</p>
+          <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px;">
+            <div style="display:flex;gap:10px;font-size:14px;color:#4A515C;"><span style="color:#0B5BD3;font-weight:800;">✓</span>Extended lesson plan</div>
+            <div style="display:flex;gap:10px;font-size:14px;color:#4A515C;"><span style="color:#0B5BD3;font-weight:800;">✓</span>Test prep</div>
+          </div>
+          <a class="lk" href="adult.html" style="margin-top:auto;text-align:center;font-size:14.5px;font-weight:600;color:#14171C;border:1.5px solid #D5D8DD;border-radius:10px;padding:12px;">View details</a>
+        </div>
+        <div class="pkg" style="background:#fff;border:1px solid #E2E3E6;border-radius:14px;padding:32px 28px;display:flex;flex-direction:column;transition:border-color .2s;">
+          <span style="font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#C9821A;">Road test</span>
+          <h3 style="font-size:20px;font-weight:700;letter-spacing:-.01em;margin:12px 0 0;">Package 4 — Road Test Only</h3>
+          <div style="font-size:38px;font-weight:800;letter-spacing:-.03em;margin:14px 0 8px;">$180</div>
+          <p style="font-size:14px;color:#7A828F;margin:0 0 20px;line-height:1.55;">Already know how to drive? Take your DPS test and skip the wait.</p>
+          <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px;">
+            <div style="display:flex;gap:10px;font-size:14px;color:#4A515C;"><span style="color:#0B5BD3;font-weight:800;">✓</span>DPS road skills test</div>
+            <div style="display:flex;gap:10px;font-size:14px;color:#4A515C;"><span style="color:#0B5BD3;font-weight:800;">✓</span>Use of our vehicle</div>
+          </div>
+          <a class="lk" href="book.html" style="margin-top:auto;text-align:center;font-size:14.5px;font-weight:600;color:#14171C;border:1.5px solid #D5D8DD;border-radius:10px;padding:12px;">Book the test</a>
+        </div>
+      </div>
+      <div class="colstack" style="margin-top:20px;background:#fff;border:1px solid #E2E3E6;border-radius:14px;padding:28px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;">
+        <div>
+          <span style="font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#C9821A;">Refresher</span>
+          <h3 style="font-size:20px;font-weight:700;letter-spacing:-.01em;margin:10px 0 4px;">Package 5 — Straight to Drive</h3>
+          <p style="font-size:14.5px;color:#7A828F;margin:0;">A focused refresher or single-skill session before the test. <span style="color:#14171C;font-weight:700;">$135</span></p>
+        </div>
+        <a class="lk" href="book.html" style="font-size:14.5px;font-weight:600;color:#14171C;border:1.5px solid #D5D8DD;border-radius:10px;padding:13px 22px;flex:0 0 auto;">Book a refresher</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- HELPER + REASSURANCE -->
+  <section class="pad secpad" style="max-width:1200px;margin:0 auto;padding:96px 56px;">
+    <div class="split" style="display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;">
+      <div style="background:#FBF6EC;border:1px solid #F0E2C6;border-radius:14px;padding:36px;">
+        <div style="font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#C9821A;">Need a hand?</div>
+        <h3 style="font-size:26px;font-weight:700;letter-spacing:-.02em;margin:14px 0 10px;">Not sure which package fits?</h3>
+        <p style="font-size:16px;line-height:1.62;color:#4A515C;margin:0;">Call us at <a class="lk" href="tel:+12145457529" style="color:#0B5BD3;font-weight:600;">(214) 545-7529</a> — we'll point you to the right one in two minutes. No pressure, ever.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:18px;">
+        <div style="display:flex;gap:13px;font-size:17px;line-height:1.5;color:#4A515C;"><span style="color:#0B5BD3;font-weight:800;">✓</span><span><b style="color:#14171C;font-weight:700;">TDLR-licensed</b> &amp; Texas DPS-approved school.</span></div>
+        <div style="height:1px;background:#ECEDEF;"></div>
+        <div style="display:flex;gap:13px;font-size:17px;line-height:1.5;color:#4A515C;"><span style="color:#0B5BD3;font-weight:800;">✓</span><span><b style="color:#14171C;font-weight:700;">State-accepted certificate</b> on completion.</span></div>
+        <div style="height:1px;background:#ECEDEF;"></div>
+        <div style="display:flex;gap:13px;font-size:17px;line-height:1.5;color:#4A515C;"><span style="color:#0B5BD3;font-weight:800;">✓</span><span><b style="color:#14171C;font-weight:700;">First-try pass rate</b> parents talk about.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="background:#14171C;color:#fff;">
+    <div class="pad footgrid" style="max-width:1200px;margin:0 auto;padding:80px 56px 56px;display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr;gap:48px;">
+      <div>
+        <div style="font-size:22px;font-weight:800;letter-spacing:-.02em;">Bluebonnet</div>
+        <p style="font-size:14.5px;line-height:1.65;color:#9AA1AB;margin:16px 0 0;max-width:34ch;">Patient, TDLR-licensed driving instruction for teens and adults across Plano and the North Dallas area. From first lesson to DPS road test.</p>
+      </div>
+      <div>
+        <h5 style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#6B7280;margin:0 0 16px;">Courses</h5>
+        <a class="lk" href="teen.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">Teen Driver Education</a>
+        <a class="lk" href="adult.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">Adult Driving Lessons</a>
+        <a class="lk" href="courses.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">Road Test Service</a>
+        <a class="lk" href="pricing.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">Pricing</a>
+      </div>
+      <div>
+        <h5 style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#6B7280;margin:0 0 16px;">Company</h5>
+        <a class="lk" href="about.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">About Us</a>
+        <a class="lk" href="instructors.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">Instructors</a>
+        <a class="lk" href="reviews.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">Reviews</a>
+        <a class="lk" href="serviceareas.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">Service Areas</a>
+      </div>
+      <div>
+        <h5 style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#6B7280;margin:0 0 16px;">Get in touch</h5>
+        <a class="lk" href="faq.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">FAQ</a>
+        <a class="lk" href="book.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">Book a Lesson</a>
+        <a class="lk" href="contact.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">Contact</a>
+        <a class="lk" href="tel:+12145457529" style="display:block;font-size:14px;font-weight:700;color:#fff;padding:6px 0;">(214) 545-7529</a>
+      </div>
+    </div>
+    <div style="border-top:1px solid #2A2E36;">
+      <div class="pad colstack" style="max-width:1200px;margin:0 auto;padding:22px 56px;display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;font-size:12.5px;color:#6B7280;">
+        <span>© 2026 Bluebonnet Driving School · TDLR School #C-XXXXXX · 820 W. Spring Creek Pkwy, Plano, TX 75023</span>
+        <span style="display:flex;gap:20px;"><a class="lk" href="legal.html">Privacy Policy</a><a class="lk" href="legal.html">Terms &amp; Conditions</a></span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+</body>
+</html>
+

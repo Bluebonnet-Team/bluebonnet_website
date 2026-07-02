@@ -1,0 +1,1844 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="../bluebonnet-logo.png">
+<title>Bluebonnet Driving School · Plano, TX</title>
+<meta name="description" content="TDLR-licensed driving school in Plano, TX. Teen driver education, adult lessons & DPS road tests across North Dallas. Book your first lesson today.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   BLUEBONNET DRIVING SCHOOL — DESIGN SYSTEM
+   tokens.css · single source of truth
+   Typeface: Hanken Grotesk (400 / 500 / 600 / 700 / 800)
+   Themes: Light (default) + Dark — toggle via data-theme on <html>
+   Primary accent: #006EE0 (light) · #1186FF (dark)
+   ============================================================ */
+
+/* ---------- 1. PRIMITIVE COLOR SCALES ---------- */
+:root{
+  /* Brand blue — built around #006EE0 */
+  --blue-50:#EAF3FD;
+  --blue-100:#D2E6FB;
+  --blue-200:#A6CDF7;
+  --blue-300:#6FAEF1;
+  --blue-400:#3B90EA;
+  --blue-500:#006EE0;   /* light primary */
+  --blue-600:#0059B8;
+  --blue-700:#01458C;
+  --blue-800:#0A2F58;
+  --blue-900:#0B2440;
+  --blue-bright:#1186FF; /* dark primary */
+
+  /* Warm secondary — marigold (highlights, ratings, accents) */
+  --warm-50:#FDF5E6;
+  --warm-100:#FAE7C4;
+  --warm-200:#F3CD86;
+  --warm-300:#EDB14C;
+  --warm-400:#E89A1C;
+  --warm-500:#C9821A;
+  --warm-600:#A1660F;
+
+  /* Cool slate neutrals */
+  --slate-50:#F6F8FB;
+  --slate-100:#EDF1F6;
+  --slate-200:#DFE5EE;
+  --slate-300:#C7D0DD;
+  --slate-400:#9AA6B8;
+  --slate-500:#6B7689;
+  --slate-600:#4C5666;
+  --slate-700:#343C49;
+  --slate-800:#1E2630;
+  --slate-900:#121821;
+
+  /* Semantic hues */
+  --green-500:#1E9D5B;
+  --green-bg:#E4F5EC;
+  --red-500:#D6453B;
+  --red-bg:#FBE7E5;
+  --amber-500:#C9821A;
+  --amber-bg:#FBF0DA;
+
+  /* ---------- 2. TYPE ---------- */
+  --font-sans:'Hanken Grotesk', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --fw-regular:400;
+  --fw-medium:500;
+  --fw-semibold:600;
+  --fw-bold:700;
+  --fw-extra:800;
+
+  --fs-display:56px;  --lh-display:1.04; --ls-display:-0.025em;
+  --fs-h1:44px;       --lh-h1:1.07;      --ls-h1:-0.022em;
+  --fs-h2:32px;       --lh-h2:1.12;      --ls-h2:-0.018em;
+  --fs-h3:24px;       --lh-h3:1.2;       --ls-h3:-0.012em;
+  --fs-h4:20px;       --lh-h4:1.3;       --ls-h4:-0.008em;
+  --fs-lg:18px;       --lh-lg:1.6;
+  --fs-base:16px;     --lh-base:1.62;
+  --fs-sm:14px;       --lh-sm:1.55;
+  --fs-xs:13px;       --lh-xs:1.5;
+  --fs-over:12px;     --ls-over:0.14em;
+
+  /* ---------- 3. SPACING (4px base) ---------- */
+  --sp-1:4px;  --sp-2:8px;  --sp-3:12px; --sp-4:16px; --sp-5:20px;
+  --sp-6:24px; --sp-7:32px; --sp-8:40px; --sp-9:48px; --sp-10:64px;
+  --sp-11:80px; --sp-12:96px; --sp-13:128px;
+
+  /* ---------- 4. RADIUS ---------- */
+  --r-sm:6px; --r-md:10px; --r-lg:14px; --r-xl:20px; --r-2xl:28px; --r-pill:999px;
+
+  /* ---------- 5. LAYOUT ---------- */
+  --container:1200px;
+  --container-narrow:820px;
+  --nav-h:72px;
+}
+
+/* ---------- 6. SEMANTIC ROLE TOKENS — LIGHT ---------- */
+:root,
+:root[data-theme="light"]{
+  color-scheme:light;
+  --bg:#F4F7FB;
+  --bg-tint:#EAF1F8;
+  --surface:#FFFFFF;
+  --surface-2:#F6F8FB;
+  --surface-3:#EDF1F6;
+  --elevated:#FFFFFF;
+
+  --border:#E2E8F1;
+  --border-strong:#CDD6E2;
+
+  --text:#15202E;
+  --text-secondary:#4C5666;
+  --text-muted:#6B7689;
+  --text-inverse:#FFFFFF;
+
+  --accent:#006EE0;
+  --accent-hover:#0059B8;
+  --accent-press:#01458C;
+  --accent-soft:#EAF3FD;
+  --accent-soft-2:#D2E6FB;
+  --accent-contrast:#FFFFFF;
+  --on-accent:#FFFFFF;
+
+  --warm:#E89A1C;
+  --warm-strong:#C9821A;
+  --warm-soft:#FDF5E6;
+
+  --success:#1E9D5B; --success-soft:#E4F5EC;
+  --warning:#C9821A; --warning-soft:#FBF0DA;
+  --danger:#D6453B;  --danger-soft:#FBE7E5;
+
+  --star:#E89A1C;
+  --ring:rgba(0,110,224,.34);
+  --overlay:rgba(11,36,64,.55);
+
+  /* Hero / deep brand band */
+  --brand-deep:#0A2F58;
+  --brand-deep-2:#0B2440;
+  --on-brand:#EAF3FD;
+  --on-brand-muted:#9DBCE0;
+
+  --shadow-xs:0 1px 2px rgba(16,32,56,.06);
+  --shadow-sm:0 1px 3px rgba(16,32,56,.08), 0 1px 2px rgba(16,32,56,.04);
+  --shadow-md:0 2px 6px rgba(16,32,56,.06), 0 12px 28px -12px rgba(16,32,56,.18);
+  --shadow-lg:0 10px 50px -16px rgba(16,32,56,.26);
+  --shadow-accent:0 10px 30px -10px rgba(0,110,224,.45);
+}
+
+/* ---------- 7. SEMANTIC ROLE TOKENS — DARK ---------- */
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0C1118;
+  --bg-tint:#0F1722;
+  --surface:#141C27;
+  --surface-2:#1A2330;
+  --surface-3:#222D3C;
+  --elevated:#19222F;
+
+  --border:#27313F;
+  --border-strong:#384557;
+
+  --text:#EBF1F8;
+  --text-secondary:#AEBBCB;
+  --text-muted:#7E8C9E;
+  --text-inverse:#0C1118;
+
+  --accent:#1186FF;
+  --accent-hover:#3D9CFF;
+  --accent-press:#0D6FD6;
+  --accent-soft:#11243B;
+  --accent-soft-2:#16314F;
+  --accent-contrast:#06223F;
+  --on-accent:#04141F;
+
+  --warm:#F0A93A;
+  --warm-strong:#E89A1C;
+  --warm-soft:#2A2013;
+
+  --success:#34C77E; --success-soft:#10271C;
+  --warning:#E8A93A; --warning-soft:#2A2013;
+  --danger:#F0635A;  --danger-soft:#2E1513;
+
+  --star:#F0A93A;
+  --ring:rgba(17,134,255,.42);
+  --overlay:rgba(4,12,20,.66);
+
+  --brand-deep:#101A28;
+  --brand-deep-2:#0A121C;
+  --on-brand:#EBF1F8;
+  --on-brand-muted:#90A4BC;
+
+  --shadow-xs:0 1px 2px rgba(0,0,0,.4);
+  --shadow-sm:0 1px 3px rgba(0,0,0,.5);
+  --shadow-md:0 2px 8px rgba(0,0,0,.4), 0 16px 32px -14px rgba(0,0,0,.6);
+  --shadow-lg:0 16px 60px -18px rgba(0,0,0,.7);
+  --shadow-accent:0 10px 30px -10px rgba(17,134,255,.5);
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--font-sans);
+  font-size:var(--fs-base);
+  line-height:var(--lh-base);
+  font-weight:var(--fw-regular);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  transition:background-color .3s ease, color .3s ease;
+}
+h1,h2,h3,h4,h5{margin:0;color:var(--text);text-wrap:balance;}
+p{margin:0;text-wrap:pretty;}
+a{color:var(--accent);text-decoration:none;}
+img{max-width:100%;display:block;}
+::selection{background:var(--accent-soft-2);color:var(--text);}
+
+/* ---------- TYPE UTILITIES ---------- */
+.display{font-size:var(--fs-display);line-height:var(--lh-display);letter-spacing:var(--ls-display);font-weight:var(--fw-extra);}
+.h1{font-size:var(--fs-h1);line-height:var(--lh-h1);letter-spacing:var(--ls-h1);font-weight:var(--fw-extra);}
+.h2{font-size:var(--fs-h2);line-height:var(--lh-h2);letter-spacing:var(--ls-h2);font-weight:var(--fw-bold);}
+.h3{font-size:var(--fs-h3);line-height:var(--lh-h3);letter-spacing:var(--ls-h3);font-weight:var(--fw-bold);}
+.h4{font-size:var(--fs-h4);line-height:var(--lh-h4);letter-spacing:var(--ls-h4);font-weight:var(--fw-semibold);}
+.lede{font-size:var(--fs-lg);line-height:var(--lh-lg);color:var(--text-secondary);font-weight:var(--fw-regular);}
+.small{font-size:var(--fs-sm);line-height:var(--lh-sm);}
+.muted{color:var(--text-muted);}
+.overline{
+  font-size:var(--fs-over);line-height:1;letter-spacing:var(--ls-over);
+  text-transform:uppercase;font-weight:var(--fw-bold);color:var(--accent);
+}
+.overline.warm{color:var(--warm-strong);}
+
+/* ============================================================
+   COMPONENT PRIMITIVES
+   ============================================================ */
+
+/* ---- Layout ---- */
+.container{max-width:var(--container);margin:0 auto;padding:0 var(--sp-6);}
+.section{padding:var(--sp-12) 0;}
+.section-sm{padding:var(--sp-10) 0;}
+.stack{display:flex;flex-direction:column;}
+.row{display:flex;align-items:center;}
+.grid{display:grid;}
+
+/* ---- Buttons ---- */
+.btn{
+  --_bg:var(--accent); --_fg:var(--on-accent);
+  display:inline-flex;align-items:center;justify-content:center;gap:var(--sp-2);
+  font-family:var(--font-sans);font-size:var(--fs-base);font-weight:var(--fw-semibold);
+  line-height:1;letter-spacing:-0.01em;
+  padding:14px 22px;border-radius:var(--r-md);border:1.5px solid transparent;
+  background:var(--_bg);color:var(--_fg);cursor:pointer;
+  transition:transform .12s ease, background-color .18s ease, box-shadow .18s ease, border-color .18s ease;
+  white-space:nowrap;text-decoration:none;
+}
+.btn:hover{background:var(--accent-hover);transform:translateY(-1px);}
+.btn:active{transform:translateY(0);background:var(--accent-press);}
+.btn:focus-visible{outline:none;box-shadow:0 0 0 4px var(--ring);}
+.btn.primary{box-shadow:var(--shadow-accent);}
+.btn.primary:hover{box-shadow:0 14px 36px -10px rgba(0,110,224,.55);}
+
+.btn.secondary{background:var(--surface);color:var(--text);border-color:var(--border-strong);box-shadow:var(--shadow-xs);}
+.btn.secondary:hover{background:var(--surface-2);border-color:var(--accent);color:var(--accent);transform:translateY(-1px);}
+
+.btn.ghost{background:transparent;color:var(--accent);}
+.btn.ghost:hover{background:var(--accent-soft);transform:translateY(-1px);}
+
+.btn.warm{background:var(--warm);color:#3a2602;}
+.btn.warm:hover{background:var(--warm-strong);}
+
+.btn.lg{font-size:var(--fs-lg);padding:17px 30px;}
+.btn.sm{font-size:var(--fs-sm);padding:10px 16px;}
+.btn.block{display:flex;width:100%;}
+
+/* ---- Cards ---- */
+.card{
+  background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);
+  padding:var(--sp-6);box-shadow:var(--shadow-sm);
+  transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.card.hover:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:var(--border-strong);}
+.card.flat{box-shadow:none;}
+.card.pad-lg{padding:var(--sp-8);}
+
+/* ---- Badges / Pills ---- */
+.badge{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:var(--fs-xs);font-weight:var(--fw-semibold);line-height:1;
+  padding:6px 11px;border-radius:var(--r-pill);
+  background:var(--accent-soft);color:var(--accent);
+}
+.badge.warm{background:var(--warm-soft);color:var(--warm-strong);}
+.badge.success{background:var(--success-soft);color:var(--success);}
+.badge.neutral{background:var(--surface-3);color:var(--text-secondary);}
+.badge.outline{background:transparent;border:1px solid var(--border-strong);color:var(--text-secondary);}
+
+.tag{
+  display:inline-flex;align-items:center;gap:5px;font-size:var(--fs-xs);font-weight:var(--fw-semibold);
+  padding:5px 10px;border-radius:var(--r-sm);background:var(--surface-3);color:var(--text-secondary);
+}
+.tag.teen{background:var(--accent-soft);color:var(--accent);}
+.tag.adult{background:var(--success-soft);color:var(--success);}
+.tag.road{background:var(--warm-soft);color:var(--warm-strong);}
+
+/* ---- Inputs ---- */
+.field{display:flex;flex-direction:column;gap:7px;}
+.field label{font-size:var(--fs-sm);font-weight:var(--fw-semibold);color:var(--text);}
+.input,.select,.textarea{
+  font-family:var(--font-sans);font-size:var(--fs-base);color:var(--text);
+  background:var(--surface);border:1.5px solid var(--border-strong);border-radius:var(--r-md);
+  padding:13px 15px;width:100%;transition:border-color .16s ease, box-shadow .16s ease;
+}
+.input::placeholder,.textarea::placeholder{color:var(--text-muted);}
+.input:focus,.select:focus,.textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px var(--ring);}
+.textarea{resize:vertical;min-height:120px;line-height:1.55;}
+
+/* ---- Divider ---- */
+.hr{height:1px;background:var(--border);border:0;margin:var(--sp-8) 0;}
+
+/* ---- Star rating ---- */
+.stars{display:inline-flex;gap:2px;color:var(--star);}
+.stars svg{width:18px;height:18px;}
+
+/* ---- Avatar / photo placeholder ---- */
+.ph{
+  position:relative;display:flex;align-items:center;justify-content:center;
+  background:
+    linear-gradient(135deg, var(--accent-soft), var(--surface-3));
+  color:var(--text-muted);font-size:var(--fs-xs);font-weight:var(--fw-semibold);
+  border:1px dashed var(--border-strong);border-radius:var(--r-lg);
+  text-align:center;overflow:hidden;
+}
+.ph::after{
+  content:attr(data-label);position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  padding:14px;letter-spacing:.02em;
+}
+.ph.circle{border-radius:var(--r-pill);}
+
+/* Accessibility */
+.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+
+@media (max-width:680px){
+  :root{
+    --fs-display:38px; --fs-h1:32px; --fs-h2:26px; --fs-h3:21px;
+  }
+}
+
+/* ============================================================
+   BLUEBONNET — site.css
+   Marketing components layered on top of tokens.css
+   ============================================================ */
+
+/* ---------- NAVBAR ---------- */
+.nav{position:sticky;top:0;z-index:60;background:color-mix(in srgb, var(--surface) 88%, transparent);
+  backdrop-filter:saturate(1.6) blur(14px);border-bottom:1px solid var(--border);}
+.nav-inner{max-width:var(--container);margin:0 auto;height:var(--nav-h);padding:0 var(--sp-6);
+  display:flex;align-items:center;gap:var(--sp-6);}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--text);flex:0 0 auto;}
+.brand .mark{width:48px;height:48px;border-radius:0;background:transparent;
+  display:flex;align-items:center;justify-content:center;box-shadow:none;flex:0 0 auto;}
+.brand .mark img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 6px 16px rgba(17,134,255,.22));}
+.brand .name{font-weight:var(--fw-extra);font-size:19px;letter-spacing:-.025em;line-height:1;}
+.brand .name span{display:block;font-size:11px;font-weight:var(--fw-semibold);letter-spacing:.04em;color:var(--text-muted);margin-top:3px;}
+
+.nav-links{display:flex;align-items:center;gap:2px;margin-left:var(--sp-4);}
+.nav-links a, .nav-links .navitem{
+  display:inline-flex;align-items:center;gap:5px;font-size:var(--fs-sm);font-weight:var(--fw-semibold);
+  color:var(--text-secondary);padding:9px 13px;border-radius:var(--r-md);cursor:pointer;
+  text-decoration:none;background:none;border:none;font-family:inherit;transition:.15s;
+}
+.nav-links a:hover,.nav-links .navitem:hover{background:var(--surface-2);color:var(--accent);}
+.nav-links a.active{color:var(--accent);background:var(--accent-soft);}
+.nav-spacer{flex:1 1 auto;}
+
+.nav-actions{display:flex;align-items:center;gap:10px;flex:0 0 auto;}
+
+/* dropdown */
+.has-menu{position:relative;}
+.has-menu .navitem .chev{transition:transform .2s;}
+.has-menu:hover .navitem .chev{transform:rotate(180deg);}
+.menu{position:absolute;top:calc(100% + 8px);left:0;min-width:280px;background:var(--surface);
+  border:1px solid var(--border);border-radius:var(--r-lg);box-shadow:var(--shadow-lg);padding:8px;
+  opacity:0;visibility:hidden;transform:translateY(6px);transition:.18s;z-index:70;}
+.has-menu:hover .menu{opacity:1;visibility:visible;transform:translateY(0);}
+.menu a{display:flex;flex-direction:column;gap:2px;padding:11px 13px;border-radius:var(--r-md);color:var(--text);}
+.menu a:hover{background:var(--surface-2);}
+.menu a b{font-weight:var(--fw-semibold);font-size:var(--fs-sm);display:flex;align-items:center;gap:8px;}
+.menu a small{font-size:var(--fs-xs);color:var(--text-muted);}
+.menu .mtag{font-size:10px;font-weight:700;padding:2px 7px;border-radius:var(--r-pill);}
+.menu .mtag.teen{background:var(--accent-soft);color:var(--accent);}
+.menu .mtag.adult{background:var(--success-soft);color:var(--success);}
+.menu .mtag.road{background:var(--warm-soft);color:var(--warm-strong);}
+
+.theme-toggle{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:var(--r-md);
+  background:var(--surface-2);border:1.5px solid var(--border-strong);color:var(--text-secondary);cursor:pointer;}
+.theme-toggle:hover{border-color:var(--accent);color:var(--accent);}
+.theme-toggle svg{width:18px;height:18px;}
+
+.menu-btn{display:none;width:42px;height:42px;border-radius:var(--r-md);background:var(--surface-2);
+  border:1.5px solid var(--border-strong);color:var(--text);cursor:pointer;align-items:center;justify-content:center;}
+.menu-btn svg{width:22px;height:22px;}
+
+/* ---------- PAGE SYSTEM ---------- */
+.page{display:none;}
+.page.active{display:block;animation:fade .4s ease;}
+@keyframes fade{from{transform:translateY(10px);}to{transform:none;}}
+
+/* ---------- PAGE HERO BAND (inner pages) ---------- */
+.page-hero{background:var(--surface-2);border-bottom:1px solid var(--border);padding:var(--sp-9) 0 var(--sp-8);}
+.crumb{display:flex;align-items:center;gap:8px;font-size:var(--fs-xs);color:var(--text-muted);font-weight:var(--fw-semibold);margin-bottom:14px;}
+.crumb a{color:var(--text-muted);}
+.crumb a:hover{color:var(--accent);}
+.crumb .sep{opacity:.5;}
+.page-hero h1{font-size:var(--fs-h1);font-weight:var(--fw-extra);letter-spacing:var(--ls-h1);line-height:var(--lh-h1);max-width:18ch;}
+.page-hero .lede{margin-top:14px;max-width:64ch;}
+
+/* section heading block */
+.sec-title{max-width:62ch;margin-bottom:var(--sp-7);}
+.sec-title.center{margin-left:auto;margin-right:auto;text-align:center;}
+.sec-title h2{font-size:var(--fs-h2);font-weight:var(--fw-extra);letter-spacing:var(--ls-h2);margin:12px 0 0;}
+.sec-title p{margin-top:12px;}
+
+/* ---------- HOME HERO ---------- */
+.hero{position:relative;overflow:hidden;background:
+  radial-gradient(900px 500px at 88% -10%, var(--accent-soft) 0%, transparent 60%),
+  radial-gradient(700px 500px at -8% 8%, var(--warm-soft) 0%, transparent 55%),
+  var(--bg);
+  padding:var(--sp-11) 0 var(--sp-12);}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:var(--sp-9);align-items:center;}
+.hero h1{font-size:clamp(40px,5vw,58px);font-weight:var(--fw-extra);letter-spacing:-.026em;line-height:1.04;}
+.hero h1 em{font-style:normal;color:var(--accent);}
+.hero .lede{margin-top:var(--sp-5);max-width:54ch;}
+.hero-cta{display:flex;gap:12px;margin-top:var(--sp-7);flex-wrap:wrap;}
+.hero-trust{display:flex;flex-wrap:wrap;gap:10px 18px;margin-top:var(--sp-7);align-items:center;}
+.trust-item{display:flex;align-items:center;gap:8px;font-size:var(--fs-sm);font-weight:var(--fw-semibold);color:var(--text-secondary);}
+.trust-item svg{width:18px;height:18px;color:var(--success);flex:0 0 auto;}
+.hero-visual{position:relative;}
+.hero-visual .ph{height:440px;}
+.hero-badge{position:absolute;background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);
+  box-shadow:var(--shadow-lg);padding:14px 16px;display:flex;align-items:center;gap:12px;}
+.hero-badge .ic{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex:0 0 auto;}
+.hero-badge b{display:block;font-size:var(--fs-base);font-weight:var(--fw-extra);line-height:1.1;white-space:nowrap;}
+.hero-badge small{font-size:var(--fs-xs);color:var(--text-muted);white-space:nowrap;}
+
+/* ---------- TRUST STRIP ---------- */
+.trust-bar{background:var(--brand-deep);color:var(--on-brand);}
+.trust-bar .container{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;padding-top:22px;padding-bottom:22px;}
+.trust-bar .t{display:flex;align-items:center;gap:10px;font-weight:var(--fw-semibold);font-size:var(--fs-sm);color:var(--on-brand);}
+.trust-bar .t svg{width:20px;height:20px;color:var(--warm);flex:0 0 auto;}
+.trust-bar .t .num{font-weight:var(--fw-extra);}
+
+/* ---------- AUDIENCE CARDS ---------- */
+.audience{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.aud-card{display:flex;flex-direction:column;gap:14px;padding:var(--sp-7);border-radius:var(--r-xl);
+  border:1px solid var(--border);background:var(--surface);box-shadow:var(--shadow-sm);
+  transition:transform .2s,box-shadow .2s,border-color .2s;cursor:pointer;text-decoration:none;color:var(--text);}
+.aud-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-md);border-color:var(--accent);}
+.aud-ic{width:56px;height:56px;border-radius:15px;display:flex;align-items:center;justify-content:center;}
+.aud-ic svg{width:30px;height:30px;}
+.aud-card h3{font-size:var(--fs-h4);font-weight:var(--fw-bold);}
+.aud-card .go{margin-top:auto;display:inline-flex;align-items:center;gap:7px;font-weight:var(--fw-semibold);color:var(--accent);font-size:var(--fs-sm);}
+.aud-card:hover .go{gap:11px;}
+
+/* ---------- FEATURE GRID ---------- */
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.feature{padding:var(--sp-6);border-radius:var(--r-lg);border:1px solid var(--border);background:var(--surface);}
+.feature .fic{width:46px;height:46px;border-radius:12px;background:var(--accent-soft);color:var(--accent);
+  display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
+.feature .fic svg{width:24px;height:24px;}
+.feature h4{font-size:var(--fs-h4);font-weight:var(--fw-bold);margin-bottom:6px;}
+.feature p{color:var(--text-secondary);font-size:var(--fs-sm);}
+
+/* ---------- PACKAGE CARDS ---------- */
+.pkg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.pkg{display:flex;flex-direction:column;padding:var(--sp-7);border-radius:var(--r-xl);border:1px solid var(--border);
+  background:var(--surface);box-shadow:var(--shadow-sm);position:relative;transition:transform .2s,box-shadow .2s;}
+.pkg:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);}
+.pkg.featured{border-color:var(--accent);box-shadow:var(--shadow-accent);}
+.pkg .ribbon{position:absolute;top:-12px;left:24px;background:var(--accent);color:var(--on-accent);
+  font-size:var(--fs-xs);font-weight:var(--fw-bold);padding:6px 13px;border-radius:var(--r-pill);box-shadow:var(--shadow-sm);}
+.pkg .price{display:flex;align-items:baseline;gap:6px;margin:14px 0 4px;}
+.pkg .price b{font-size:38px;font-weight:var(--fw-extra);letter-spacing:-.02em;}
+.pkg .price span{color:var(--text-muted);font-size:var(--fs-sm);}
+.pkg ul{list-style:none;padding:0;margin:16px 0 22px;display:flex;flex-direction:column;gap:10px;}
+.pkg ul li{display:flex;gap:10px;font-size:var(--fs-sm);color:var(--text-secondary);}
+.pkg ul li svg{width:18px;height:18px;color:var(--success);flex:0 0 auto;margin-top:1px;}
+.pkg .btn{margin-top:auto;}
+
+/* ---------- STEPS ---------- */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;counter-reset:s;}
+.step{position:relative;padding:var(--sp-6);}
+.step .sn{width:44px;height:44px;border-radius:var(--r-pill);background:var(--accent-soft);color:var(--accent);
+  font-weight:var(--fw-extra);font-size:18px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
+.step h4{font-size:var(--fs-h4);font-weight:var(--fw-bold);margin-bottom:6px;}
+.step p{color:var(--text-secondary);font-size:var(--fs-sm);}
+.step:not(:last-child)::after{content:"";position:absolute;top:22px;left:64px;right:-9px;height:2px;
+  background:linear-gradient(90deg,var(--border-strong),transparent);}
+
+/* ---------- STAT BAND ---------- */
+.stat-band{background:var(--brand-deep);color:var(--on-brand);border-radius:var(--r-2xl);padding:var(--sp-9);
+  display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center;}
+.stat .v{font-size:46px;font-weight:var(--fw-extra);letter-spacing:-.03em;line-height:1;color:#fff;}
+.stat .v em{font-style:normal;color:var(--warm);}
+.stat .l{margin-top:8px;font-size:var(--fs-sm);color:var(--on-brand-muted);font-weight:var(--fw-medium);}
+
+/* ---------- TESTIMONIALS ---------- */
+.reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.review{display:flex;flex-direction:column;gap:14px;padding:var(--sp-6);border-radius:var(--r-lg);
+  border:1px solid var(--border);background:var(--surface);box-shadow:var(--shadow-sm);}
+.review p{font-size:var(--fs-base);color:var(--text);line-height:1.55;}
+.review .who{display:flex;align-items:center;gap:12px;margin-top:auto;}
+.review .who .av{width:42px;height:42px;border-radius:var(--r-pill);background:linear-gradient(135deg,var(--accent-soft),var(--surface-3));
+  display:flex;align-items:center;justify-content:center;font-weight:var(--fw-bold);color:var(--accent);flex:0 0 auto;}
+.review .who b{font-size:var(--fs-sm);font-weight:var(--fw-bold);display:block;}
+.review .who small{font-size:var(--fs-xs);color:var(--text-muted);}
+
+/* ---------- INSTRUCTORS ---------- */
+.team{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.tcard{border:1px solid var(--border);border-radius:var(--r-xl);overflow:hidden;background:var(--surface);box-shadow:var(--shadow-sm);transition:transform .2s,box-shadow .2s;}
+.tcard:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);}
+.tcard .ph{height:240px;border-radius:0;border:none;border-bottom:1px solid var(--border);}
+.tcard .body{padding:var(--sp-6);}
+.tcard h3{font-size:var(--fs-h4);font-weight:var(--fw-bold);}
+.tcard .role{font-size:var(--fs-sm);color:var(--accent);font-weight:var(--fw-semibold);margin:2px 0 12px;}
+.tcard .meta{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px;}
+
+/* ---------- PRICING TABLE ---------- */
+.ptable{width:100%;border-collapse:separate;border-spacing:0;background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-sm);}
+.ptable th,.ptable td{padding:18px 20px;text-align:left;border-bottom:1px solid var(--border);font-size:var(--fs-sm);}
+.ptable thead th{background:var(--surface-2);font-size:var(--fs-xs);text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);font-weight:var(--fw-bold);}
+.ptable tbody tr:last-child td{border-bottom:none;}
+.ptable tbody tr:hover{background:var(--surface-2);}
+.ptable .pk{font-weight:var(--fw-bold);color:var(--text);font-size:var(--fs-base);}
+.ptable .pr{font-weight:var(--fw-extra);font-size:var(--fs-h4);}
+.ptable .yes{color:var(--success);font-weight:var(--fw-bold);}
+.ptable .no{color:var(--text-muted);}
+.ptable tr.hl{background:var(--accent-soft);}
+.ptable tr.hl:hover{background:var(--accent-soft);}
+
+/* ---------- ACCORDION (FAQ) ---------- */
+.faq-list{display:flex;flex-direction:column;gap:12px;}
+.acc{border:1px solid var(--border);border-radius:var(--r-lg);background:var(--surface);overflow:hidden;}
+.acc summary{list-style:none;cursor:pointer;padding:20px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px;
+  font-weight:var(--fw-bold);font-size:var(--fs-lg);}
+.acc summary::-webkit-details-marker{display:none;}
+.acc summary .pm{width:26px;height:26px;flex:0 0 auto;border-radius:var(--r-pill);background:var(--accent-soft);color:var(--accent);
+  display:flex;align-items:center;justify-content:center;transition:transform .2s;}
+.acc[open] summary .pm{transform:rotate(45deg);}
+.acc .ans{padding:0 22px 20px;color:var(--text-secondary);max-width:74ch;}
+
+/* ---------- INFO / CALLOUT ---------- */
+.callout{display:flex;gap:16px;padding:var(--sp-6);border-radius:var(--r-lg);background:var(--accent-soft);
+  border:1px solid var(--accent-soft-2);}
+.callout.warm{background:var(--warm-soft);border-color:color-mix(in srgb,var(--warm) 30%,transparent);}
+.callout .cic{width:40px;height:40px;border-radius:11px;background:var(--surface);color:var(--accent);flex:0 0 auto;
+  display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-xs);}
+.callout.warm .cic{color:var(--warm-strong);}
+.callout h4{font-size:var(--fs-h4);font-weight:var(--fw-bold);margin-bottom:4px;}
+.callout p{color:var(--text-secondary);font-size:var(--fs-sm);}
+
+/* ---------- CITY / AREA CARDS ---------- */
+.area-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.area{display:flex;flex-direction:column;gap:6px;padding:var(--sp-6);border:1px solid var(--border);border-radius:var(--r-lg);
+  background:var(--surface);box-shadow:var(--shadow-sm);text-decoration:none;color:var(--text);transition:.18s;}
+.area:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:var(--shadow-md);}
+.area h4{font-size:var(--fs-h4);font-weight:var(--fw-bold);display:flex;align-items:center;gap:8px;}
+.area p{font-size:var(--fs-xs);color:var(--text-muted);}
+.area .go{margin-top:6px;font-size:var(--fs-sm);font-weight:var(--fw-semibold);color:var(--accent);}
+
+/* ---------- TIMELINE (teen steps) ---------- */
+.timeline{display:flex;flex-direction:column;gap:0;}
+.tl{display:grid;grid-template-columns:64px 1fr;gap:18px;padding-bottom:var(--sp-7);position:relative;}
+.tl:not(:last-child)::before{content:"";position:absolute;left:31px;top:54px;bottom:0;width:2px;background:var(--border-strong);}
+.tl .n{width:54px;height:54px;border-radius:var(--r-pill);background:var(--accent);color:var(--on-accent);font-weight:var(--fw-extra);
+  font-size:20px;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-accent);z-index:1;}
+.tl h4{font-size:var(--fs-h4);font-weight:var(--fw-bold);margin-bottom:5px;}
+.tl p{color:var(--text-secondary);}
+
+/* ---------- BIG CTA ---------- */
+.cta-band{background:linear-gradient(135deg,var(--accent),var(--blue-700));border-radius:var(--r-2xl);
+  padding:var(--sp-10) var(--sp-9);text-align:center;color:#fff;position:relative;overflow:hidden;}
+.cta-band::after{content:"";position:absolute;inset:0;background:radial-gradient(600px 300px at 80% -20%,rgba(255,255,255,.18),transparent 60%);}
+.cta-band > *{position:relative;}
+.cta-band h2{color:#fff;font-size:var(--fs-h2);font-weight:var(--fw-extra);letter-spacing:var(--ls-h2);}
+.cta-band p{color:rgba(255,255,255,.86);max-width:54ch;margin:14px auto 0;font-size:var(--fs-lg);}
+.cta-band .btns{display:flex;gap:12px;justify-content:center;margin-top:var(--sp-7);flex-wrap:wrap;}
+.cta-band .btn.warm{background:#fff;color:var(--accent);}
+.cta-band .btn.warm:hover{background:var(--warm);color:#3a2602;}
+.cta-band .btn.ghost{color:#fff;border:1.5px solid rgba(255,255,255,.4);}
+.cta-band .btn.ghost:hover{background:rgba(255,255,255,.12);}
+
+/* ---------- TWO COL CONTENT ---------- */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-9);align-items:center;}
+.split.narrow-img{grid-template-columns:1.2fr .8fr;}
+.list-check{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:13px;}
+.list-check li{display:flex;gap:12px;font-size:var(--fs-base);color:var(--text-secondary);}
+.list-check li svg{width:22px;height:22px;color:var(--success);flex:0 0 auto;margin-top:1px;}
+.list-check li b{color:var(--text);font-weight:var(--fw-semibold);}
+
+/* ---------- MAP PLACEHOLDER ---------- */
+.map-ph{height:380px;border-radius:var(--r-lg);}
+
+/* ---------- CONTACT GRID ---------- */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-9);}
+.contact-row{display:flex;gap:14px;padding:18px 0;border-bottom:1px solid var(--border);}
+.contact-row:last-child{border-bottom:none;}
+.contact-row .ic{width:44px;height:44px;border-radius:12px;background:var(--accent-soft);color:var(--accent);flex:0 0 auto;
+  display:flex;align-items:center;justify-content:center;}
+.contact-row h4{font-size:var(--fs-base);font-weight:var(--fw-bold);}
+.contact-row a,.contact-row p{color:var(--text-secondary);font-size:var(--fs-sm);}
+
+/* ---------- FOOTER ---------- */
+.footer{background:var(--brand-deep);color:var(--on-brand);margin-top:var(--sp-12);}
+.footer a{color:var(--on-brand-muted);}
+.footer a:hover{color:#fff;}
+.footer-top{max-width:var(--container);margin:0 auto;padding:var(--sp-10) var(--sp-6) var(--sp-8);
+  display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:var(--sp-8);}
+.footer .brand .name{color:#fff;}
+.footer .fcol h5{font-size:var(--fs-xs);text-transform:uppercase;letter-spacing:.08em;color:var(--on-brand-muted);
+  font-weight:var(--fw-bold);margin-bottom:14px;}
+.footer .fcol a{display:block;padding:6px 0;font-size:var(--fs-sm);font-weight:var(--fw-medium);}
+.footer .fabout p{color:var(--on-brand-muted);font-size:var(--fs-sm);margin:14px 0 18px;max-width:36ch;}
+.footer .socials{display:flex;gap:10px;}
+.footer .socials a{width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.07);display:flex;align-items:center;justify-content:center;}
+.footer .socials a:hover{background:var(--accent);}
+.footer .socials svg{width:18px;height:18px;}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.1);}
+.footer-bottom .container{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;
+  padding-top:20px;padding-bottom:20px;font-size:var(--fs-xs);color:var(--on-brand-muted);}
+.footer-bottom .links{display:flex;gap:18px;flex-wrap:wrap;}
+
+/* ---------- MOBILE NAV DRAWER ---------- */
+.drawer{position:fixed;inset:0;z-index:90;display:none;}
+.drawer.open{display:block;}
+.drawer .scrim{position:absolute;inset:0;background:var(--overlay);}
+.drawer .panel{position:absolute;top:0;right:0;height:100%;width:min(360px,86vw);background:var(--surface);
+  box-shadow:var(--shadow-lg);padding:var(--sp-6);overflow-y:auto;display:flex;flex-direction:column;gap:6px;}
+.drawer .panel a{padding:13px 14px;border-radius:var(--r-md);font-weight:var(--fw-semibold);color:var(--text);}
+.drawer .panel a:hover{background:var(--surface-2);}
+.drawer .panel .dh{font-size:var(--fs-xs);text-transform:uppercase;letter-spacing:.08em;color:var(--text-muted);font-weight:var(--fw-bold);margin:14px 0 4px;padding:0 14px;}
+.drawer .close{align-self:flex-end;width:42px;height:42px;border-radius:var(--r-md);border:1.5px solid var(--border-strong);background:var(--surface-2);color:var(--text);cursor:pointer;margin-bottom:8px;}
+
+/* ---------- RESPONSIVE ---------- */
+@media(max-width:1080px){
+  .nav-links{display:none;}
+  .menu-btn{display:flex;}
+}
+@media(max-width:920px){
+  .hero-grid,.split,.split.narrow-img,.contact-grid{grid-template-columns:1fr;gap:var(--sp-7);}
+  .hero-visual{order:-1;}
+  .audience,.features,.pkg-grid,.reviews-grid,.team{grid-template-columns:1fr 1fr;}
+  .steps{grid-template-columns:1fr 1fr;}
+  .step::after{display:none;}
+  .stat-band{grid-template-columns:1fr 1fr;}
+  .area-grid{grid-template-columns:1fr 1fr;}
+  .footer-top{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:620px){
+  .audience,.features,.pkg-grid,.reviews-grid,.team,.steps,.stat-band,.area-grid,.footer-top{grid-template-columns:1fr;}
+  .ptable{display:block;overflow-x:auto;white-space:nowrap;}
+}
+
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#/" data-link>
+      <span class="mark">
+        <img src="../bluebonnet-logo.png" alt="Bluebonnet logo">
+      </span>
+      <span class="name">Bluebonnet<span>Driving School · Plano, TX</span></span>
+    </a>
+
+    <nav class="nav-links">
+      <a href="#/" data-link>Home</a>
+      <div class="has-menu">
+        <button class="navitem">Courses
+          <svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="menu">
+          <a href="#/teen" data-link><b><span class="mtag teen">Teen</span> Teen Driver Education</b><small>Ages 14–17 · permit to license</small></a>
+          <a href="#/adult" data-link><b><span class="mtag adult">Adult</span> Adult Driving Lessons</b><small>18+ · first-time &amp; returning drivers</small></a>
+          <a href="#/courses" data-link><b><span class="mtag road">Road test</span> DPS Road Test Service</b><small>Skip the wait — test with us</small></a>
+          <a href="#/courses" data-link><b>All Packages</b><small>Compare every option, 1 → 5</small></a>
+        </div>
+      </div>
+      <a href="#/pricing" data-link>Pricing</a>
+      <a href="#/service-areas" data-link>Service Areas</a>
+      <div class="has-menu">
+        <button class="navitem">About
+          <svg class="chev" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M6 9l6 6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="menu">
+          <a href="#/about" data-link><b>About Us</b><small>Our story &amp; credentials</small></a>
+          <a href="#/instructors" data-link><b>Our Instructors</b><small>Meet the real team</small></a>
+          <a href="#/reviews" data-link><b>Reviews</b><small>What families say</small></a>
+          <a href="#/faq" data-link><b>FAQ</b><small>Answers to common questions</small></a>
+          <a href="#/resources" data-link><b>Resources</b><small>Texas DPS &amp; TDLR forms</small></a>
+          <a href="#/advice" data-link><b>Advice &amp; Blog</b><small>Guides for Texas drivers</small></a>
+        </div>
+      </div>
+      <a href="#/reviews" data-link>Reviews</a>
+      <a href="#/contact" data-link>Contact</a>
+    </nav>
+
+    <span class="nav-spacer"></span>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeBtn" aria-label="Toggle light/dark theme">
+        <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4 12H2M22 12h-2M5 5l1.5 1.5M17.5 17.5L19 19M19 5l-1.5 1.5M6.5 17.5L5 19" stroke-linecap="round"/></svg>
+      </button>
+      <a class="btn primary" href="#/book" data-link>Book a Lesson</a>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile drawer -->
+<div class="drawer" id="drawer">
+  <div class="scrim" data-close></div>
+  <div class="panel">
+    <button class="close" data-close aria-label="Close menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"/></svg>
+    </button>
+    <a href="#/" data-link>Home</a>
+    <div class="dh">Courses</div>
+    <a href="#/teen" data-link>Teen Driver Education</a>
+    <a href="#/adult" data-link>Adult Driving Lessons</a>
+    <a href="#/courses" data-link>All Packages &amp; Road Test</a>
+    <a href="#/pricing" data-link>Pricing</a>
+    <a href="#/service-areas" data-link>Service Areas</a>
+    <div class="dh">About</div>
+    <a href="#/about" data-link>About Us</a>
+    <a href="#/instructors" data-link>Our Instructors</a>
+    <a href="#/reviews" data-link>Reviews</a>
+    <a href="#/faq" data-link>FAQ</a>
+    <a href="#/resources" data-link>Resources</a>
+    <a href="#/advice" data-link>Advice &amp; Blog</a>
+    <div class="dh">&nbsp;</div>
+    <a href="#/contact" data-link>Contact</a>
+    <a class="btn primary block" href="#/book" data-link style="margin-top:8px">Book a Lesson</a>
+  </div>
+</div>
+
+<main id="app">
+<!-- ================= HOME ================= -->
+<section class="page" data-page="home">
+  <span data-title="Teen &amp; Adult Driving Lessons in Plano" hidden></span>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <div class="overline">TDLR-Licensed · Plano &amp; North Dallas</div>
+          <h1 style="margin-top:16px">Learn to drive with <em>confidence</em> in Plano.</h1>
+          <p class="lede">Patient, TDLR-licensed instructors for teen driver education, adult lessons, and DPS road tests across the North Dallas area — with a first-try pass rate parents talk about.</p>
+          <div class="hero-cta">
+            <a class="btn primary lg" href="#/book" data-link>Book a Lesson</a>
+            <a class="btn secondary lg" href="#/pricing" data-link>See Courses &amp; Pricing</a>
+          </div>
+          <div class="hero-trust">
+            <span class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg> State-approved curriculum</span>
+            <span class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg> Dual-control vehicles</span>
+            <span class="trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg> Bilingual instructors</span>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="ph" data-label="Hero photo — student & instructor beside a dual-control car, Plano street"></div>
+          <div class="hero-badge" style="bottom:24px;left:-18px">
+            <span class="ic" style="background:var(--warm-soft);color:var(--warm-strong)">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7z"/></svg>
+            </span>
+            <div><b>4.9 / 5.0</b><small>on Google Reviews</small></div>
+          </div>
+          <div class="hero-badge" style="top:24px;right:-18px">
+            <span class="ic" style="background:var(--success-soft);color:var(--success)">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9"/></svg>
+            </span>
+            <div><b>DPS-Approved</b><small>Road test with us</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="container">
+      <span class="t"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z" stroke-linecap="round" stroke-linejoin="round"/></svg> TDLR-Licensed School <span class="num">#C-XXXXXX</span></span>
+      <span class="t"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9"/></svg> Texas DPS-Approved</span>
+      <span class="t"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7z"/></svg> <span class="num">4.9</span> on Google · 100+ reviews</span>
+      <span class="t"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round" stroke-linejoin="round"/></svg> Serving Plano since <span class="num">20XX</span></span>
+    </div>
+  </div>
+
+  <!-- CHOOSE YOUR PATH -->
+  <div class="section container">
+    <div class="sec-title center">
+      <div class="overline">Choose your path</div>
+      <h2>Where are you starting from?</h2>
+      <p class="lede">Tell us who you are and we'll route you to the right package — no reading five product pages.</p>
+    </div>
+    <div class="audience">
+      <a class="aud-card" href="#/teen" data-link>
+        <span class="aud-ic" style="background:var(--accent-soft);color:var(--accent)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7" stroke-linecap="round"/></svg>
+        </span>
+        <div>
+          <span class="tag teen">Ages 14–17</span>
+          <h3 style="margin-top:10px">I'm a teen</h3>
+        </div>
+        <p class="muted small">State-approved driver education to get your permit and license — taught calmly, step by step.</p>
+        <span class="go">Teen Driver Education
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </a>
+      <a class="aud-card" href="#/adult" data-link>
+        <span class="aud-ic" style="background:var(--success-soft);color:var(--success)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="7.5" r="3.5"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7" stroke-linecap="round"/></svg>
+        </span>
+        <div>
+          <span class="tag adult">Ages 18+</span>
+          <h3 style="margin-top:10px">I'm an adult</h3>
+        </div>
+        <p class="muted small">Private lessons and the required adult course, at a pace that feels comfortable — first-timers welcome.</p>
+        <span class="go">Adult Driving Lessons
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </a>
+      <a class="aud-card" href="#/courses" data-link>
+        <span class="aud-ic" style="background:var(--warm-soft);color:var(--warm-strong)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M5 12l4 4 10-10" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 19h16" stroke-linecap="round"/></svg>
+        </span>
+        <div>
+          <span class="tag road">Test-ready</span>
+          <h3 style="margin-top:10px">I just need the road test</h3>
+        </div>
+        <p class="muted small">Already know how to drive? Take your DPS road test with us and skip the long wait.</p>
+        <span class="go">Road Test Service
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+      </a>
+    </div>
+  </div>
+
+  <!-- WHY US -->
+  <div class="section-sm" style="background:var(--surface-2);border-block:1px solid var(--border)">
+    <div class="container">
+      <div class="sec-title">
+        <div class="overline">Why families choose us</div>
+        <h2>Everything you need to get licensed — done right.</h2>
+      </div>
+      <div class="features">
+        <div class="feature">
+          <span class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 3l8 4-8 4-8-4 8-4z" stroke-linejoin="round"/><path d="M6 9.5V14c0 1.5 2.7 3 6 3s6-1.5 6-3V9.5" stroke-linecap="round"/></svg></span>
+          <h4>Certified instructors</h4>
+          <p>Every instructor is TDLR-certified, patient, and experienced with nervous first-timers.</p>
+        </div>
+        <div class="feature">
+          <span class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <h4>Get licensed faster</h4>
+          <p>A clear path from permit to license, including the in-car hours Texas requires.</p>
+        </div>
+        <div class="feature">
+          <span class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/><rect x="3" y="3" width="18" height="18" rx="4"/></svg></span>
+          <h4>State-approved certificate</h4>
+          <p>Complete your course and receive the certificate Texas DPS accepts.</p>
+        </div>
+        <div class="feature">
+          <span class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <h4>Honest, flat pricing</h4>
+          <p>Transparent package pricing with no surprise add-ons — ever.</p>
+        </div>
+        <div class="feature">
+          <span class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 9h18M8 3v4M16 3v4" stroke-linecap="round"/></svg></span>
+          <h4>Flexible scheduling</h4>
+          <p>Evening and weekend slots that fit around school and work.</p>
+        </div>
+        <div class="feature">
+          <span class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <h4>DPS road test with us</h4>
+          <p>As an approved provider, we administer your road test — no long DPS office wait.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FEATURED PACKAGES -->
+  <div class="section container">
+    <div class="sec-title">
+      <div class="overline">Popular packages</div>
+      <h2>Pick a package, or let us help you choose.</h2>
+      <p>Honest pricing — every package includes a certified instructor, a dual-control car, and your completion certificate.</p>
+    </div>
+    <div class="pkg-grid">
+      <div class="pkg">
+        <span class="tag teen">Teen · 14–17</span>
+        <h3 class="h4" style="margin-top:12px">Teen Package #1 — Essentials</h3>
+        <div class="price"><b>$400</b><span>/ package</span></div>
+        <p class="small muted">Core behind-the-wheel hours to build first-time confidence.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg> Certified in-car instruction</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg> State-approved certificate</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg> Local pickup &amp; drop-off</li>
+        </ul>
+        <a class="btn secondary block" href="#/teen" data-link>View details</a>
+      </div>
+      <div class="pkg featured">
+        <span class="ribbon">★ Most popular</span>
+        <span class="tag teen">Teen · 14–17</span>
+        <h3 class="h4" style="margin-top:12px">Teen Package #2 — Standard</h3>
+        <div class="price"><b>$450</b><span>/ package</span></div>
+        <p class="small muted">More in-car hours plus full road-test preparation.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg> Extended behind-the-wheel hours</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg> Road-test prep &amp; mock test</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg> Paperwork help for parents</li>
+        </ul>
+        <a class="btn primary block" href="#/book" data-link>Book this package</a>
+      </div>
+      <div class="pkg">
+        <span class="tag adult">Adult · 18+</span>
+        <h3 class="h4" style="margin-top:12px">Adult Complete — Package 1</h3>
+        <div class="price"><b>$450</b><span>/ package</span></div>
+        <p class="small muted">Behind-the-wheel training plus your DPS road test, start to finish.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg> Fundamentals → highway driving</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg> Parallel parking mastery</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg> DPS road test included</li>
+        </ul>
+        <a class="btn secondary block" href="#/adult" data-link>View details</a>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:32px">
+      <a class="btn ghost" href="#/pricing" data-link>Compare all packages &amp; pricing
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div class="section-sm" style="background:var(--surface-2);border-block:1px solid var(--border)">
+    <div class="container">
+      <div class="sec-title center">
+        <div class="overline">How it works</div>
+        <h2>From first call to licensed — in four steps.</h2>
+      </div>
+      <div class="steps">
+        <div class="step"><div class="sn">1</div><h4>Book online</h4><p>Pick your package and a time that works. We confirm within one business day.</p></div>
+        <div class="step"><div class="sn">2</div><h4>Meet your instructor</h4><p>We pick you up locally and start with the fundamentals — at your pace.</p></div>
+        <div class="step"><div class="sn">3</div><h4>Build your hours</h4><p>Behind-the-wheel sessions take you from basics to highway and parking.</p></div>
+        <div class="step"><div class="sn">4</div><h4>Pass your test</h4><p>Take your DPS road test right here with us and drive away licensed.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="section container">
+    <div class="stat-band">
+      <div class="stat"><div class="v">20<em>+</em></div><div class="l">Years teaching Plano drivers</div></div>
+      <div class="stat"><div class="v">4.9<em>★</em></div><div class="l">Average Google rating</div></div>
+      <div class="stat"><div class="v">98<em>%</em></div><div class="l">First-try pass rate*</div></div>
+      <div class="stat"><div class="v">6</div><div class="l">North Dallas cities served</div></div>
+    </div>
+    <p class="small muted" style="text-align:center;margin-top:14px">*Verify all figures against your records before publishing.</p>
+  </div>
+
+  <!-- REVIEWS -->
+  <div class="section-sm container">
+    <div class="sec-title center">
+      <div class="overline warm">★ ★ ★ ★ ★</div>
+      <h2>Parents and adult learners love us.</h2>
+    </div>
+    <div class="reviews-grid">
+      <div class="review">
+        <div class="stars" aria-label="5 stars"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7z"/></svg></div>
+        <p>"My driving instructor was fantastic — calm, patient, and so encouraging. My daughter passed on the first try."</p>
+        <div class="who"><span class="av">GM</span><div><b>Gina M.</b><small>Parent of a teen driver · Plano</small></div></div>
+      </div>
+      <div class="review">
+        <div class="stars" aria-label="5 stars"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7z"/></svg></div>
+        <p>"I learned to drive at 34 after years of being too nervous. Eric made it feel easy. Passed first try!"</p>
+        <div class="who"><span class="av">AL</span><div><b>Alice L.</b><small>Adult learner · Passed first try</small></div></div>
+      </div>
+      <div class="review">
+        <div class="stars" aria-label="5 stars"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7z"/></svg></div>
+        <p>"Both my kids learned here. Reliable, professional, and genuinely kind with nervous teens. Highly recommend."</p>
+        <div class="who"><span class="av">MH</span><div><b>Masud H.</b><small>Parent of two students · Plano</small></div></div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:32px">
+      <a class="btn secondary" href="#/reviews" data-link>Read all reviews</a>
+    </div>
+  </div>
+
+  <!-- SERVICE AREAS STRIP -->
+  <div class="section-sm container">
+    <div class="sec-title center">
+      <div class="overline">Where we teach</div>
+      <h2>Driving lessons across North Dallas.</h2>
+    </div>
+    <div class="area-grid">
+      <a class="area" href="#/service-areas" data-link><h4>Plano</h4><p>Collin County · home base</p></a>
+      <a class="area" href="#/service-areas" data-link><h4>Frisco</h4><p>Collin &amp; Denton County</p></a>
+      <a class="area" href="#/service-areas" data-link><h4>Allen</h4><p>Collin County</p></a>
+      <a class="area" href="#/service-areas" data-link><h4>McKinney</h4><p>Collin County</p></a>
+      <a class="area" href="#/service-areas" data-link><h4>Richardson</h4><p>Dallas County</p></a>
+      <a class="area" href="#/service-areas" data-link><h4>Garland</h4><p>Dallas County</p></a>
+      <a class="area" href="#/service-areas" data-link style="background:var(--accent-soft);border-color:var(--accent)"><h4 style="color:var(--accent)">View all areas</h4><p>See coverage map</p></a>
+    </div>
+  </div>
+
+  <!-- FINAL CTA -->
+  <div class="section container">
+    <div class="cta-band">
+      <h2>Ready to get behind the wheel?</h2>
+      <p>Book your first lesson today, or call us and we'll point you to the right package in two minutes.</p>
+      <div class="btns">
+        <a class="btn warm lg" href="#/book" data-link>Book a Lesson</a>
+        <a class="btn ghost lg" href="tel:+12145457529">Call (214) 545-7529</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================= COURSES HUB ================= -->
+<section class="page" data-page="courses">
+  <span data-title="Courses &amp; Packages" hidden></span>
+  <div class="page-hero">
+    <div class="container">
+      <div class="crumb"><a href="#/" data-link>Home</a><span class="sep">/</span><span>Courses</span></div>
+      <div class="overline">Courses · Packages 1 → 5</div>
+      <h1>Find the course that fits — in one click.</h1>
+      <p class="lede">Whether you're a teen getting your first license, an adult brushing up, or you just need to take your road test, there's a Bluebonnet package built for it. Start by picking who you are, or browse every option below.</p>
+    </div>
+  </div>
+
+  <!-- AUDIENCE ENTRY -->
+  <div class="section container">
+    <div class="audience">
+      <a class="aud-card" href="#/teen" data-link>
+        <span class="aud-ic" style="background:var(--accent-soft);color:var(--accent)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7" stroke-linecap="round"/></svg></span>
+        <span class="tag teen">Ages 14–17</span>
+        <h3>Teen Driver Education</h3>
+        <p class="muted small">State-approved program — Packages 2 (Teen #1–3).</p>
+        <span class="go">Explore teen courses <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a class="aud-card" href="#/adult" data-link>
+        <span class="aud-ic" style="background:var(--success-soft);color:var(--success)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="7.5" r="3.5"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7" stroke-linecap="round"/></svg></span>
+        <span class="tag adult">Ages 18+</span>
+        <h3>Adult Driving Lessons</h3>
+        <p class="muted small">Lessons &amp; the required adult course — Packages 1, 3, 5.</p>
+        <span class="go">Explore adult courses <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a class="aud-card" href="#/book" data-link>
+        <span class="aud-ic" style="background:var(--warm-soft);color:var(--warm-strong)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M5 12l4 4 10-10" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 19h16" stroke-linecap="round"/></svg></span>
+        <span class="tag road">Road test</span>
+        <h3>DPS Road Test Service</h3>
+        <p class="muted small">Already drive? Take your test with us — Package 4.</p>
+        <span class="go">Book the road test <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+    </div>
+  </div>
+
+  <!-- ALL PACKAGES -->
+  <div class="section-sm" style="background:var(--surface-2);border-block:1px solid var(--border)">
+    <div class="container">
+      <div class="sec-title"><div class="overline">All packages</div><h2>Every option, in order — Package 1 to 5.</h2><p>Each package includes a certified instructor, a dual-control vehicle, and your completion certificate.</p></div>
+      <div class="pkg-grid">
+        <div class="pkg"><span class="tag adult">Adult</span><h3 class="h4" style="margin-top:12px">Package 1 — Complete</h3><div class="price"><b>$450</b></div><p class="small muted">Behind-the-wheel training plus your DPS road test, start to finish.</p><ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg> Full lesson series</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg> Road test included</li></ul><a class="btn secondary block" href="#/adult" data-link>View details</a></div>
+        <div class="pkg featured"><span class="ribbon">★ Most popular</span><span class="tag teen">Teen</span><h3 class="h4" style="margin-top:12px">Package 2 · Teen #2</h3><div class="price"><b>$450</b></div><p class="small muted">Our most popular teen package — more hours plus road-test prep.</p><ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg> Extended in-car hours</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg> Mock + DPS road test</li></ul><a class="btn primary block" href="#/book" data-link>Book now</a></div>
+        <div class="pkg"><span class="tag teen">Teen</span><h3 class="h4" style="margin-top:12px">Package 2 · Teen #1</h3><div class="price"><b>$400</b></div><p class="small muted">The teen starter — core hours to build first-time confidence.</p><ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg> Essential in-car hours</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg> State certificate</li></ul><a class="btn secondary block" href="#/teen" data-link>View details</a></div>
+        <div class="pkg"><span class="tag teen">Teen</span><h3 class="h4" style="margin-top:12px">Package 2 · Teen #3</h3><div class="price"><b>$470</b></div><p class="small muted">The full teen package — maximum practice plus the road test.</p><ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg> Maximum hours</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg> DPS road test included</li></ul><a class="btn secondary block" href="#/teen" data-link>View details</a></div>
+        <div class="pkg"><span class="tag adult">Adult</span><h3 class="h4" style="margin-top:12px">Package 3 — Extended</h3><div class="price"><b>$450</b></div><p class="small muted">Extra time for drivers who want more practice before testing.</p><ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg> Extended lesson plan</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg> Test prep</li></ul><a class="btn secondary block" href="#/adult" data-link>View details</a></div>
+        <div class="pkg"><span class="tag road">Road test</span><h3 class="h4" style="margin-top:12px">Package 4 — Road Test Only</h3><div class="price"><b>$180</b></div><p class="small muted">Already know how to drive? Take your DPS test and skip the wait.</p><ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg> DPS road skills test</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg> Use of our vehicle</li></ul><a class="btn secondary block" href="#/book" data-link>Book the test</a></div>
+      </div>
+      <div class="pkg" style="margin-top:18px;flex-direction:row;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap">
+        <div><span class="tag road">Refresher</span><h3 class="h4" style="margin:10px 0 4px">Package 5 — Straight to Drive</h3><p class="small muted" style="margin:0">A focused refresher or single-skill session — perfect for brushing up before the test. <b style="color:var(--text)">$135</b></p></div>
+        <a class="btn secondary" href="#/book" data-link>Book a refresher</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HELPER + REASSURANCE -->
+  <div class="section container">
+    <div class="split">
+      <div class="callout warm">
+        <span class="cic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16v-4M12 8h.01" stroke-linecap="round"/><circle cx="12" cy="12" r="9"/></svg></span>
+        <div><h4>Not sure which package fits?</h4><p>Call us at <a href="tel:+12145457529">(214) 545-7529</a> — we'll point you to the right one in two minutes. No pressure, ever.</p></div>
+      </div>
+      <ul class="list-check">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>TDLR-licensed</b> &amp; Texas DPS-approved school.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>State-accepted certificate</b> on completion.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>First-try pass rate</b> parents talk about.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================= TEEN ================= -->
+<section class="page" data-page="teen">
+  <span data-title="Teen Driver Education in Plano" hidden></span>
+  <div class="page-hero">
+    <div class="container">
+      <div class="crumb"><a href="#/" data-link>Home</a><span class="sep">/</span><a href="#/courses" data-link>Courses</a><span class="sep">/</span><span>Teen Driver Education</span></div>
+      <span class="tag teen">Ages 14–17 · State-approved</span>
+      <h1 style="margin-top:14px">Texas teen driver education — done right, done calmly.</h1>
+      <p class="lede">Handing your teen the keys is a big step. We make it a safe one. Our state-approved program takes new drivers from their very first lesson to a confident DPS road test, with instructors who specialize in keeping nervous teens — and nervous parents — at ease.</p>
+      <div style="display:flex;gap:12px;margin-top:24px;flex-wrap:wrap">
+        <a class="btn primary" href="#/book" data-link>Enroll your teen</a>
+        <a class="btn secondary" href="#/pricing" data-link>See teen pricing</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- TEXAS LICENSING EXPLAINED -->
+  <div class="section container">
+    <div class="split narrow-img">
+      <div>
+        <div class="overline">Texas teen licensing, explained</div>
+        <h2 class="h2" style="margin:12px 0 10px">Getting a Texas license at 16 has a few required steps.</h2>
+        <p class="lede" style="margin-bottom:28px">Here's the simple version — and we help with every one.</p>
+        <div class="timeline">
+          <div class="tl"><div class="n">1</div><div><h4>Get the learner permit</h4><p>Complete the classroom portion and pass the written knowledge test to earn the learner license.</p></div></div>
+          <div class="tl"><div class="n">2</div><div><h4>Behind-the-wheel training</h4><p>In-car lessons with a certified instructor, plus supervised practice hours logged with a parent.</p></div></div>
+          <div class="tl"><div class="n">3</div><div><h4>ITTD course</h4><p>The short Impact Texas Teen Drivers video, required before the road test.</p></div></div>
+          <div class="tl"><div class="n">4</div><div><h4>Pass the DPS road test</h4><p>Which you can take right here with us — no long wait at the DPS office.</p></div></div>
+        </div>
+      </div>
+      <div>
+        <div class="ph" data-label="Photo — teen driver with instructor, calm residential street" style="height:340px;margin-bottom:18px"></div>
+        <div class="callout">
+          <span class="cic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16v-4M12 8h.01" stroke-linecap="round"/><circle cx="12" cy="12" r="9"/></svg></span>
+          <div><h4>A note on requirements</h4><p>Verify exact Texas hour requirements (classroom, behind-the-wheel, observation) and ITTD/permit rules against current TDLR/DPS guidance before enrolling — specifics change.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHAT'S INCLUDED -->
+  <div class="section-sm" style="background:var(--surface-2);border-block:1px solid var(--border)">
+    <div class="container">
+      <div class="sec-title"><div class="overline">What's included</div><h2>Inside every teen package.</h2></div>
+      <div class="features">
+        <div class="feature"><span class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 9h8M8 13h5" stroke-linecap="round"/></svg></span><h4>Classroom instruction</h4><p>The required knowledge portion that prepares teens for the written test.</p></div>
+        <div class="feature"><span class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M5 17h14M6.5 17l1.2-5.2A2.5 2.5 0 0 1 10.1 10h3.8a2.5 2.5 0 0 1 2.4 1.8L17.5 17" stroke-linecap="round" stroke-linejoin="round"/><circle cx="8" cy="17.5" r="1.5"/><circle cx="16" cy="17.5" r="1.5"/></svg></span><h4>Behind-the-wheel</h4><p>One-on-one in-car lessons with a certified, patient instructor.</p></div>
+        <div class="feature"><span class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="3"/><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"/></svg></span><h4>Observation hours</h4><p>Supervised in-car observation to reinforce real-world judgment.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPARE TEEN PACKAGES -->
+  <div class="section container">
+    <div class="sec-title"><div class="overline">Compare</div><h2>The three teen packages.</h2></div>
+    <div class="pkg-grid">
+      <div class="pkg"><span class="tag teen">Teen #1</span><h3 class="h4" style="margin-top:12px">Essentials</h3><div class="price"><b>$400</b></div><p class="small muted">Core behind-the-wheel hours to build first-time confidence.</p><ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg> Essential in-car hours</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg> State certificate</li></ul><a class="btn secondary block" href="#/book" data-link>Choose Essentials</a></div>
+      <div class="pkg featured"><span class="ribbon">★ Most popular</span><span class="tag teen">Teen #2</span><h3 class="h4" style="margin-top:12px">Standard</h3><div class="price"><b>$450</b></div><p class="small muted">More in-car hours plus full road-test preparation.</p><ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg> Extended hours</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg> Mock + DPS road test</li></ul><a class="btn primary block" href="#/book" data-link>Choose Standard</a></div>
+      <div class="pkg"><span class="tag teen">Teen #3</span><h3 class="h4" style="margin-top:12px">Complete</h3><div class="price"><b>$470</b></div><p class="small muted">Maximum practice hours and the DPS road test included.</p><ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg> Maximum hours</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg> Road test included</li></ul><a class="btn secondary block" href="#/book" data-link>Choose Complete</a></div>
+    </div>
+  </div>
+
+  <!-- PARENT REVIEW + CTA -->
+  <div class="section-sm container">
+    <div class="split">
+      <div class="review" style="box-shadow:var(--shadow-md)">
+        <div class="stars" aria-label="5 stars"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7z"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7z"/></svg></div>
+        <p style="font-size:var(--fs-lg)">"My son was so anxious about driving. His instructor was endlessly patient and he passed first try. We've already booked his sister."</p>
+        <div class="who"><span class="av">AW</span><div><b>Annie W.</b><small>Parent of a teen driver · Plano</small></div></div>
+      </div>
+      <div>
+        <h2 class="h2">What parents need to bring.</h2>
+        <ul class="list-check" style="margin:20px 0 24px">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Proof of enrollment / school attendance (VOE form)</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Your teen's learner permit once issued</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Logged supervised practice hours</span></li>
+        </ul>
+        <p class="small muted" style="margin-bottom:20px">We'll walk you through every form — see our <a href="#/resources" data-link>Resources page</a> for the official DPS documents.</p>
+        <a class="btn primary lg" href="#/book" data-link>Enroll your teen today</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================= ADULT ================= -->
+<section class="page" data-page="adult">
+  <span data-title="Adult Driving Lessons in Plano" hidden></span>
+  <div class="page-hero">
+    <div class="container">
+      <div class="crumb"><a href="#/" data-link>Home</a><span class="sep">/</span><a href="#/courses" data-link>Courses</a><span class="sep">/</span><span>Adult Driving Lessons</span></div>
+      <span class="tag adult">Ages 18+ · Judgment-free</span>
+      <h1 style="margin-top:14px">Adult driving lessons — it's never too late to learn.</h1>
+      <p class="lede">Plenty of our students get their license well after 18 — and that's completely normal. Whether you're driving for the first time, returning after years away, or new to driving in the U.S., we'll build your skills at a pace that feels comfortable. Lessons are private, patient, and tailored to exactly what you need to pass.</p>
+      <div style="display:flex;gap:12px;margin-top:24px;flex-wrap:wrap">
+        <a class="btn primary" href="#/book" data-link>Book a lesson</a>
+        <a class="btn secondary" href="#/pricing" data-link>See adult pricing</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHO IT'S FOR -->
+  <div class="section container">
+    <div class="sec-title"><div class="overline">Who it's for</div><h2>Built for every kind of adult learner.</h2></div>
+    <div class="features">
+      <div class="feature"><span class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7" stroke-linecap="round"/></svg></span><h4>First-time adults</h4><p>Never driven before? We start with the absolute fundamentals — no judgment.</p></div>
+      <div class="feature"><span class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M3 12a9 9 0 1 0 3-6.7M3 4v4h4" stroke-linecap="round" stroke-linejoin="round"/></svg></span><h4>Returning drivers</h4><p>Coming back after years away? We'll rebuild your confidence quickly.</p></div>
+      <div class="feature"><span class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18" /></svg></span><h4>New to the U.S.</h4><p>Transferring from another country? We'll prepare you for Texas roads and rules.</p></div>
+      <div class="feature"><span class="fic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><path d="M12 21s-7-4.5-7-10a7 7 0 0 1 14 0c0 5.5-7 10-7 10z"/><circle cx="12" cy="11" r="2.5"/></svg></span><h4>Anxious drivers</h4><p>Driving anxiety is common. Our instructors specialize in calm, steady progress.</p></div>
+    </div>
+  </div>
+
+  <!-- WHAT LESSONS COVER -->
+  <div class="section-sm" style="background:var(--surface-2);border-block:1px solid var(--border)">
+    <div class="container">
+      <div class="split">
+        <div>
+          <div class="overline">What lessons cover</div>
+          <h2 class="h2" style="margin:12px 0 18px">From your first time behind the wheel to test-ready.</h2>
+          <ul class="list-check">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>The basics</b> — controls, mirrors, smooth starts and stops.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>City &amp; residential</b> — intersections, lane changes, judgment.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Highway driving</b> — merging, speed control, confidence at pace.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Parallel parking</b> — the method we teach makes it simple.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Test prep</b> — a mock road test so nothing surprises you.</span></li>
+          </ul>
+        </div>
+        <div class="ph" data-label="Photo — adult learner confidently driving, instructor alongside" style="height:380px"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADULT PACKAGES -->
+  <div class="section container">
+    <div class="sec-title"><div class="overline">Adult packages</div><h2>Choose your pace.</h2></div>
+    <div class="pkg-grid">
+      <div class="pkg featured"><span class="ribbon">★ Complete</span><span class="tag adult">Package 1</span><h3 class="h4" style="margin-top:12px">Complete + Road Test</h3><div class="price"><b>$450</b></div><p class="small muted">Fundamentals through highway and parking, finishing with your DPS test.</p><ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg> Full lesson series</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg> Road test included</li></ul><a class="btn primary block" href="#/book" data-link>Choose Package 1</a></div>
+      <div class="pkg"><span class="tag adult">Package 3</span><h3 class="h4" style="margin-top:12px">Extended</h3><div class="price"><b>$450</b></div><p class="small muted">Extra time for drivers who want more practice before testing.</p><ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg> Extended lesson plan</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg> Test prep included</li></ul><a class="btn secondary block" href="#/book" data-link>Choose Package 3</a></div>
+      <div class="pkg"><span class="tag road">Package 5</span><h3 class="h4" style="margin-top:12px">Straight to Drive</h3><div class="price"><b>$135</b></div><p class="small muted">A focused refresher or single-skill session before the test.</p><ul><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg> Single focused session</li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg> Brush up before testing</li></ul><a class="btn secondary block" href="#/book" data-link>Choose Package 5</a></div>
+    </div>
+  </div>
+
+  <!-- BILINGUAL CALLOUT -->
+  <div class="section-sm container">
+    <div class="callout warm" style="align-items:center">
+      <span class="cic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8h9M9 4v4M7 14c2.5 0 5-2 6-6M11 12c-1.5 2.5-4 4-7 4" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 20l3.5-8 3.5 8M14.5 17h4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <div><h4>¿Necesita clases en español?</h4><p>Tenemos instructores bilingües listos para ayudarle a obtener su licencia con confianza. <a href="#/contact" data-link>Contáctenos</a> para más información.</p></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================= PRICING ================= -->
+<section class="page" data-page="pricing">
+  <span data-title="Pricing" hidden></span>
+  <div class="page-hero">
+    <div class="container">
+      <div class="crumb"><a href="#/" data-link>Home</a><span class="sep">/</span><span>Pricing</span></div>
+      <div class="overline">Pricing</div>
+      <h1>Simple, honest pricing — no hidden fees.</h1>
+      <p class="lede">Every package includes a certified instructor, a safe dual-control vehicle, and your completion certificate. Compare them side by side, then book in minutes.</p>
+    </div>
+  </div>
+
+  <div class="section container">
+    <table class="ptable">
+      <thead>
+        <tr><th>Package</th><th>For</th><th>Price</th><th>Hours*</th><th>Road test</th><th>Best for</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="pk">Package 1 — Complete</td><td><span class="tag adult">Adult</span></td><td class="pr">$450</td><td>Full series</td><td class="yes">✓ Included</td><td>Adults wanting the whole path to licensed</td></tr>
+        <tr class="hl"><td class="pk">Package 2 · Teen #2 <span class="badge" style="margin-left:6px">★ Popular</span></td><td><span class="tag teen">Teen</span></td><td class="pr">$450</td><td>Extended</td><td class="yes">✓ Included</td><td>Most teens — hours + road-test prep</td></tr>
+        <tr><td class="pk">Package 2 · Teen #1</td><td><span class="tag teen">Teen</span></td><td class="pr">$400</td><td>Essential</td><td class="no">Add-on</td><td>Teens building first-time confidence</td></tr>
+        <tr><td class="pk">Package 2 · Teen #3</td><td><span class="tag teen">Teen</span></td><td class="pr">$470</td><td>Maximum</td><td class="yes">✓ Included</td><td>Teens wanting maximum practice</td></tr>
+        <tr><td class="pk">Package 3 — Extended</td><td><span class="tag adult">Adult</span></td><td class="pr">$450</td><td>Extended</td><td class="yes">✓ Included</td><td>Adults who want extra time before testing</td></tr>
+        <tr><td class="pk">Package 4 — Road Test Only</td><td><span class="tag road">Road test</span></td><td class="pr">$180</td><td>Test slot</td><td class="yes">✓ Test only</td><td>Experienced drivers skipping the DPS wait</td></tr>
+        <tr><td class="pk">Package 5 — Straight to Drive</td><td><span class="tag road">Refresher</span></td><td class="pr">$135</td><td>1 session</td><td class="no">—</td><td>A quick refresher or single skill</td></tr>
+      </tbody>
+    </table>
+    <p class="small muted" style="margin-top:14px">*Hours, session counts, and which packages include the road test are drafts — verify against your actual offerings before publishing.</p>
+  </div>
+
+  <div class="section-sm container">
+    <div class="split">
+      <div>
+        <div class="overline">Always included</div>
+        <h2 class="h2" style="margin:12px 0 18px">What every package comes with.</h2>
+        <ul class="list-check">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>A <b>TDLR-certified instructor</b> for every lesson.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>A <b>safe, dual-control vehicle</b>, maintained to standard.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Your <b>state-accepted completion certificate</b>.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Local pickup &amp; drop-off</b> within our service areas.</span></li>
+        </ul>
+      </div>
+      <div class="card pad-lg">
+        <h3 class="h3">Payments &amp; policies</h3>
+        <div style="margin-top:16px">
+          <div class="contact-row"><div><h4>Payment</h4><p>Pay per package up front. Major cards and common digital wallets accepted.</p></div></div>
+          <div class="contact-row"><div><h4>Reschedule</h4><p>Need to move a lesson? Give us 24 hours' notice and we'll reschedule at no charge.</p></div></div>
+          <div class="contact-row"><div><h4>Refunds</h4><p>Refund terms for unused sessions are summarized in our <a href="#/legal" data-link>Terms &amp; Conditions</a>.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section container">
+    <div class="cta-band">
+      <h2>Still not sure which to pick?</h2>
+      <p>Call us and we'll match you to the right package in two minutes — no pressure.</p>
+      <div class="btns">
+        <a class="btn warm lg" href="#/book" data-link>Book a Lesson</a>
+        <a class="btn ghost lg" href="tel:+12145457529">Call (214) 545-7529</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================= INSTRUCTORS ================= -->
+<section class="page" data-page="instructors">
+  <span data-title="Our Instructors" hidden></span>
+  <div class="page-hero">
+    <div class="container">
+      <div class="crumb"><a href="#/" data-link>Home</a><span class="sep">/</span><a href="#/about" data-link>About</a><span class="sep">/</span><span>Instructors</span></div>
+      <div class="overline">Meet the team</div>
+      <h1>The instructors families ask for by name.</h1>
+      <p class="lede">Real faces, real experience. Our certified instructors are chosen for patience as much as skill — the people who turn nervous first-timers into calm, capable drivers.</p>
+    </div>
+  </div>
+
+  <div class="section container">
+    <div class="team">
+      <div class="tcard">
+        <div class="ph" data-label="Instructor portrait — Eric"></div>
+        <div class="body">
+          <h3>Eric</h3>
+          <div class="role">Lead Instructor</div>
+          <p class="small muted">Patient and unflappable, Eric specializes in turning nervous first-timers into calm, capable drivers — and prepping students to pass the DPS test on the first try.</p>
+          <div class="meta"><span class="badge neutral">12+ yrs</span><span class="badge">English &amp; Spanish</span><span class="badge warm">Nervous drivers</span></div>
+        </div>
+      </div>
+      <div class="tcard">
+        <div class="ph" data-label="Instructor portrait — April"></div>
+        <div class="body">
+          <h3>April</h3>
+          <div class="role">Senior Instructor</div>
+          <p class="small muted">April is a favorite with teen drivers and their parents. She keeps lessons structured and encouraging, with a real talent for building confidence behind the wheel.</p>
+          <div class="meta"><span class="badge neutral">9+ yrs</span><span class="badge">English</span><span class="badge warm">Teen drivers</span></div>
+        </div>
+      </div>
+      <div class="tcard">
+        <div class="ph" data-label="Instructor portrait — Jillian"></div>
+        <div class="body">
+          <h3>Jillian Esparza</h3>
+          <div class="role">Instructor</div>
+          <p class="small muted">Jillian brings calm and clarity to every lesson, with a focus on highway confidence and parallel parking — the skills students worry about most.</p>
+          <div class="meta"><span class="badge neutral">7+ yrs</span><span class="badge">English &amp; Spanish</span><span class="badge warm">Highway &amp; parking</span></div>
+        </div>
+      </div>
+    </div>
+    <p class="small muted" style="margin-top:18px">Replace names, photos, years, and specialties with your real team. Only include social links for instructors who genuinely have public profiles.</p>
+  </div>
+
+  <div class="section-sm container">
+    <div class="cta-band">
+      <h2>Learn with an instructor you'll trust.</h2>
+      <p>Tell us a little about the driver and we'll match you with the right fit.</p>
+      <div class="btns"><a class="btn warm lg" href="#/book" data-link>Book a Lesson</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= REVIEWS ================= -->
+<section class="page" data-page="reviews">
+  <span data-title="Reviews" hidden></span>
+  <div class="page-hero">
+    <div class="container">
+      <div class="crumb"><a href="#/" data-link>Home</a><span class="sep">/</span><span>Reviews</span></div>
+      <div class="overline warm">★ 4.9 average · 100+ Google reviews</div>
+      <h1>Don't take our word for it.</h1>
+      <p class="lede">Genuine reviews from the families and adult learners we've taught across Plano and North Dallas. Re-labeled by relationship to the school, exactly as they should be.</p>
+      <div style="display:flex;gap:12px;margin-top:24px;flex-wrap:wrap">
+        <a class="btn primary" href="#/book" data-link>Book a Lesson</a>
+        <a class="btn secondary" href="#" >Leave a Google review</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="section container">
+    <div class="reviews-grid" id="reviewsGrid"></div>
+    <p class="small muted" style="margin-top:18px">Only use real names/initials with permission. The reviews read authentic — it's the job titles on the old site that needed fixing.</p>
+  </div>
+</section>
+
+<!-- ================= BOOK ================= -->
+<section class="page" data-page="book">
+  <span data-title="Book a Lesson" hidden></span>
+  <div class="page-hero">
+    <div class="container">
+      <div class="crumb"><a href="#/" data-link>Home</a><span class="sep">/</span><span>Book a Lesson</span></div>
+      <div class="overline">Enroll · Book</div>
+      <h1>Book your first lesson.</h1>
+      <p class="lede">Ready to start? Pick your package and a time that works — we'll confirm by phone or email within one business day. Prefer to talk first? Call <a href="tel:+12145457529">(214) 545-7529</a>.</p>
+    </div>
+  </div>
+
+  <div class="section container">
+    <div class="split">
+      <form class="card pad-lg" onsubmit="return false">
+        <h3 class="h3" style="margin-bottom:18px">Request your booking</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <div class="field"><label>Student name</label><input class="input" placeholder="Jordan Rivera"></div>
+          <div class="field"><label>Student age</label><input class="input" placeholder="16"></div>
+          <div class="field"><label>Email</label><input class="input" type="email" placeholder="you@email.com"></div>
+          <div class="field"><label>Phone</label><input class="input" placeholder="(214) 545-7529"></div>
+          <div class="field" style="grid-column:1/-1"><label>Package</label><select class="select"><option>Package 2 · Teen #2 — $450 (most popular)</option><option>Package 2 · Teen #1 — $400</option><option>Package 2 · Teen #3 — $470</option><option>Package 1 — Adult Complete — $450</option><option>Package 3 — Adult Extended — $450</option><option>Package 4 — Road Test Only — $180</option><option>Package 5 — Straight to Drive — $135</option></select></div>
+          <div class="field"><label>Preferred area</label><select class="select"><option>Plano</option><option>Frisco</option><option>Allen</option><option>McKinney</option><option>Richardson</option><option>Garland</option></select></div>
+          <div class="field"><label>Preferred days/times</label><input class="input" placeholder="Weekday evenings"></div>
+          <div class="field" style="grid-column:1/-1"><label>Pickup address (optional)</label><input class="input" placeholder="Street, city"></div>
+          <div class="field" style="grid-column:1/-1"><label>Anything we should know?</label><textarea class="textarea" placeholder="First-time driver, nervous about highways, prefers Spanish…"></textarea></div>
+        </div>
+        <button class="btn primary block lg" style="margin-top:20px">Request booking</button>
+        <p class="small muted" style="text-align:center;margin-top:12px">In production, embed your scheduler (Calendly, SimplyBook.me, Amelia, or BookingPress) here.</p>
+      </form>
+      <div>
+        <h2 class="h2">What happens next.</h2>
+        <div class="timeline" style="margin-top:22px">
+          <div class="tl"><div class="n">1</div><div><h4>You book below</h4><p>Choose a package and share your preferred times. Takes two minutes.</p></div></div>
+          <div class="tl"><div class="n">2</div><div><h4>We confirm</h4><p>We'll confirm your schedule and pickup by phone or email within one business day.</p></div></div>
+          <div class="tl"><div class="n">3</div><div><h4>Lesson one</h4><p>Your instructor meets you and you're behind the wheel. That's it.</p></div></div>
+        </div>
+        <div class="callout" style="margin-top:10px">
+          <span class="cic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-3 2a11 11 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z" stroke-linejoin="round"/></svg></span>
+          <div><h4>Prefer to talk first?</h4><p>Call <a href="tel:+12145457529">(214) 545-7529</a>. Reschedules are free with 24 hours' notice.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="page" data-page="contact">
+  <span data-title="Contact" hidden></span>
+  <div class="page-hero">
+    <div class="container">
+      <div class="crumb"><a href="#/" data-link>Home</a><span class="sep">/</span><span>Contact</span></div>
+      <div class="overline">Contact</div>
+      <h1>We're happy to help.</h1>
+      <p class="lede">Questions about packages, scheduling, or the road test? Call, email, or send a message and we'll get back to you within one business day.</p>
+    </div>
+  </div>
+
+  <div class="section container">
+    <div class="contact-grid">
+      <div>
+        <div class="contact-row"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.5-7-10a7 7 0 0 1 14 0c0 5.5-7 10-7 10z"/><circle cx="12" cy="11" r="2.5"/></svg></span><div><h4>Visit us</h4><p>820 W. Spring Creek Pkwy, Suite #400 N (2nd Floor)<br>Plano, TX 75023</p></div></div>
+        <div class="contact-row"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-3 2a11 11 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z" stroke-linejoin="round"/></svg></span><div><h4>Call or text</h4><p><a href="tel:+12145457529">(214) 545-7529</a></p></div></div>
+        <div class="contact-row"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M4 7l8 6 8-6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><h4>Email</h4><p><a href="/cdn-cgi/l/email-protection#5b32353d341b39372e3e393435353e2f3f2875383436"><span class="__cf_email__" data-cfemail="046d6a626b4466687161666b6a6a617060772a676b69">[email&#160;protected]</span></a></p></div></div>
+        <div class="contact-row"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><h4>Hours</h4><p>Mon–Sat · 8:00am – 8:00pm<br>Sunday · by appointment</p></div></div>
+        <div class="ph map-ph" data-label="Google Map embed — Plano office location" style="margin-top:24px"></div>
+      </div>
+      <form class="card pad-lg" onsubmit="return false">
+        <h3 class="h3" style="margin-bottom:18px">Send us a message</h3>
+        <div class="field" style="margin-bottom:16px"><label>Name</label><input class="input" placeholder="Your name"></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+          <div class="field"><label>Email</label><input class="input" type="email" placeholder="you@email.com"></div>
+          <div class="field"><label>Phone</label><input class="input" placeholder="(214) 545-7529"></div>
+        </div>
+        <div class="field" style="margin-bottom:16px"><label>Subject</label><input class="input" placeholder="Teen lessons, road test, pricing…"></div>
+        <div class="field" style="margin-bottom:20px"><label>Message</label><textarea class="textarea" placeholder="How can we help?"></textarea></div>
+        <button class="btn primary block">Send message</button>
+        <p class="small muted" style="text-align:center;margin-top:12px">We typically reply within one business day.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================= ABOUT ================= -->
+<section class="page" data-page="about">
+  <span data-title="About Us" hidden></span>
+  <div class="page-hero">
+    <div class="container">
+      <div class="crumb"><a href="#/" data-link>Home</a><span class="sep">/</span><span>About</span></div>
+      <div class="overline">Our story</div>
+      <h1>Making new drivers safe — and genuinely confident.</h1>
+      <p class="lede">Bluebonnet Driving School was founded in [year] with one goal: to make new drivers in the Plano area genuinely safe and confident, not just test-ready. What began with [founder name] and a single car has grown into a team of certified instructors trusted by [number]+ local families.</p>
+    </div>
+  </div>
+
+  <div class="section container">
+    <div class="split">
+      <div class="ph" data-label="Photo — founder / team beside a Bluebonnet vehicle" style="height:360px"></div>
+      <div>
+        <div class="overline">Our mission</div>
+        <h2 class="h2" style="margin:12px 0 14px">Good driving is taught calmly, one skill at a time.</h2>
+        <p class="lede" style="margin-bottom:18px">We meet every student where they are — whether it's a 15-year-old's first time behind the wheel or an adult returning to driving after years away.</p>
+        <ul class="list-check">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>98% first-try pass rate*</b> — students who feel ready, not just eligible.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Bilingual instructors</b> — lessons in English &amp; Spanish.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>In-car lessons</b> in your own neighborhood.</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Free DPS paperwork help</b> — we sort it every day.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-sm" style="background:var(--surface-2);border-block:1px solid var(--border)">
+    <div class="container">
+      <div class="callout" style="max-width:none">
+        <span class="cic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <div><h4>Credentials &amp; licensing</h4><p>Licensed by the Texas Department of Licensing &amp; Regulation (School #C-XXXXXX). Approved to provide Texas DPS road skills tests. Fully insured, dual-control training vehicles maintained to the highest safety standard.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section container">
+    <div class="sec-title"><div class="overline">The people</div><h2>Meet a few of our instructors.</h2></div>
+    <div class="team">
+      <div class="tcard"><div class="ph" data-label="Instructor — Eric"></div><div class="body"><h3>Eric</h3><div class="role">Lead Instructor</div><p class="small muted">The instructor families ask for by name — patient, calm, first-try focused.</p></div></div>
+      <div class="tcard"><div class="ph" data-label="Instructor — April"></div><div class="body"><h3>April</h3><div class="role">Senior Instructor</div><p class="small muted">A favorite with teen drivers and their parents.</p></div></div>
+      <div class="tcard"><div class="ph" data-label="Instructor — Jillian"></div><div class="body"><h3>Jillian Esparza</h3><div class="role">Instructor</div><p class="small muted">Calm and clear, with a focus on highway and parking.</p></div></div>
+    </div>
+    <div style="text-align:center;margin-top:30px"><a class="btn secondary" href="#/instructors" data-link>Meet the whole team</a></div>
+  </div>
+</section>
+
+<!-- ================= SERVICE AREAS ================= -->
+<section class="page" data-page="service-areas">
+  <span data-title="Service Areas" hidden></span>
+  <div class="page-hero">
+    <div class="container">
+      <div class="crumb"><a href="#/" data-link>Home</a><span class="sep">/</span><span>Service Areas</span></div>
+      <div class="overline">Where we teach</div>
+      <h1>Driving lessons across North Dallas.</h1>
+      <p class="lede">Bluebonnet's certified instructors teach throughout Plano and the surrounding Collin and Dallas County areas — from quiet residential streets to highway practice. We pick you up locally and prep you for the road test at your nearest DPS office.</p>
+    </div>
+  </div>
+
+  <div class="section container">
+    <div class="split narrow-img">
+      <div class="area-grid" style="grid-template-columns:1fr 1fr">
+        <a class="area" href="#/contact" data-link><h4>Plano</h4><p>Collin County · home base</p><span class="go">Lessons in Plano →</span></a>
+        <a class="area" href="#/contact" data-link><h4>Frisco</h4><p>Collin &amp; Denton County</p><span class="go">Lessons in Frisco →</span></a>
+        <a class="area" href="#/contact" data-link><h4>Allen</h4><p>Collin County</p><span class="go">Lessons in Allen →</span></a>
+        <a class="area" href="#/contact" data-link><h4>McKinney</h4><p>Collin County</p><span class="go">Lessons in McKinney →</span></a>
+        <a class="area" href="#/contact" data-link><h4>Richardson</h4><p>Dallas County</p><span class="go">Lessons in Richardson →</span></a>
+        <a class="area" href="#/contact" data-link><h4>Garland</h4><p>Dallas County</p><span class="go">Lessons in Garland →</span></a>
+        <a class="area" href="#/contact" data-link><h4>Your city?</h4><p>Ask about coverage</p><span class="go">Contact us →</span></a>
+      </div>
+      <div class="ph map-ph" data-label="Coverage map — North Dallas / Collin County" style="height:auto"></div>
+    </div>
+    <div class="callout warm" style="margin-top:32px;max-width:none">
+      <span class="cic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16v-4M12 8h.01" stroke-linecap="round"/><circle cx="12" cy="12" r="9"/></svg></span>
+      <div><h4>Each city gets its own page</h4><p>In production, build one localized page per city (neighborhoods, nearest DPS office, a local review) to capture "driving school in [city]" searches — a major local-SEO win.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="page" data-page="faq">
+  <span data-title="FAQ" hidden></span>
+  <div class="page-hero">
+    <div class="container">
+      <div class="crumb"><a href="#/" data-link>Home</a><span class="sep">/</span><span>FAQ</span></div>
+      <div class="overline">Questions &amp; answers</div>
+      <h1>Frequently asked questions.</h1>
+      <p class="lede">The real answers to what parents and learners ask most. Don't see yours? <a href="#/contact" data-link>Get in touch</a>.</p>
+    </div>
+  </div>
+
+  <div class="section" style="max-width:860px;margin:0 auto;padding-inline:24px">
+    <div class="overline" style="margin-bottom:14px">Getting started</div>
+    <div class="faq-list" style="margin-bottom:36px">
+      <details class="acc"><summary>What age can my teen start? <span class="pm"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg></span></summary><div class="ans">Texas teens can begin driver education at 14, with the learner permit typically available at 15. We'll guide you through the exact timing based on current DPS rules.</div></details>
+      <details class="acc"><summary>Do I need a permit first? <span class="pm"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg></span></summary><div class="ans">For behind-the-wheel lessons, yes — a learner license is required. The classroom portion helps your teen earn it. We'll tell you exactly what to do and when.</div></details>
+      <details class="acc"><summary>How do I enroll? <span class="pm"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg></span></summary><div class="ans">Pick a package on our <a href="#/book" data-link>Book a Lesson</a> page and share your preferred times. We confirm within one business day.</div></details>
+    </div>
+
+    <div class="overline" style="margin-bottom:14px">Lessons</div>
+    <div class="faq-list" style="margin-bottom:36px">
+      <details class="acc"><summary>How many hours do I need to pass? <span class="pm"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg></span></summary><div class="ans">It varies by experience. Total beginners usually do best with our fuller packages, while drivers with some practice may only need a refresher. Texas sets minimum behind-the-wheel requirements for teen license-seekers — we'll make sure you meet them and feel genuinely ready.</div></details>
+      <details class="acc"><summary>Is it better to have 1- or 2-hour lessons? <span class="pm"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg></span></summary><div class="ans">For most learners, 2-hour lessons work best — there's time to warm up, practice a real skill, and build muscle memory without rushing. Nervous first-timers sometimes start shorter and build up.</div></details>
+      <details class="acc"><summary>Do you pick up? <span class="pm"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg></span></summary><div class="ans">Yes — we offer local pickup and drop-off within our service areas, so lessons happen on the roads you actually drive.</div></details>
+    </div>
+
+    <div class="overline" style="margin-bottom:14px">Testing &amp; paperwork</div>
+    <div class="faq-list">
+      <details class="acc"><summary>Can I take my DPS road test with Bluebonnet? <span class="pm"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg></span></summary><div class="ans">Yes. As an approved provider we can administer the road skills test, so you avoid long waits at the DPS office. Ask us about scheduling your test with your package. <span class="muted">(Verify this claim and current Texas requirements before publishing.)</span></div></details>
+      <details class="acc"><summary>What documents does DPS require? <span class="pm"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg></span></summary><div class="ans">It depends on your age and situation. Our <a href="#/resources" data-link>Resources page</a> lists the official DPS and TDLR forms, and we help students sort the paperwork every day.</div></details>
+      <details class="acc"><summary>What if I fail the test? <span class="pm"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg></span></summary><div class="ans">It happens, and it's okay. We'll review what to work on, get you more focused practice, and help you reschedule. Most students pass comfortably the next time.</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- ================= RESOURCES ================= -->
+<section class="page" data-page="resources">
+  <span data-title="Resources" hidden></span>
+  <div class="page-hero">
+    <div class="container">
+      <div class="crumb"><a href="#/" data-link>Home</a><span class="sep">/</span><span>Resources</span></div>
+      <div class="overline">Texas DPS &amp; TDLR</div>
+      <h1>Everything you'll need, in one place.</h1>
+      <p class="lede">Official DPS and TDLR forms, handbooks, and applications. Not sure which form applies to you? Just ask — we help students sort the paperwork every day.</p>
+    </div>
+  </div>
+
+  <div class="section container">
+    <div class="features" style="grid-template-columns:1fr 1fr">
+      <div class="feature"><h4 style="margin-bottom:12px">Permit &amp; license applications</h4><ul class="list-check" style="gap:10px"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3v5h5M9 13l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/><path d="M19 21H5V3h9l5 5z"/></svg><a href="#" target="_blank" rel="noopener">Application for Texas Driver License / Permit</a></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3v5h5M9 13l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/><path d="M19 21H5V3h9l5 5z"/></svg><a href="#" target="_blank" rel="noopener">Parent-taught driver education forms</a></li></ul></div>
+      <div class="feature"><h4 style="margin-bottom:12px">Handbooks</h4><ul class="list-check" style="gap:10px"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3v5h5M9 13l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/><path d="M19 21H5V3h9l5 5z"/></svg><a href="#" target="_blank" rel="noopener">Texas Driver Handbook</a></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3v5h5M9 13l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/><path d="M19 21H5V3h9l5 5z"/></svg><a href="#" target="_blank" rel="noopener">Road signs &amp; signals guide</a></li></ul></div>
+      <div class="feature"><h4 style="margin-bottom:12px">Records &amp; ID</h4><ul class="list-check" style="gap:10px"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3v5h5M9 13l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/><path d="M19 21H5V3h9l5 5z"/></svg><a href="#" target="_blank" rel="noopener">Driver record request</a></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3v5h5M9 13l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/><path d="M19 21H5V3h9l5 5z"/></svg><a href="#" target="_blank" rel="noopener">Verification of enrollment (VOE)</a></li></ul></div>
+      <div class="feature"><h4 style="margin-bottom:12px">Minors &amp; verification</h4><ul class="list-check" style="gap:10px"><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3v5h5M9 13l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/><path d="M19 21H5V3h9l5 5z"/></svg><a href="#" target="_blank" rel="noopener">Impact Texas Teen Drivers (ITTD)</a></li><li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 3v5h5M9 13l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/><path d="M19 21H5V3h9l5 5z"/></svg><a href="#" target="_blank" rel="noopener">TDLR school license verification</a></li></ul></div>
+    </div>
+    <div class="callout" style="margin-top:32px;max-width:none">
+      <span class="cic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 16v-4M12 8h.01" stroke-linecap="round"/><circle cx="12" cy="12" r="9"/></svg></span>
+      <div><h4>Need help with paperwork?</h4><p>We'll walk you through it. <a href="#/contact" data-link>Contact us</a> and we'll point you to the right form. Verify each official link still resolves before publishing — DPS occasionally reorganizes forms.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ADVICE / BLOG ================= -->
+<section class="page" data-page="advice">
+  <span data-title="Advice &amp; Blog" hidden></span>
+  <div class="page-hero">
+    <div class="container">
+      <div class="crumb"><a href="#/" data-link>Home</a><span class="sep">/</span><span>Advice &amp; Blog</span></div>
+      <div class="overline">Guides for Texas drivers</div>
+      <h1>Advice &amp; driving guides.</h1>
+      <p class="lede">Practical, Texas-specific guidance from our instructors — for teens, parents, and adult learners alike.</p>
+    </div>
+  </div>
+
+  <div class="section container">
+    <div class="features" style="grid-template-columns:repeat(3,1fr)" id="adviceGrid"></div>
+  </div>
+</section>
+
+<!-- ================= LEGAL ================= -->
+<section class="page" data-page="legal">
+  <span data-title="Privacy &amp; Terms" hidden></span>
+  <div class="page-hero">
+    <div class="container">
+      <div class="crumb"><a href="#/" data-link>Home</a><span class="sep">/</span><span>Legal</span></div>
+      <div class="overline">Legal</div>
+      <h1>Privacy Policy &amp; Terms.</h1>
+      <p class="lede">Plain-language summaries of how we handle your information and the terms of booking with us. Have these reviewed by a Texas-qualified professional before publishing.</p>
+    </div>
+  </div>
+
+  <div class="section" style="max-width:820px;margin:0 auto;padding-inline:24px">
+    <div class="card pad-lg" style="margin-bottom:20px">
+      <h2 class="h3" style="margin-bottom:10px">Privacy Policy</h2>
+      <p class="muted small" style="margin-bottom:16px">What we collect, how it's used, and your choices.</p>
+      <ul class="list-check">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>What we collect</b> — booking and contact form details (name, contact info, package, scheduling notes).</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>How it's used</b> — to schedule lessons, contact you, and improve our service.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Cookies</b> — basic analytics to understand site usage.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Contact for requests</b> — email <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="50393e363f10323c2535323f3e3e352434237e333f3d">[email&#160;protected]</a> to access or delete your data.</span></li>
+      </ul>
+    </div>
+    <div class="card pad-lg">
+      <h2 class="h3" style="margin-bottom:10px">Terms &amp; Conditions</h2>
+      <p class="muted small" style="margin-bottom:16px">Booking, payment, and conduct.</p>
+      <ul class="list-check">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Booking &amp; payment</b> — packages are paid up front to reserve your schedule.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Cancellation &amp; rescheduling</b> — free reschedule with 24 hours' notice.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Refunds</b> — terms for unused sessions stated plainly here and on Pricing.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg><span><b>Conduct &amp; liability</b> — safety expectations for students during lessons.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="footer">
+  <div class="footer-top">
+    <div class="fabout">
+      <a class="brand" href="#/" data-link>
+        <span class="mark">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 17h14M6.5 17l1.2-5.2A2.5 2.5 0 0 1 10.1 10h3.8a2.5 2.5 0 0 1 2.4 1.8L17.5 17M8 13.5h8" stroke="#fff" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="8" cy="17.5" r="1.6" fill="#fff"/><circle cx="16" cy="17.5" r="1.6" fill="#fff"/></svg>
+        </span>
+        <span class="name">Bluebonnet</span>
+      </a>
+      <p>Patient, TDLR-licensed driving instruction for teens and adults across Plano and the North Dallas area. From first lesson to DPS road test.</p>
+      <div class="socials">
+        <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V6h-3c-2 0-3.5 1.5-3.5 3.5V11H8v3h2.5v7h3v-7H16l.5-3h-3V9.5c0-.3.2-.5.5-.5z"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1" fill="currentColor"/></svg></a>
+        <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-2.4-.3-3.6-.8-4.2-.5-.6-1.4-.8-3.2-.9-1.6-.1-4-.2-6-.2s-4.4.1-6 .2c-1.8.1-2.7.3-3.2.9C2.3 8.4 2 9.6 2 12s.3 3.6.8 4.2c.5.6 1.4.8 3.2.9 1.6.1 4 .2 6 .2s4.4-.1 6-.2c1.8-.1 2.7-.3 3.2-.9.5-.6.8-1.8.8-4.2zM10 15V9l5 3z"/></svg></a>
+      </div>
+    </div>
+    <div class="fcol">
+      <h5>Courses</h5>
+      <a href="#/teen" data-link>Teen Driver Education</a>
+      <a href="#/adult" data-link>Adult Driving Lessons</a>
+      <a href="#/courses" data-link>Road Test Service</a>
+      <a href="#/courses" data-link>All Packages</a>
+      <a href="#/pricing" data-link>Pricing</a>
+    </div>
+    <div class="fcol">
+      <h5>Company</h5>
+      <a href="#/about" data-link>About Us</a>
+      <a href="#/instructors" data-link>Instructors</a>
+      <a href="#/reviews" data-link>Reviews</a>
+      <a href="#/service-areas" data-link>Service Areas</a>
+      <a href="#/contact" data-link>Contact</a>
+    </div>
+    <div class="fcol">
+      <h5>Resources</h5>
+      <a href="#/faq" data-link>FAQ</a>
+      <a href="#/resources" data-link>DPS &amp; TDLR Forms</a>
+      <a href="#/advice" data-link>Advice &amp; Blog</a>
+      <a href="#/book" data-link>Book a Lesson</a>
+      <a href="#/legal" data-link>Privacy &amp; Terms</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <span>© 2026 Bluebonnet Driving School · TDLR School #C-XXXXXX · 820 W. Spring Creek Pkwy, Plano, TX 75023</span>
+      <span class="links">
+        <a href="#/legal" data-link>Privacy Policy</a>
+        <a href="#/legal" data-link>Terms &amp; Conditions</a>
+        <a href="tel:+12145457529">(214) 545-7529</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+/* ============================================================
+   BLUEBONNET — app.js
+   Hash router · theme toggle · mobile drawer · accordions
+   ============================================================ */
+(function(){
+  var root = document.documentElement;
+
+  /* ---------- THEME ---------- */
+  var SUN = '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4 12H2M22 12h-2M5 5l1.5 1.5M17.5 17.5L19 19M19 5l-1.5 1.5M6.5 17.5L5 19" stroke-linecap="round"/>';
+  var MOON = '<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>';
+  function applyTheme(t){
+    root.setAttribute('data-theme', t);
+    var icon = document.getElementById('themeIcon');
+    if(icon) icon.innerHTML = (t === 'dark') ? MOON : SUN;
+    try{ localStorage.setItem('bb-theme', t); }catch(e){}
+  }
+  var savedTheme; try{ savedTheme = localStorage.getItem('bb-theme'); }catch(e){}
+  applyTheme(savedTheme || 'light');
+  document.addEventListener('click', function(e){
+    var b = e.target.closest('#themeBtn');
+    if(b) applyTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  });
+
+  /* ---------- ROUTER ---------- */
+  var pages = Array.prototype.slice.call(document.querySelectorAll('.page'));
+  var validPages = {};
+  pages.forEach(function(p){ validPages[p.getAttribute('data-page')] = true; });
+
+  function currentRoute(){
+    var h = location.hash.replace(/^#\/?/, '').split('/')[0];
+    return (h && validPages[h]) ? h : 'home';
+  }
+  function setActiveNav(route){
+    document.querySelectorAll('.nav-links a[href], .drawer a[href]').forEach(function(a){
+      var r = a.getAttribute('href').replace(/^#\/?/, '') || 'home';
+      a.classList.toggle('active', r === route);
+    });
+  }
+  function render(){
+    var route = currentRoute();
+    pages.forEach(function(p){
+      p.classList.toggle('active', p.getAttribute('data-page') === route);
+    });
+    setActiveNav(route);
+    closeDrawer();
+    window.scrollTo({ top: 0, behavior: 'auto' });
+    var t = document.querySelector('.page.active [data-title]');
+    document.title = (t ? t.getAttribute('data-title') + ' · ' : '') + 'Bluebonnet Driving School · Plano, TX';
+  }
+  window.addEventListener('hashchange', render);
+
+  /* ---------- MOBILE DRAWER ---------- */
+  var drawer = document.getElementById('drawer');
+  function openDrawer(){ if(drawer) drawer.classList.add('open'); document.body.style.overflow='hidden'; }
+  function closeDrawer(){ if(drawer) drawer.classList.remove('open'); document.body.style.overflow=''; }
+  document.addEventListener('click', function(e){
+    if(e.target.closest('#menuBtn')) openDrawer();
+    if(e.target.closest('[data-close]')) closeDrawer();
+  });
+
+  /* ---------- DYNAMIC CONTENT ---------- */
+  function stars(){
+    var s='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.6 1.4 6.8L12 17.8 5.9 20.4l1.4-6.8L2.2 9l6.9-.7z"/></svg>';
+    return '<div class="stars" aria-label="5 stars">'+s+s+s+s+s+'</div>';
+  }
+  var REVIEWS=[
+    ['"My driving instructor was fantastic — calm, patient, and so encouraging. My daughter passed on the first try."','GM','Gina M.','Parent of a teen driver · Plano'],
+    ['"I learned to drive at 34 after years of being too nervous. Eric made it feel easy. Passed first try!"','AL','Alice L.','Adult learner · Passed first try'],
+    ['"Both my kids learned here. Reliable, professional, and genuinely kind with nervous teens."','MH','Masud H.','Parent of two students · Plano'],
+    ['"April was so patient with my son. He went from terrified to confident in a few weeks."','CN','Chelle N.','Parent · Plano'],
+    ['"Great experience from start to finish. They handled all the DPS paperwork and scheduling."','AW','Annie W.','Parent of a teen driver'],
+    ['"Bilingual instruction made all the difference for me. Highly recommend to anyone new to driving here."','HR','Habibur R.','Adult learner · Plano']
+  ];
+  var rg=document.getElementById('reviewsGrid');
+  if(rg){ rg.innerHTML=REVIEWS.map(function(r){
+    return '<div class="review">'+stars()+'<p>'+r[0]+'</p><div class="who"><span class="av">'+r[1]+'</span><div><b>'+r[2]+'</b><small>'+r[3]+'</small></div></div></div>';
+  }).join(''); }
+
+  var ARTICLES=[
+    ['Texas Law','How to Get Your License in Texas at 16','A parent\'s step-by-step guide from permit to license.'],
+    ['Test prep','What to Expect on Your DPS Road Test','And how to pass it on the first try.'],
+    ['Texas Law','Permit to License in Texas','Every step explained, in plain language.'],
+    ['Skills','Parallel Parking Made Simple','The exact method our instructors teach.'],
+    ['Adult','Getting Your License After 18','It\'s never too late — here\'s the path.'],
+    ['Teen','ITTD Explained','The course Texas teens need before the road test.']
+  ];
+  var ag=document.getElementById('adviceGrid');
+  if(ag){ ag.innerHTML=ARTICLES.map(function(a){
+    return '<a class="feature card hover" href="#/advice" data-link style="text-decoration:none;display:block">'+
+      '<div class="ph" data-label="Article image" style="height:150px;margin-bottom:14px"></div>'+
+      '<span class="badge neutral">'+a[0]+'</span>'+
+      '<h4 style="margin:12px 0 6px">'+a[1]+'</h4>'+
+      '<p>'+a[2]+'</p></a>';
+  }).join(''); }
+
+  /* ---------- INIT ---------- */
+  if(!location.hash){ location.replace('#/'); }
+  render();
+})();
+
+</script>
+</body>
+</html>

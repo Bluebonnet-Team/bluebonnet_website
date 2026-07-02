@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="./bluebonnet-logo.png">
+
+<title>Bluebonnet Driving School</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;}
+  body{margin:0;background:#fff;font-family:'Hanken Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased;color:#14171C;}
+  a{text-decoration:none;color:inherit;}
+  .navlink:hover{color:#0B5BD3;}
+  .lk{transition:opacity .15s;}
+  .lk:hover{opacity:.6;}
+  .inp{font-family:inherit;font-size:15px;color:#14171C;background:#fff;border:1.5px solid #D5D8DD;border-radius:10px;padding:13px 14px;width:100%;transition:border-color .15s,box-shadow .15s;}
+  .inp::placeholder{color:#9AA1AB;}
+  .inp:focus{outline:none;border-color:#0B5BD3;box-shadow:0 0 0 4px rgba(11,91,211,.13);}
+  textarea.inp{resize:vertical;min-height:120px;line-height:1.55;}
+  .lbl{font-size:13.5px;font-weight:600;color:#14171C;margin-bottom:7px;display:block;}
+  @media(max-width:880px){
+    .booksplit{grid-template-columns:1fr !important;gap:40px !important;}
+  }
+  @media(max-width:760px){
+    .pad{padding-left:22px !important;padding-right:22px !important;}
+    .navmenu,.navphone{display:none !important;}
+    .footgrid{grid-template-columns:1fr 1fr !important;gap:34px !important;}
+    .h1{font-size:42px !important;line-height:1.06 !important;}
+    .secpad{padding-top:56px !important;padding-bottom:72px !important;}
+    .formgrid{grid-template-columns:1fr !important;}
+    .colstack{flex-direction:column !important;align-items:flex-start !important;}
+    .formpad{padding:28px !important;}
+  }
+  @media(max-width:480px){
+    .footgrid{grid-template-columns:1fr !important;}
+    .h1{font-size:34px !important;}
+  }
+</style>
+</helmet>
+
+<div data-screen-label="Book" style="background:#fff;">
+
+  <!-- NAV -->
+  <header style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,.86);backdrop-filter:saturate(1.5) blur(12px);border-bottom:1px solid #ECEDEF;">
+    <nav class="pad" style="max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:32px;padding:18px 56px;">
+      <a href="home.html" style="display:flex;align-items:center;gap:12px;flex:0 0 auto;">
+        <img src="./bluebonnet-logo.png" alt="Bluebonnet logo" style="width:52px;height:52px;object-fit:contain;display:block;filter:drop-shadow(0 6px 16px rgba(11,91,211,.16));">
+        <span style="display:flex;flex-direction:column;">
+          <span style="font-size:23px;font-weight:800;letter-spacing:-.02em;line-height:1;">Bluebonnet</span>
+          <span style="font-size:9.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#9AA1AB;margin-top:5px;">Driving School &middot; Plano, TX</span>
+        </span>
+      </a>
+      <div class="navmenu" style="flex:1;display:flex;justify-content:center;gap:30px;">
+        <a class="navlink" href="courses.html" style="font-size:14px;font-weight:600;color:#4A515C;">Courses</a>
+        <a class="navlink" href="pricing.html" style="font-size:14px;font-weight:600;color:#4A515C;">Pricing</a>
+        <a class="navlink" href="serviceareas.html" style="font-size:14px;font-weight:600;color:#4A515C;">Service Areas</a>
+        <a class="navlink" href="about.html" style="font-size:14px;font-weight:600;color:#4A515C;">About</a>
+        <a class="navlink" href="reviews.html" style="font-size:14px;font-weight:600;color:#4A515C;">Reviews</a>
+      </div>
+      <div style="display:flex;align-items:center;gap:22px;flex:1;justify-content:flex-end;">
+        <a class="navphone" href="tel:+12145457529" style="font-size:14px;font-weight:700;color:#14171C;">(214) 545-7529</a>
+        <a class="lk" href="book.html" style="font-size:14px;font-weight:600;color:#fff;background:#0B5BD3;padding:11px 20px;border-radius:9px;">Book a lesson</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- PAGE HEADER -->
+  <section style="border-bottom:1px solid #ECEDEF;">
+    <div class="pad" style="max-width:1200px;margin:0 auto;padding:60px 56px 56px;">
+      <div style="font-size:13px;font-weight:600;color:#9AA1AB;display:flex;gap:9px;align-items:center;">
+        <a class="lk" href="home.html">Home</a><span>/</span><span style="color:#4A515C;">Book a Lesson</span>
+      </div>
+      <div style="margin-top:24px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#0B5BD3;">Enroll &middot; Book</div>
+      <h1 class="h1" style="font-weight:600;font-size:58px;line-height:1.04;letter-spacing:-.03em;margin:16px 0 0;">Book your first lesson.</h1>
+      <p style="max-width:66ch;margin:20px 0 0;font-size:19px;line-height:1.62;color:#4A515C;">Ready to start? Pick your package and a time that works &mdash; we'll confirm by phone or email within one business day. Prefer to talk first? Call <a class="lk" href="tel:+12145457529" style="color:#0B5BD3;font-weight:600;">(214) 545-7529</a>.</p>
+    </div>
+  </section>
+
+  <!-- BOOK -->
+  <section class="pad secpad booksplit" style="max-width:1200px;margin:0 auto;padding:72px 56px 96px;display:grid;grid-template-columns:1.25fr .75fr;gap:64px;align-items:start;">
+    <form id="bookingForm" action="PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE" method="POST" target="bookingSubmitFrame" class="formpad" style="border:1px solid #E2E3E6;border-radius:16px;padding:40px;">
+      <h3 style="font-size:23px;font-weight:700;letter-spacing:-.015em;margin:0 0 22px;">Request your booking</h3>
+      <div class="formgrid" style="display:grid;grid-template-columns:1fr 1fr;gap:18px;">
+        <div><label class="lbl" for="studentName">Student name</label><input id="studentName" name="student_name" class="inp" placeholder="Jordan Rivera" required></div>
+        <div><label class="lbl" for="studentAge">Student age</label><input id="studentAge" name="student_age" class="inp" inputmode="numeric" placeholder="16" required></div>
+        <div><label class="lbl" for="email">Email</label><input id="email" name="email" class="inp" type="email" placeholder="you@email.com" required></div>
+        <div><label class="lbl" for="phone">Phone</label><input id="phone" name="phone" class="inp" type="tel" placeholder="(214) 545-7529" required></div>
+        <div style="grid-column:1/-1"><label class="lbl" for="package">Package</label><select id="package" name="package" class="inp" required><option value="Package 2 - Teen #2 - $450 (most popular)">Package 2 &middot; Teen #2 &mdash; $450 (most popular)</option><option value="Package 2 - Teen #1 - $400">Package 2 &middot; Teen #1 &mdash; $400</option><option value="Package 2 - Teen #3 - $470">Package 2 &middot; Teen #3 &mdash; $470</option><option value="Package 1 - Adult Complete - $450">Package 1 &mdash; Adult Complete &mdash; $450</option><option value="Package 3 - Adult Extended - $450">Package 3 &mdash; Adult Extended &mdash; $450</option><option value="Package 4 - Road Test Only - $180">Package 4 &mdash; Road Test Only &mdash; $180</option><option value="Package 5 - Straight to Drive - $135">Package 5 &mdash; Straight to Drive &mdash; $135</option></select></div>
+        <div><label class="lbl" for="preferredArea">Preferred area</label><select id="preferredArea" name="preferred_area" class="inp" required><option>Plano</option><option>Frisco</option><option>Allen</option><option>McKinney</option><option>Richardson</option><option>Garland</option></select></div>
+        <div><label class="lbl" for="preferredTimes">Preferred days/times</label><input id="preferredTimes" name="preferred_times" class="inp" placeholder="Weekday evenings" required></div>
+        <div style="grid-column:1/-1"><label class="lbl" for="pickupAddress">Pickup address (optional)</label><input id="pickupAddress" name="pickup_address" class="inp" placeholder="Street, city"></div>
+        <div style="grid-column:1/-1"><label class="lbl" for="notes">Anything we should know?</label><textarea id="notes" name="notes" class="inp" placeholder="First-time driver, nervous about highways, prefers Spanish..."></textarea></div>
+      </div>
+      <input type="hidden" name="submitted_at" id="submittedAt">
+      <input type="hidden" name="page_url" id="pageUrl">
+      <input type="hidden" name="user_agent" id="userAgent">
+      <button id="bookingSubmit" type="submit" style="margin-top:22px;width:100%;font-size:16px;font-weight:600;color:#fff;background:#0B5BD3;border:none;border-radius:10px;padding:16px;cursor:pointer;">Request booking</button>
+      <p id="bookingStatus" aria-live="polite" style="font-size:12.5px;color:#9AA1AB;text-align:center;margin:14px 0 0;">Submissions will be saved to Google Sheets once the backend URL is added.</p>
+      <iframe name="bookingSubmitFrame" id="bookingSubmitFrame" title="Booking submission" style="display:none;"></iframe>
+    </form>
+    <div>
+      <h2 style="font-weight:600;font-size:34px;line-height:1.08;letter-spacing:-.025em;margin:0 0 28px;">What happens next.</h2>
+      <div style="border-top:1px solid #E2E3E6;">
+        <div style="display:grid;grid-template-columns:42px 1fr;gap:18px;padding:24px 0;border-bottom:1px solid #ECEDEF;">
+          <span style="font-size:18px;font-weight:800;color:#0B5BD3;">01</span>
+          <div><h4 style="font-size:18px;font-weight:700;margin:0 0 5px;">You book above</h4><p style="font-size:14.5px;line-height:1.6;color:#7A828F;margin:0;">Choose a package and share your preferred times. Takes two minutes.</p></div>
+        </div>
+        <div style="display:grid;grid-template-columns:42px 1fr;gap:18px;padding:24px 0;border-bottom:1px solid #ECEDEF;">
+          <span style="font-size:18px;font-weight:800;color:#0B5BD3;">02</span>
+          <div><h4 style="font-size:18px;font-weight:700;margin:0 0 5px;">We confirm</h4><p style="font-size:14.5px;line-height:1.6;color:#7A828F;margin:0;">We'll confirm your schedule and pickup by phone or email within one business day.</p></div>
+        </div>
+        <div style="display:grid;grid-template-columns:42px 1fr;gap:18px;padding:24px 0;">
+          <span style="font-size:18px;font-weight:800;color:#0B5BD3;">03</span>
+          <div><h4 style="font-size:18px;font-weight:700;margin:0 0 5px;">Lesson one</h4><p style="font-size:14.5px;line-height:1.6;color:#7A828F;margin:0;">Your instructor meets you and you're behind the wheel. That's it.</p></div>
+        </div>
+      </div>
+      <div style="background:#EAF1FC;border:1px solid #D2E6FB;border-radius:14px;padding:24px;margin-top:24px;">
+        <h4 style="font-size:16px;font-weight:700;margin:0 0 6px;">Prefer to talk first?</h4>
+        <p style="font-size:14.5px;line-height:1.6;color:#4A515C;margin:0;">Call <a class="lk" href="tel:+12145457529" style="color:#0B5BD3;font-weight:600;">(214) 545-7529</a>. Reschedules are free with 24 hours' notice.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="background:#14171C;color:#fff;">
+    <div class="pad footgrid" style="max-width:1200px;margin:0 auto;padding:80px 56px 56px;display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr;gap:48px;">
+      <div>
+        <div style="font-size:22px;font-weight:800;letter-spacing:-.02em;">Bluebonnet</div>
+        <p style="font-size:14.5px;line-height:1.65;color:#9AA1AB;margin:16px 0 0;max-width:34ch;">Patient, TDLR-licensed driving instruction for teens and adults across Plano and the North Dallas area. From first lesson to DPS road test.</p>
+      </div>
+      <div>
+        <h5 style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#6B7280;margin:0 0 16px;">Courses</h5>
+        <a class="lk" href="teen.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">Teen Driver Education</a>
+        <a class="lk" href="adult.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">Adult Driving Lessons</a>
+        <a class="lk" href="courses.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">Road Test Service</a>
+        <a class="lk" href="pricing.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">Pricing</a>
+      </div>
+      <div>
+        <h5 style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#6B7280;margin:0 0 16px;">Company</h5>
+        <a class="lk" href="about.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">About Us</a>
+        <a class="lk" href="instructors.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">Instructors</a>
+        <a class="lk" href="reviews.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">Reviews</a>
+        <a class="lk" href="serviceareas.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">Service Areas</a>
+      </div>
+      <div>
+        <h5 style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#6B7280;margin:0 0 16px;">Get in touch</h5>
+        <a class="lk" href="faq.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">FAQ</a>
+        <a class="lk" href="book.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">Book a Lesson</a>
+        <a class="lk" href="contact.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">Contact</a>
+        <a class="lk" href="tel:+12145457529" style="display:block;font-size:14px;font-weight:700;color:#fff;padding:6px 0;">(214) 545-7529</a>
+      </div>
+    </div>
+    <div style="border-top:1px solid #2A2E36;">
+      <div class="pad colstack" style="max-width:1200px;margin:0 auto;padding:22px 56px;display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;font-size:12.5px;color:#6B7280;">
+        <span>&copy; 2026 Bluebonnet Driving School &middot; TDLR School #C-XXXXXX &middot; 820 W. Spring Creek Pkwy, Plano, TX 75023</span>
+        <span style="display:flex;gap:20px;"><a class="lk" href="legal.html">Privacy Policy</a><a class="lk" href="legal.html">Terms &amp; Conditions</a></span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script>
+  (function () {
+    var form = document.getElementById("bookingForm");
+    var frame = document.getElementById("bookingSubmitFrame");
+    var submit = document.getElementById("bookingSubmit");
+    var status = document.getElementById("bookingStatus");
+    var submitted = false;
+    if (!form || !frame || !submit || !status) return;
+
+    form.addEventListener("submit", function (event) {
+      var action = form.getAttribute("action") || "";
+      if (action.indexOf("PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE") !== -1) {
+        event.preventDefault();
+        status.textContent = "Add your Google Apps Script web app URL to connect this form to Google Sheets.";
+        status.style.color = "#C9821A";
+        return;
+      }
+
+      document.getElementById("submittedAt").value = new Date().toISOString();
+      document.getElementById("pageUrl").value = window.location.href;
+      document.getElementById("userAgent").value = window.navigator.userAgent;
+      submitted = true;
+      submit.disabled = true;
+      submit.textContent = "Sending...";
+      status.textContent = "Sending your request...";
+      status.style.color = "#6B7280";
+    });
+
+    frame.addEventListener("load", function () {
+      if (!submitted) return;
+      submitted = false;
+      form.reset();
+      submit.disabled = false;
+      submit.textContent = "Request booking";
+      status.textContent = "Request sent. We will confirm by phone or email within one business day.";
+      status.style.color = "#1E9D5B";
+    });
+  }());
+</script>
+</body>
+</html>
+
