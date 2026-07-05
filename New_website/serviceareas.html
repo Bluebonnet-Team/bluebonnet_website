@@ -40,13 +40,46 @@
     .g4{grid-template-columns:1fr !important;}
     .h1{font-size:34px !important;}
   }
+
+  /* ===== One-time entrance reveal (runs once, when element enters view) ===== */
+  .anim{opacity:0;transform:translateY(26px);transition:opacity .95s cubic-bezier(.16,1,.3,1),transform .95s cubic-bezier(.16,1,.3,1);will-change:opacity,transform;}
+  .anim.is-visible{opacity:1;transform:none;}
+  .anim-fade{opacity:0;transition:opacity .95s ease;will-change:opacity;}
+  .anim-fade.is-visible{opacity:1;}
+
+  /* ===== Continuous timeline fill animation ("We come to you") ===== */
+  .step{position:relative;}
+  .tl-track{position:absolute;top:0;left:0;right:0;height:2px;background:#E2E3E6;border-radius:2px;overflow:hidden;}
+  .tl-fill{position:absolute;inset:0;background:#0B5BD3;transform-origin:left center;transform:scaleX(0);border-radius:2px;}
+  .tl-num{display:inline-block;transform-origin:left center;color:#A9BEDD;}
+  .tl-fill1{animation:tlFill1 6s ease-in-out infinite;}
+  .tl-fill2{animation:tlFill2 6s ease-in-out infinite;}
+  .tl-fill3{animation:tlFill3 6s ease-in-out infinite;}
+  .tl-num1{animation:tlNum1 6s ease-in-out infinite;}
+  .tl-num2{animation:tlNum2 6s ease-in-out infinite;}
+  .tl-num3{animation:tlNum3 6s ease-in-out infinite;}
+
+  @keyframes tlFill1{0%{transform:scaleX(0);opacity:1}6%{transform:scaleX(0);opacity:1}28%{transform:scaleX(1);opacity:1}90%{transform:scaleX(1);opacity:1}95%{transform:scaleX(1);opacity:0}95.01%{transform:scaleX(0);opacity:0}100%{transform:scaleX(0);opacity:1}}
+  @keyframes tlFill2{0%{transform:scaleX(0);opacity:1}34%{transform:scaleX(0);opacity:1}56%{transform:scaleX(1);opacity:1}90%{transform:scaleX(1);opacity:1}95%{transform:scaleX(1);opacity:0}95.01%{transform:scaleX(0);opacity:0}100%{transform:scaleX(0);opacity:1}}
+  @keyframes tlFill3{0%{transform:scaleX(0);opacity:1}62%{transform:scaleX(0);opacity:1}84%{transform:scaleX(1);opacity:1}90%{transform:scaleX(1);opacity:1}95%{transform:scaleX(1);opacity:0}95.01%{transform:scaleX(0);opacity:0}100%{transform:scaleX(0);opacity:1}}
+  @keyframes tlNum1{0%{transform:scale(1);color:#A9BEDD}2%{transform:scale(1);color:#A9BEDD}7%{transform:scale(1.45);color:#0B5BD3}28%{transform:scale(1.45);color:#0B5BD3}33%{transform:scale(1);color:#A9BEDD}100%{transform:scale(1);color:#A9BEDD}}
+  @keyframes tlNum2{0%{transform:scale(1);color:#A9BEDD}30%{transform:scale(1);color:#A9BEDD}35%{transform:scale(1.45);color:#0B5BD3}56%{transform:scale(1.45);color:#0B5BD3}61%{transform:scale(1);color:#A9BEDD}100%{transform:scale(1);color:#A9BEDD}}
+  @keyframes tlNum3{0%{transform:scale(1);color:#A9BEDD}58%{transform:scale(1);color:#A9BEDD}63%{transform:scale(1.45);color:#0B5BD3}84%{transform:scale(1.45);color:#0B5BD3}89%{transform:scale(1);color:#A9BEDD}100%{transform:scale(1);color:#A9BEDD}}
+
+  @media(prefers-reduced-motion:reduce){
+    .anim,.anim-fade{opacity:1 !important;transform:none !important;transition:none !important;}
+    .tl-num,.tl-fill{animation:none !important;}
+    .tl-num{transform:none !important;color:#0B5BD3 !important;}
+    .tl-fill{transform:scaleX(1) !important;opacity:1 !important;}
+  }
 </style>
+<noscript><style>.anim,.anim-fade{opacity:1 !important;transform:none !important;}</style></noscript>
 </helmet>
 
 <div data-screen-label="Service Areas" style="background:#fff;">
 
   <!-- NAV -->
-  <header style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,.86);backdrop-filter:saturate(1.5) blur(12px);border-bottom:1px solid #ECEDEF;">
+  <header class="anim-fade" style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,.86);backdrop-filter:saturate(1.5) blur(12px);border-bottom:1px solid #ECEDEF;">
     <nav class="pad" style="max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:32px;padding:18px 56px;">
       <a href="home.html" style="display:flex;align-items:center;gap:12px;flex:0 0 auto;">
         <img src="./bluebonnet-logo.png" alt="Bluebonnet logo" style="width:52px;height:52px;object-fit:contain;display:block;filter:drop-shadow(0 6px 16px rgba(11,91,211,.16));">
@@ -72,19 +105,19 @@
   <!-- PAGE HEADER -->
   <section style="border-bottom:1px solid #ECEDEF;">
     <div class="pad" style="max-width:1200px;margin:0 auto;padding:60px 56px 56px;">
-      <div style="font-size:13px;font-weight:600;color:#9AA1AB;display:flex;gap:9px;align-items:center;">
+      <div class="anim" style="font-size:13px;font-weight:600;color:#9AA1AB;display:flex;gap:9px;align-items:center;transition-delay:.02s;">
         <a class="lk" href="home.html">Home</a><span>/</span><span style="color:#4A515C;">Service Areas</span>
       </div>
-      <div style="margin-top:24px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#0B5BD3;">Where we teach</div>
-      <h1 class="h1" style="font-weight:600;font-size:58px;line-height:1.04;letter-spacing:-.03em;margin:16px 0 0;max-width:18ch;">Driving lessons across North Dallas.</h1>
-      <p style="max-width:64ch;margin:20px 0 0;font-size:19px;line-height:1.62;color:#4A515C;">Based in Plano, we serve teens and adults across Collin, Denton, and Dallas counties with local pickup and drop-off in every city below. Don't see yours? Call us; we often travel a little farther.</p>
+      <div class="anim" style="margin-top:24px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#0B5BD3;transition-delay:.1s;">Where we teach</div>
+      <h1 class="h1 anim" style="font-weight:600;font-size:58px;line-height:1.04;letter-spacing:-.03em;margin:16px 0 0;max-width:18ch;transition-delay:.18s;">Driving lessons across North Dallas.</h1>
+      <p class="anim" style="max-width:64ch;margin:20px 0 0;font-size:19px;line-height:1.62;color:#4A515C;transition-delay:.28s;">Based in Plano, we serve teens and adults across Collin, Denton, and Dallas counties with local pickup and drop-off in every city below. Don't see yours? Call us; we often travel a little farther.</p>
     </div>
   </section>
 
   <!-- MAP + LIST -->
   <section class="pad secpad" style="max-width:1200px;margin:0 auto;padding:80px 56px;">
     <div class="split" style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;">
-      <div style="border:1px solid #E2E3E6;border-radius:14px;height:460px;overflow:hidden;box-shadow:0 24px 54px -36px rgba(20,23,28,.22);background:#EEF1F5;">
+      <div class="anim" style="border:1px solid #E2E3E6;border-radius:14px;height:460px;overflow:hidden;box-shadow:0 24px 54px -36px rgba(20,23,28,.22);background:#EEF1F5;transition-delay:.05s;">
         <iframe
           title="Bluebonnet Driving School map"
           src="https://www.google.com/maps?q=BlueBonnet%20Driving%20School%20LLC%2C%20820%20W%20Spring%20Creek%20Pkwy%2C%20Plano%2C%20TX%2075023&z=13&output=embed"
@@ -95,7 +128,7 @@
           referrerpolicy="no-referrer-when-downgrade"
         ></iframe>
       </div>
-      <div class="g4" style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#E2E3E6;border:1px solid #E2E3E6;align-self:stretch;">
+      <div class="g4 anim" style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#E2E3E6;border:1px solid #E2E3E6;align-self:stretch;transition-delay:.16s;">
         <a class="areacell" href="book.html" style="background:#fff;padding:26px 24px;cursor:pointer;"><div style="font-size:20px;font-weight:700;letter-spacing:-.01em;">Plano</div><div style="font-size:13px;color:#9AA1AB;margin-top:4px;">Collin County · home base</div></a>
         <a class="areacell" href="book.html" style="background:#fff;padding:26px 24px;cursor:pointer;"><div style="font-size:20px;font-weight:700;letter-spacing:-.01em;">Frisco</div><div style="font-size:13px;color:#9AA1AB;margin-top:4px;">Collin &amp; Denton County</div></a>
         <a class="areacell" href="book.html" style="background:#fff;padding:26px 24px;cursor:pointer;"><div style="font-size:20px;font-weight:700;letter-spacing:-.01em;">Allen</div><div style="font-size:13px;color:#9AA1AB;margin-top:4px;">Collin County</div></a>
@@ -109,23 +142,26 @@
   <!-- HOW PICKUP WORKS -->
   <section style="background:#FAFAFB;border-top:1px solid #ECEDEF;border-bottom:1px solid #ECEDEF;">
     <div class="pad secpad" style="max-width:1200px;margin:0 auto;padding:96px 56px;">
-      <div style="max-width:60ch;margin-bottom:52px;">
+      <div class="anim" style="max-width:60ch;margin-bottom:52px;">
         <div style="font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#8A919B;">Local pickup</div>
         <h2 class="h2" style="font-weight:600;font-size:40px;line-height:1.06;letter-spacing:-.025em;margin:16px 0 0;">We come to you.</h2>
       </div>
       <div class="g4" style="display:grid;grid-template-columns:repeat(3,1fr);gap:36px;">
-        <div style="padding-top:26px;border-top:2px solid #14171C;">
-          <div style="font-size:15px;font-weight:800;color:#0B5BD3;">01</div>
+        <div class="step anim" style="padding-top:26px;transition-delay:.06s;">
+          <div class="tl-track"><span class="tl-fill tl-fill1"></span></div>
+          <div class="tl-num tl-num1" style="font-size:15px;font-weight:800;">01</div>
           <h4 style="font-size:20px;font-weight:700;letter-spacing:-.01em;margin:18px 0 8px;">Pick your city</h4>
           <p style="font-size:15px;line-height:1.6;color:#7A828F;margin:0;">Choose your area when you book — home, school, or work all work.</p>
         </div>
-        <div style="padding-top:26px;border-top:2px solid #E2E3E6;">
-          <div style="font-size:15px;font-weight:800;color:#0B5BD3;">02</div>
+        <div class="step anim" style="padding-top:26px;transition-delay:.16s;">
+          <div class="tl-track"><span class="tl-fill tl-fill2"></span></div>
+          <div class="tl-num tl-num2" style="font-size:15px;font-weight:800;">02</div>
           <h4 style="font-size:20px;font-weight:700;letter-spacing:-.01em;margin:18px 0 8px;">We confirm pickup</h4>
           <p style="font-size:15px;line-height:1.6;color:#7A828F;margin:0;">Your instructor confirms a convenient pickup point and time.</p>
         </div>
-        <div style="padding-top:26px;border-top:2px solid #E2E3E6;">
-          <div style="font-size:15px;font-weight:800;color:#0B5BD3;">03</div>
+        <div class="step anim" style="padding-top:26px;transition-delay:.26s;">
+          <div class="tl-track"><span class="tl-fill tl-fill3"></span></div>
+          <div class="tl-num tl-num3" style="font-size:15px;font-weight:800;">03</div>
           <h4 style="font-size:20px;font-weight:700;letter-spacing:-.01em;margin:18px 0 8px;">Practice locally</h4>
           <p style="font-size:15px;line-height:1.6;color:#7A828F;margin:0;">You'll learn on the roads you actually drive — and test on familiar routes.</p>
         </div>
@@ -136,9 +172,9 @@
   <!-- CTA -->
   <section style="background:#0B5BD3;color:#fff;">
     <div class="pad secpad" style="max-width:1200px;margin:0 auto;padding:96px 56px;text-align:center;">
-      <h2 class="h1" style="font-weight:600;font-size:50px;line-height:1.04;letter-spacing:-.03em;margin:0 auto;max-width:18ch;">Not sure if we cover your area?</h2>
-      <p style="max-width:50ch;margin:20px auto 0;font-size:19px;line-height:1.6;color:rgba(255,255,255,.82);">Give us a call — we'll let you know in a minute, and we often travel a little farther.</p>
-      <div style="display:flex;gap:16px;justify-content:center;margin-top:38px;flex-wrap:wrap;">
+      <h2 class="h1 anim" style="font-weight:600;font-size:50px;line-height:1.04;letter-spacing:-.03em;margin:0 auto;max-width:18ch;">Not sure if we cover your area?</h2>
+      <p class="anim" style="max-width:50ch;margin:20px auto 0;font-size:19px;line-height:1.6;color:rgba(255,255,255,.82);transition-delay:.1s;">Give us a call — we'll let you know in a minute, and we often travel a little farther.</p>
+      <div class="anim" style="display:flex;gap:16px;justify-content:center;margin-top:38px;flex-wrap:wrap;transition-delay:.2s;">
         <a class="lk" href="book.html" style="font-size:16px;font-weight:600;color:#0B5BD3;background:#fff;padding:16px 30px;border-radius:10px;">Book a lesson</a>
         <a class="lk" href="tel:+12145457529" style="font-size:16px;font-weight:600;color:#fff;border:1.5px solid rgba(255,255,255,.45);padding:16px 30px;border-radius:10px;">Call (214) 545-7529</a>
       </div>
@@ -148,25 +184,25 @@
   <!-- FOOTER -->
   <footer style="background:#14171C;color:#fff;">
     <div class="pad footgrid" style="max-width:1200px;margin:0 auto;padding:80px 56px 56px;display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr;gap:48px;">
-      <div>
+      <div class="anim">
         <div style="font-size:22px;font-weight:800;letter-spacing:-.02em;">Bluebonnet</div>
         <p style="font-size:14.5px;line-height:1.65;color:#9AA1AB;margin:16px 0 0;max-width:34ch;">Patient, TDLR-licensed driving instruction for teens and adults across Plano and the North Dallas area. From first lesson to DPS road test.</p>
       </div>
-      <div>
+      <div class="anim" style="transition-delay:.08s;">
         <h5 style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#6B7280;margin:0 0 16px;">Courses</h5>
         <a class="lk" href="teen.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">Teen Driver Education</a>
         <a class="lk" href="adult.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">Adult Driving Lessons</a>
         <a class="lk" href="courses.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">Road Test Service</a>
         <a class="lk" href="pricing.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">Pricing</a>
       </div>
-      <div>
+      <div class="anim" style="transition-delay:.16s;">
         <h5 style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#6B7280;margin:0 0 16px;">Company</h5>
         <a class="lk" href="about.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">About Us</a>
         <a class="lk" href="instructors.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">Instructors</a>
         <a class="lk" href="reviews.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">Reviews</a>
         <a class="lk" href="serviceareas.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">Service Areas</a>
       </div>
-      <div>
+      <div class="anim" style="transition-delay:.24s;">
         <h5 style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#6B7280;margin:0 0 16px;">Get in touch</h5>
         <a class="lk" href="faq.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">FAQ</a>
         <a class="lk" href="book.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">Book a Lesson</a>
@@ -183,6 +219,25 @@
   </footer>
 
 </div>
+
+<script>
+  (function(){
+    var els = document.querySelectorAll('.anim, .anim-fade');
+    if(!('IntersectionObserver' in window)){
+      for(var i=0;i<els.length;i++){ els[i].classList.add('is-visible'); }
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          en.target.classList.add('is-visible');
+          io.unobserve(en.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    els.forEach(function(el){ io.observe(el); });
+  })();
+</script>
 </x-dc>
 </body>
 </html>
