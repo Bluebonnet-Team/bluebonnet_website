@@ -1,19 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" type="image/png" href="./bluebonnet-logo.png">
-
 <title>Bluebonnet Driving School</title>
-<script src="./support.js"></script>
-</head>
-<body>
-<x-dc>
-<helmet>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
 <style>
   *{box-sizing:border-box;}
   body{margin:0;background:#fff;font-family:'Hanken Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased;color:#14171C;}
@@ -74,9 +70,8 @@
   }
 </style>
 <noscript><style>.anim,.anim-fade{opacity:1 !important;transform:none !important;}</style></noscript>
-</helmet>
-
-<div data-screen-label="Service Areas" style="background:#fff;">
+</head>
+<body>
 
   <!-- NAV -->
   <header class="anim-fade" style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,.86);backdrop-filter:saturate(1.5) blur(12px);border-bottom:1px solid #ECEDEF;">
@@ -218,8 +213,6 @@
     </div>
   </footer>
 
-</div>
-
 <script>
   (function(){
     var els = document.querySelectorAll('.anim, .anim-fade');
@@ -238,7 +231,5 @@
     els.forEach(function(el){ io.observe(el); });
   })();
 </script>
-</x-dc>
 </body>
 </html>
-
