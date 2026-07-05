@@ -43,6 +43,25 @@
     .footgrid{grid-template-columns:1fr !important;}
     .h1{font-size:34px !important;}
   }
+
+  /* ---- Load-in reveal animation (visual design unchanged; elements simply ease into their natural position) ---- */
+  @keyframes rvUp{
+    from{opacity:0;transform:translateY(22px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+  .rv{opacity:0;animation:rvUp .8s cubic-bezier(.16,1,.3,1) both;will-change:opacity,transform;}
+  .rv.d1{animation-delay:.05s;}
+  .rv.d2{animation-delay:.13s;}
+  .rv.d3{animation-delay:.21s;}
+  .rv.d4{animation-delay:.29s;}
+  .rv.d5{animation-delay:.37s;}
+  .rv.d6{animation-delay:.45s;}
+  .rv.d7{animation-delay:.53s;}
+  .rv.d8{animation-delay:.61s;}
+  .rv.d9{animation-delay:.69s;}
+  @media(prefers-reduced-motion:reduce){
+    .rv{opacity:1;transform:none;animation:none;}
+  }
 </style>
 </helmet>
 
@@ -50,7 +69,7 @@
 
   <!-- NAV -->
   <header style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,.86);backdrop-filter:saturate(1.5) blur(12px);border-bottom:1px solid #ECEDEF;">
-    <nav class="pad" style="max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:32px;padding:18px 56px;">
+    <nav class="pad rv d1" style="max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:32px;padding:18px 56px;">
       <a href="home.html" style="display:flex;align-items:center;gap:12px;flex:0 0 auto;">
         <img src="./bluebonnet-logo.png" alt="Bluebonnet logo" style="width:52px;height:52px;object-fit:contain;display:block;filter:drop-shadow(0 6px 16px rgba(11,91,211,.16));">
         <span style="display:flex;flex-direction:column;">
@@ -75,18 +94,18 @@
   <!-- PAGE HEADER -->
   <section style="border-bottom:1px solid #ECEDEF;">
     <div class="pad" style="max-width:1200px;margin:0 auto;padding:60px 56px 56px;">
-      <div style="font-size:13px;font-weight:600;color:#9AA1AB;display:flex;gap:9px;align-items:center;">
+      <div class="rv d1" style="font-size:13px;font-weight:600;color:#9AA1AB;display:flex;gap:9px;align-items:center;">
         <a class="lk" href="home.html">Home</a><span>/</span><span style="color:#4A515C;">Book a Lesson</span>
       </div>
-      <div style="margin-top:24px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#0B5BD3;">Enroll &middot; Book</div>
-      <h1 class="h1" style="font-weight:600;font-size:58px;line-height:1.04;letter-spacing:-.03em;margin:16px 0 0;">Book your first lesson.</h1>
-      <p style="max-width:66ch;margin:20px 0 0;font-size:19px;line-height:1.62;color:#4A515C;">Ready to start? Pick your package and a time that works &mdash; we'll confirm by phone or email within one business day. Prefer to talk first? Call <a class="lk" href="tel:+12145457529" style="color:#0B5BD3;font-weight:600;">(214) 545-7529</a>.</p>
+      <div class="rv d2" style="margin-top:24px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#0B5BD3;">Enroll &middot; Book</div>
+      <h1 class="h1 rv d3" style="font-weight:600;font-size:58px;line-height:1.04;letter-spacing:-.03em;margin:16px 0 0;">Book your first lesson.</h1>
+      <p class="rv d4" style="max-width:66ch;margin:20px 0 0;font-size:19px;line-height:1.62;color:#4A515C;">Ready to start? Pick your package and a time that works &mdash; we'll confirm by phone or email within one business day. Prefer to talk first? Call <a class="lk" href="tel:+12145457529" style="color:#0B5BD3;font-weight:600;">(214) 545-7529</a>.</p>
     </div>
   </section>
 
   <!-- BOOK -->
   <section class="pad secpad booksplit" style="max-width:1200px;margin:0 auto;padding:72px 56px 96px;display:grid;grid-template-columns:1.25fr .75fr;gap:64px;align-items:start;">
-    <form id="bookingForm" action="PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE" method="POST" target="bookingSubmitFrame" class="formpad" style="border:1px solid #E2E3E6;border-radius:16px;padding:40px;">
+    <form id="bookingForm" action="PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE" method="POST" target="bookingSubmitFrame" class="formpad rv d5" style="border:1px solid #E2E3E6;border-radius:16px;padding:40px;">
       <h3 style="font-size:23px;font-weight:700;letter-spacing:-.015em;margin:0 0 22px;">Request your booking</h3>
       <div class="formgrid" style="display:grid;grid-template-columns:1fr 1fr;gap:18px;">
         <div><label class="lbl" for="studentName">Student name</label><input id="studentName" name="student_name" class="inp" placeholder="Jordan Rivera" required></div>
@@ -107,22 +126,22 @@
       <iframe name="bookingSubmitFrame" id="bookingSubmitFrame" title="Booking submission" style="display:none;"></iframe>
     </form>
     <div>
-      <h2 style="font-weight:600;font-size:34px;line-height:1.08;letter-spacing:-.025em;margin:0 0 28px;">What happens next.</h2>
+      <h2 class="rv d5" style="font-weight:600;font-size:34px;line-height:1.08;letter-spacing:-.025em;margin:0 0 28px;">What happens next.</h2>
       <div style="border-top:1px solid #E2E3E6;">
-        <div style="display:grid;grid-template-columns:42px 1fr;gap:18px;padding:24px 0;border-bottom:1px solid #ECEDEF;">
+        <div class="rv d6" style="display:grid;grid-template-columns:42px 1fr;gap:18px;padding:24px 0;border-bottom:1px solid #ECEDEF;">
           <span style="font-size:18px;font-weight:800;color:#0B5BD3;">01</span>
           <div><h4 style="font-size:18px;font-weight:700;margin:0 0 5px;">You book above</h4><p style="font-size:14.5px;line-height:1.6;color:#7A828F;margin:0;">Choose a package and share your preferred times. Takes two minutes.</p></div>
         </div>
-        <div style="display:grid;grid-template-columns:42px 1fr;gap:18px;padding:24px 0;border-bottom:1px solid #ECEDEF;">
+        <div class="rv d7" style="display:grid;grid-template-columns:42px 1fr;gap:18px;padding:24px 0;border-bottom:1px solid #ECEDEF;">
           <span style="font-size:18px;font-weight:800;color:#0B5BD3;">02</span>
           <div><h4 style="font-size:18px;font-weight:700;margin:0 0 5px;">We confirm</h4><p style="font-size:14.5px;line-height:1.6;color:#7A828F;margin:0;">We'll confirm your schedule and pickup by phone or email within one business day.</p></div>
         </div>
-        <div style="display:grid;grid-template-columns:42px 1fr;gap:18px;padding:24px 0;">
+        <div class="rv d8" style="display:grid;grid-template-columns:42px 1fr;gap:18px;padding:24px 0;">
           <span style="font-size:18px;font-weight:800;color:#0B5BD3;">03</span>
           <div><h4 style="font-size:18px;font-weight:700;margin:0 0 5px;">Lesson one</h4><p style="font-size:14.5px;line-height:1.6;color:#7A828F;margin:0;">Your instructor meets you and you're behind the wheel. That's it.</p></div>
         </div>
       </div>
-      <div style="background:#EAF1FC;border:1px solid #D2E6FB;border-radius:14px;padding:24px;margin-top:24px;">
+      <div class="rv d9" style="background:#EAF1FC;border:1px solid #D2E6FB;border-radius:14px;padding:24px;margin-top:24px;">
         <h4 style="font-size:16px;font-weight:700;margin:0 0 6px;">Prefer to talk first?</h4>
         <p style="font-size:14.5px;line-height:1.6;color:#4A515C;margin:0;">Call <a class="lk" href="tel:+12145457529" style="color:#0B5BD3;font-weight:600;">(214) 545-7529</a>. Reschedules are free with 24 hours' notice.</p>
       </div>
@@ -132,25 +151,25 @@
   <!-- FOOTER -->
   <footer style="background:#14171C;color:#fff;">
     <div class="pad footgrid" style="max-width:1200px;margin:0 auto;padding:80px 56px 56px;display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr;gap:48px;">
-      <div>
+      <div class="rv d6">
         <div style="font-size:22px;font-weight:800;letter-spacing:-.02em;">Bluebonnet</div>
         <p style="font-size:14.5px;line-height:1.65;color:#9AA1AB;margin:16px 0 0;max-width:34ch;">Patient, TDLR-licensed driving instruction for teens and adults across Plano and the North Dallas area. From first lesson to DPS road test.</p>
       </div>
-      <div>
+      <div class="rv d7">
         <h5 style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#6B7280;margin:0 0 16px;">Courses</h5>
         <a class="lk" href="teen.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">Teen Driver Education</a>
         <a class="lk" href="adult.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">Adult Driving Lessons</a>
         <a class="lk" href="courses.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">Road Test Service</a>
         <a class="lk" href="pricing.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">Pricing</a>
       </div>
-      <div>
+      <div class="rv d8">
         <h5 style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#6B7280;margin:0 0 16px;">Company</h5>
         <a class="lk" href="about.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">About Us</a>
         <a class="lk" href="instructors.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">Instructors</a>
         <a class="lk" href="reviews.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">Reviews</a>
         <a class="lk" href="serviceareas.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">Service Areas</a>
       </div>
-      <div>
+      <div class="rv d9">
         <h5 style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#6B7280;margin:0 0 16px;">Get in touch</h5>
         <a class="lk" href="faq.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">FAQ</a>
         <a class="lk" href="book.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">Book a Lesson</a>
@@ -209,4 +228,3 @@
 </script>
 </body>
 </html>
-
