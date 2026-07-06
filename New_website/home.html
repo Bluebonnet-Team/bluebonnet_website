@@ -395,6 +395,33 @@
       transition:none !important;
     }
   }
+  @keyframes rvIn{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
+  @keyframes rvFadeIn{from{opacity:0;}to{opacity:1;}}
+  [data-reveal]{animation:rvIn .7s cubic-bezier(.22,1,.36,1) both;}
+  .reviewcard{animation:rvIn .7s cubic-bezier(.22,1,.36,1) both;}
+  .packagecard,.processcard,.servicecard{animation:rvFadeIn .7s cubic-bezier(.22,1,.36,1) both;}
+  .homehero-inner .heroeyebrow{animation-delay:0s;}
+  .homehero-inner h1[data-reveal]{animation-delay:.09s;}
+  .homehero-inner p[data-reveal]{animation-delay:.18s;}
+  .homehero-inner .herocta{animation-delay:.27s;}
+  .homehero-inner .truststrip{animation-delay:.36s;}
+  .packagecard:nth-child(2){animation-delay:.09s;}
+  .packagecard:nth-child(3){animation-delay:.18s;}
+  .processcard:nth-child(2){animation-delay:.08s;}
+  .processcard:nth-child(3){animation-delay:.16s;}
+  .processcard:nth-child(4){animation-delay:.24s;}
+  .reviewcard:nth-child(2){animation-delay:.09s;}
+  .reviewcard:nth-child(3){animation-delay:.18s;}
+  .servicecard:nth-child(2){animation-delay:.05s;}
+  .servicecard:nth-child(3){animation-delay:.1s;}
+  .servicecard:nth-child(4){animation-delay:.15s;}
+  .servicecard:nth-child(5){animation-delay:.2s;}
+  .servicecard:nth-child(6){animation-delay:.25s;}
+  .servicecard:nth-child(7){animation-delay:.3s;}
+  .js-count{font-variant-numeric:tabular-nums;}
+  @media(prefers-reduced-motion:reduce){
+    [data-reveal],.packagecard,.processcard,.servicecard,.reviewcard{animation:none !important;}
+  }
 </style>
 </helmet>
 
@@ -427,27 +454,27 @@
   <!-- ============ HERO ============ -->
   <section class="homehero">
   <div class="pad homehero-inner">
-    <div class="heroeyebrow" style="font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.82);">TDLR-Licensed &middot; Plano &amp; North Dallas</div>
-    <h1 class="h1" style="font-weight:500;font-size:90px;line-height:1.0;letter-spacing:-.035em;margin:26px auto 0;max-width:16ch;color:#fff;">Learn to drive with <span style="font-weight:800;color:#DCEBFF;">confidence.</span></h1>
-    <p style="max-width:56ch;margin:22px auto 0;font-size:20px;line-height:1.6;color:rgba(255,255,255,.9);">Patient, TDLR-licensed instructors for teen driver education, adult lessons, and DPS road tests across the North Dallas area.</p>
-    <div class="herocta" style="display:flex;gap:16px;justify-content:center;margin-top:26px;flex-wrap:wrap;">
+    <div class="heroeyebrow" data-reveal data-delay="0" style="font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.82);">TDLR-Licensed &middot; Plano &amp; North Dallas</div>
+    <h1 class="h1" data-reveal data-delay="90" style="font-weight:500;font-size:90px;line-height:1.0;letter-spacing:-.035em;margin:26px auto 0;max-width:16ch;color:#fff;">Learn to drive with <span style="font-weight:800;color:#DCEBFF;">confidence.</span></h1>
+    <p data-reveal data-delay="180" style="max-width:56ch;margin:22px auto 0;font-size:20px;line-height:1.6;color:rgba(255,255,255,.9);">Patient, TDLR-licensed instructors for teen driver education, adult lessons, and DPS road tests across the North Dallas area.</p>
+    <div class="herocta" data-reveal data-delay="270" style="display:flex;gap:16px;justify-content:center;margin-top:26px;flex-wrap:wrap;">
       <a class="lk" href="book.html" style="font-size:16px;font-weight:600;color:#fff;background:#0B5BD3;padding:15px 28px;border-radius:10px;">Book a lesson</a>
       <a class="lk" href="courses.html" style="font-size:16px;font-weight:600;color:#fff;padding:15px 6px;border-bottom:1.5px solid rgba(255,255,255,.85);">See courses &amp; pricing &rarr;</a>
     </div>
     <!-- trust strip -->
-    <div class="truststrip">
+    <div class="truststrip" data-reveal data-delay="360">
       <div style="flex:1;padding:18px 18px;display:flex;flex-direction:column;align-items:center;gap:5px;">
-        <div style="display:flex;align-items:center;gap:7px;"><span style="color:#DCEBFF;font-size:18px;">&#9733;</span><span style="font-size:26px;font-weight:800;letter-spacing:-.02em;color:#fff;">4.9</span></div>
+        <div style="display:flex;align-items:center;gap:7px;"><span style="color:#DCEBFF;font-size:18px;">&#9733;</span><span class="js-count" data-count="4.9" style="font-size:26px;font-weight:800;letter-spacing:-.02em;color:#fff;">4.9</span></div>
         <div style="font-size:12.5px;font-weight:600;color:rgba(255,255,255,.78);">on Google &middot; 100+ reviews</div>
       </div>
       <div class="vdiv" style="width:1px;background:rgba(255,255,255,.2);"></div>
       <div style="flex:1;padding:18px 18px;display:flex;flex-direction:column;align-items:center;gap:5px;">
-        <div style="font-size:26px;font-weight:800;letter-spacing:-.02em;color:#fff;">20<span style="color:#DCEBFF;">+</span></div>
+        <div style="font-size:26px;font-weight:800;letter-spacing:-.02em;color:#fff;"><span class="js-count" data-count="20">20</span><span style="color:#DCEBFF;">+</span></div>
         <div style="font-size:12.5px;font-weight:600;color:rgba(255,255,255,.78);">years teaching Plano &middot; since 20XX</div>
       </div>
       <div class="vdiv" style="width:1px;background:rgba(255,255,255,.2);"></div>
       <div style="flex:1;padding:18px 18px;display:flex;flex-direction:column;align-items:center;gap:5px;">
-        <div style="font-size:26px;font-weight:800;letter-spacing:-.02em;color:#fff;">DPS</div>
+        <div style="font-size:26px;font-weight:800;letter-spacing:-.02em;color:#fff;"><span class="js-count" data-count="DPS">DPS</span></div>
         <div style="font-size:12.5px;font-weight:600;color:rgba(255,255,255,.78);">approved &middot; road test with us</div>
       </div>
     </div>
@@ -456,7 +483,7 @@
 
   <!-- ============ CHOOSE YOUR PATH ============ -->
   <section class="pad secpad" style="max-width:1200px;margin:0 auto;padding:40px 56px 110px;">
-    <div style="text-align:center;margin-bottom:56px;">
+    <div data-reveal style="text-align:center;margin-bottom:56px;">
       <div style="font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#0B5BD3;">Choose your path</div>
       <h2 class="h2" style="font-weight:600;font-size:46px;line-height:1.05;letter-spacing:-.025em;margin:16px 0 0;">Where are you starting from?</h2>
       <p style="max-width:54ch;margin:16px auto 0;font-size:18px;line-height:1.6;color:#4A515C;">Tell us who you are and we'll route you to the right package &mdash; no reading five product pages.</p>
@@ -489,11 +516,11 @@
   <!-- ============ WHY FAMILIES CHOOSE US ============ -->
   <section style="background:#FAFAFB;border-top:1px solid #ECEDEF;border-bottom:1px solid #ECEDEF;">
     <div class="pad secpad" style="max-width:1200px;margin:0 auto;padding:104px 56px;">
-      <div style="max-width:62ch;margin-bottom:60px;">
+      <div data-reveal style="max-width:62ch;margin-bottom:60px;">
         <div style="font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#8A919B;">Why families choose us</div>
         <h2 class="h2" style="font-weight:600;font-size:46px;line-height:1.06;letter-spacing:-.025em;margin:16px 0 0;">Everything you need to get licensed &mdash; done right.</h2>
       </div>
-      <div class="featuregrid">
+      <div class="featuregrid" data-reveal>
         <div class="featurecard">
           <div class="featureicon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M12 3l8 4-8 4-8-4 8-4z" stroke-linejoin="round"/><path d="M6 9.5V14c0 1.5 2.7 3 6 3s6-1.5 6-3V9.5" stroke-linecap="round"/></svg></div>
           <h4 class="featuretitle">Certified instructors</h4>
@@ -530,7 +557,7 @@
 
   <!-- ============ PACKAGES ============ -->
   <section class="pad secpad" style="max-width:1200px;margin:0 auto;padding:104px 56px;">
-    <div style="max-width:64ch;margin-bottom:56px;">
+    <div data-reveal style="max-width:64ch;margin-bottom:56px;">
       <div style="font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#8A919B;">Popular packages</div>
       <h2 class="h2" style="font-weight:600;font-size:46px;line-height:1.06;letter-spacing:-.025em;margin:16px 0 14px;">Pick a package, or let us help you choose.</h2>
       <p style="font-size:18px;line-height:1.6;color:#4A515C;margin:0;">Honest pricing &mdash; every package includes a certified instructor, a dual-control car, and your completion certificate.</p>
@@ -585,7 +612,7 @@
   <!-- ============ HOW IT WORKS ============ -->
   <section style="background:#FAFAFB;border-top:1px solid #ECEDEF;border-bottom:1px solid #ECEDEF;">
     <div class="pad secpad" style="max-width:1200px;margin:0 auto;padding:104px 56px;">
-      <div style="text-align:center;margin-bottom:64px;">
+      <div data-reveal style="text-align:center;margin-bottom:64px;">
         <div style="font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#8A919B;">How it works</div>
         <h2 class="h2" style="font-weight:600;font-size:46px;line-height:1.05;letter-spacing:-.025em;margin:16px 0 0;">From first call to licensed &mdash; in four steps.</h2>
       </div>
@@ -617,22 +644,22 @@
   <!-- ============ STATS BAND ============ -->
   <section style="background:#14171C;color:#fff;">
     <div class="pad secpad" style="max-width:1200px;margin:0 auto;padding:84px 56px;">
-      <div class="statband">
+      <div class="statband" data-reveal>
       <div class="statgrid" style="display:grid;grid-template-columns:repeat(4,1fr);padding:42px 28px 34px;">
         <div style="padding:0 28px;border-left:1px solid rgba(255,255,255,.1);">
-          <div style="font-size:58px;font-weight:800;letter-spacing:-.04em;line-height:1;">20<span style="color:#5B9BF0;">+</span></div>
+          <div style="font-size:58px;font-weight:800;letter-spacing:-.04em;line-height:1;"><span class="js-count" data-count="20">20</span><span style="color:#5B9BF0;">+</span></div>
           <div style="font-size:14px;color:#9AA1AB;margin-top:14px;line-height:1.4;">Years teaching Plano drivers</div>
         </div>
         <div style="padding:0 28px;border-left:1px solid rgba(255,255,255,.1);">
-          <div style="font-size:58px;font-weight:800;letter-spacing:-.04em;line-height:1;">4.9<span style="color:#5B9BF0;">&#9733;</span></div>
+          <div style="font-size:58px;font-weight:800;letter-spacing:-.04em;line-height:1;"><span class="js-count" data-count="4.9">4.9</span><span style="color:#5B9BF0;">&#9733;</span></div>
           <div style="font-size:14px;color:#9AA1AB;margin-top:14px;line-height:1.4;">Average Google rating</div>
         </div>
         <div style="padding:0 28px;border-left:1px solid rgba(255,255,255,.1);">
-          <div style="font-size:58px;font-weight:800;letter-spacing:-.04em;line-height:1;">98<span style="color:#5B9BF0;">%</span></div>
+          <div style="font-size:58px;font-weight:800;letter-spacing:-.04em;line-height:1;"><span class="js-count" data-count="98">98</span><span style="color:#5B9BF0;">%</span></div>
           <div style="font-size:14px;color:#9AA1AB;margin-top:14px;line-height:1.4;">First-try pass rate*</div>
         </div>
         <div style="padding:0 28px;border-left:1px solid rgba(255,255,255,.1);">
-          <div style="font-size:58px;font-weight:800;letter-spacing:-.04em;line-height:1;">6</div>
+          <div style="font-size:58px;font-weight:800;letter-spacing:-.04em;line-height:1;"><span class="js-count" data-count="6">6</span></div>
           <div style="font-size:14px;color:#9AA1AB;margin-top:14px;line-height:1.4;">North Dallas cities served</div>
         </div>
       </div>
@@ -643,7 +670,7 @@
 
   <!-- ============ REVIEWS ============ -->
   <section class="pad secpad" style="max-width:1200px;margin:0 auto;padding:104px 56px;">
-    <div style="text-align:center;margin-bottom:60px;">
+    <div data-reveal style="text-align:center;margin-bottom:60px;">
       <div style="font-size:15px;font-weight:700;color:#0B5BD3;letter-spacing:.3em;">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
       <h2 class="h2" style="font-weight:600;font-size:46px;line-height:1.05;letter-spacing:-.025em;margin:18px 0 0;">Parents and adult learners love us.</h2>
     </div>
@@ -678,7 +705,7 @@
   <!-- ============ SERVICE AREAS ============ -->
   <section style="background:#FAFAFB;border-top:1px solid #ECEDEF;border-bottom:1px solid #ECEDEF;">
     <div class="pad secpad" style="max-width:1200px;margin:0 auto;padding:104px 56px;">
-      <div style="text-align:center;margin-bottom:56px;">
+      <div data-reveal style="text-align:center;margin-bottom:56px;">
         <div style="font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#8A919B;">Where we teach</div>
         <h2 class="h2" style="font-weight:600;font-size:46px;line-height:1.05;letter-spacing:-.025em;margin:16px 0 0;">Driving lessons across North Dallas.</h2>
       </div>
@@ -697,7 +724,7 @@
   <!-- ============ FINAL CTA ============ -->
   <section style="background:transparent;color:#fff;">
     <div class="pad secpad" style="max-width:1200px;margin:0 auto;padding:104px 56px;">
-      <div class="cta-shell" style="padding:104px 56px;text-align:center;">
+      <div class="cta-shell" data-reveal style="padding:104px 56px;text-align:center;">
       <h2 class="h1" style="font-weight:600;font-size:54px;line-height:1.04;letter-spacing:-.03em;margin:0;max-width:18ch;margin-left:auto;margin-right:auto;">Ready to get behind the wheel?</h2>
       <p style="max-width:52ch;margin:22px auto 0;font-size:19px;line-height:1.6;color:rgba(255,255,255,.82);">Book your first lesson today, or call us and we'll point you to the right package in two minutes.</p>
       <div style="display:flex;gap:16px;justify-content:center;margin-top:40px;flex-wrap:wrap;">
@@ -710,7 +737,7 @@
 
   <!-- ============ FOOTER ============ -->
   <footer style="background:#14171C;color:#fff;">
-    <div class="pad footgrid" style="max-width:1200px;margin:0 auto;padding:80px 56px 56px;display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr;gap:48px;">
+    <div class="pad footgrid" data-reveal style="max-width:1200px;margin:0 auto;padding:80px 56px 56px;display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr;gap:48px;">
       <div>
         <div style="font-size:22px;font-weight:800;letter-spacing:-.02em;">Bluebonnet</div>
         <p style="font-size:14.5px;line-height:1.65;color:#9AA1AB;margin:16px 0 0;max-width:34ch;">Patient, TDLR-licensed driving instruction for teens and adults across Plano and the North Dallas area. From first lesson to DPS road test.</p>
@@ -746,8 +773,65 @@
 
 </div>
 </x-dc>
+<script>
+(function () {
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var DIGITS = '0123456789';
+  var UPPER  = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+  function randFor(c) {
+    if (/[0-9]/.test(c)) return DIGITS[(Math.random() * 10) | 0];
+    if (/[A-Z]/.test(c)) return UPPER[(Math.random() * 26) | 0];
+    if (/[a-z]/.test(c)) return UPPER[(Math.random() * 26) | 0].toLowerCase();
+    return c;
+  }
+
+  function scramble(el) {
+    var final = (el.getAttribute('data-count') || el.textContent).trim();
+    var chars = final.split(''), DUR = 1100, HOLD = 250, STAG = 60, start = null;
+    function frame(ts) {
+      if (start === null) start = ts;
+      var t = ts - start, out = '';
+      for (var i = 0; i < chars.length; i++) {
+        var c = chars[i], lockAt = HOLD + i * STAG;
+        out += (t >= lockAt || !/[a-zA-Z0-9]/.test(c)) ? c : randFor(c);
+      }
+      el.textContent = out;
+      if (t < DUR) requestAnimationFrame(frame); else el.textContent = final;
+    }
+    requestAnimationFrame(frame);
+  }
+
+  if (reduce) return;
+
+  function fire(el) {
+    if (el.getAttribute('data-done')) return;
+    el.setAttribute('data-done', '1');
+    scramble(el);
+  }
+
+  var io = ('IntersectionObserver' in window)
+    ? new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) { fire(e.target); io.unobserve(e.target); } });
+      }, { threshold: 0.5 })
+    : null;
+
+  function wire() {
+    [].forEach.call(document.querySelectorAll('.js-count'), function (el) {
+      if (el.getAttribute('data-wired')) return;
+      el.setAttribute('data-wired', '1');
+      var f = (el.getAttribute('data-count') || el.textContent).trim();
+      el.setAttribute('data-count', f);
+      if (io) io.observe(el); else fire(el);
+    });
+  }
+
+  if (document.readyState !== 'loading') wire();
+  else document.addEventListener('DOMContentLoaded', wire);
+  window.addEventListener('load', wire);
+  setTimeout(wire, 500);
+  setTimeout(wire, 1500);
+}());
+</script>
 </body>
 </html>
-
-
-
