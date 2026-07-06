@@ -7,7 +7,6 @@
 
 <title>Bluebonnet Driving School</title>
 <script src="./support.js"></script>
-<script>document.documentElement.className+=' sr';</script>
 </head>
 <body>
 <x-dc>
@@ -39,20 +38,22 @@
     .footgrid{grid-template-columns:1fr !important;}
     .h1{font-size:33px !important;}
   }
-  @keyframes rvIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
-  html.sr [data-reveal]{opacity:0;}
-  [data-reveal].sr-in{animation:rvIn .7s cubic-bezier(.22,1,.36,1) both;}
+  /* ===== Scroll-reveal (one-time entrance as elements enter view) ===== */
+  .anim{opacity:0;transform:translateY(26px);transition:opacity .95s cubic-bezier(.16,1,.3,1),transform .95s cubic-bezier(.16,1,.3,1);will-change:opacity,transform;}
+  .anim.is-visible{opacity:1;transform:none;}
+  .anim-fade{opacity:0;transition:opacity .95s ease;will-change:opacity;}
+  .anim-fade.is-visible{opacity:1;}
   @media(prefers-reduced-motion:reduce){
-    html.sr [data-reveal]{opacity:1 !important;}
-    [data-reveal].sr-in{animation:none !important;}
+    .anim,.anim-fade{opacity:1 !important;transform:none !important;transition:none !important;}
   }
 </style>
+<noscript><style>.anim,.anim-fade{opacity:1 !important;transform:none !important;}</style></noscript>
 </helmet>
 
 <div data-screen-label="Teen" style="background:#fff;">
 
   <!-- NAV -->
-  <header style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,.86);backdrop-filter:saturate(1.5) blur(12px);border-bottom:1px solid #ECEDEF;">
+  <header class="anim-fade" style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,.86);backdrop-filter:saturate(1.5) blur(12px);border-bottom:1px solid #ECEDEF;">
     <nav class="pad" style="max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:32px;padding:18px 56px;">
       <a href="home.html" style="display:flex;align-items:center;gap:12px;flex:0 0 auto;">
         <img src="./bluebonnet-logo.png" alt="Bluebonnet logo" style="width:52px;height:52px;object-fit:contain;display:block;filter:drop-shadow(0 6px 16px rgba(11,91,211,.16));">
@@ -76,15 +77,15 @@
   </header>
 
   <!-- PAGE HEADER -->
-  <section data-reveal style="border-bottom:1px solid #ECEDEF;">
+  <section style="border-bottom:1px solid #ECEDEF;">
     <div class="pad" style="max-width:1200px;margin:0 auto;padding:60px 56px 56px;">
-      <div style="font-size:13px;font-weight:600;color:#9AA1AB;display:flex;gap:9px;align-items:center;flex-wrap:wrap;">
+      <div class="anim" style="font-size:13px;font-weight:600;color:#9AA1AB;display:flex;gap:9px;align-items:center;flex-wrap:wrap;">
         <a class="lk" href="home.html">Home</a><span>/</span><a class="lk" href="courses.html">Courses</a><span>/</span><span style="color:#4A515C;">Teen Driver Education</span>
       </div>
-      <span style="display:inline-block;margin-top:24px;font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#0B5BD3;background:#EAF1FC;padding:6px 12px;border-radius:6px;">Ages 14–17 · State-approved</span>
-      <h1 class="h1" style="font-weight:600;font-size:56px;line-height:1.05;letter-spacing:-.03em;margin:18px 0 0;max-width:20ch;">Texas teen driver education — done right, done calmly.</h1>
-      <p style="max-width:66ch;margin:20px 0 0;font-size:19px;line-height:1.62;color:#4A515C;">Handing your teen the keys is a big step. We make it a safe one. Our state-approved program takes new drivers from their very first lesson to a confident DPS road test, with instructors who specialize in keeping nervous teens — and nervous parents — at ease.</p>
-      <div style="display:flex;gap:14px;margin-top:30px;flex-wrap:wrap;">
+      <span class="anim" style="display:inline-block;margin-top:24px;font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#0B5BD3;background:#EAF1FC;padding:6px 12px;border-radius:6px;">Ages 14–17 · State-approved</span>
+      <h1 class="h1 anim" style="font-weight:600;font-size:56px;line-height:1.05;letter-spacing:-.03em;margin:18px 0 0;max-width:20ch;">Texas teen driver education — done right, done calmly.</h1>
+      <p class="anim" style="max-width:66ch;margin:20px 0 0;font-size:19px;line-height:1.62;color:#4A515C;">Handing your teen the keys is a big step. We make it a safe one. Our state-approved program takes new drivers from their very first lesson to a confident DPS road test, with instructors who specialize in keeping nervous teens — and nervous parents — at ease.</p>
+      <div class="anim" style="display:flex;gap:14px;margin-top:30px;flex-wrap:wrap;">
         <a class="lk" href="book.html" style="font-size:15.5px;font-weight:600;color:#fff;background:#0B5BD3;padding:14px 26px;border-radius:10px;">Enroll your teen</a>
         <a class="lk" href="pricing.html" style="font-size:15.5px;font-weight:600;color:#14171C;padding:14px 6px;border-bottom:1.5px solid #14171C;">See teen pricing →</a>
       </div>
@@ -92,9 +93,9 @@
   </section>
 
   <!-- TEXAS LICENSING EXPLAINED -->
-  <section data-reveal class="pad secpad" style="max-width:1200px;margin:0 auto;padding:96px 56px;">
+  <section class="pad secpad" style="max-width:1200px;margin:0 auto;padding:96px 56px;">
     <div class="split" style="display:grid;grid-template-columns:1.15fr .85fr;gap:64px;align-items:start;">
-      <div>
+      <div class="anim">
         <div style="font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#8A919B;">Texas teen licensing, explained</div>
         <h2 class="h2" style="font-weight:600;font-size:40px;line-height:1.07;letter-spacing:-.025em;margin:16px 0 10px;">Getting a Texas license at 16 has a few required steps.</h2>
         <p style="font-size:18px;line-height:1.6;color:#4A515C;margin:0 0 36px;">Here's the simple version — and we help with every one.</p>
@@ -117,7 +118,7 @@
           </div>
         </div>
       </div>
-      <div>
+      <div class="anim">
         <div style="border:1px solid #E2E3E6;border-radius:14px;height:320px;overflow:hidden;box-shadow:0 24px 54px -36px rgba(20,23,28,.22);background:#EEF1F5;margin-bottom:18px;">
           <img src="./teen-student.jpg" alt="Teen driver with instructor inside a training vehicle" style="width:100%;height:100%;object-fit:cover;display:block;">
         </div>
@@ -130,13 +131,13 @@
   </section>
 
   <!-- WHAT'S INCLUDED -->
-  <section data-reveal style="background:#FAFAFB;border-top:1px solid #ECEDEF;border-bottom:1px solid #ECEDEF;">
+  <section style="background:#FAFAFB;border-top:1px solid #ECEDEF;border-bottom:1px solid #ECEDEF;">
     <div class="pad secpad" style="max-width:1200px;margin:0 auto;padding:96px 56px;">
-      <div style="margin-bottom:52px;">
+      <div class="anim" style="margin-bottom:52px;">
         <div style="font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#8A919B;">What's included</div>
         <h2 class="h2" style="font-weight:600;font-size:44px;line-height:1.05;letter-spacing:-.025em;margin:16px 0 0;">Inside every teen package.</h2>
       </div>
-      <div class="g3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#E2E3E6;border:1px solid #E2E3E6;">
+      <div class="g3 anim" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#E2E3E6;border:1px solid #E2E3E6;">
         <div style="background:#FAFAFB;padding:38px 34px;">
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#14171C" stroke-width="1.6"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 9h8M8 13h5" stroke-linecap="round"/></svg>
           <h4 style="font-size:20px;font-weight:700;letter-spacing:-.01em;margin:20px 0 8px;">Classroom instruction</h4>
@@ -157,13 +158,13 @@
   </section>
 
   <!-- COMPARE TEEN PACKAGES -->
-  <section data-reveal class="pad secpad" style="max-width:1200px;margin:0 auto;padding:96px 56px;">
-    <div style="margin-bottom:52px;">
+  <section class="pad secpad" style="max-width:1200px;margin:0 auto;padding:96px 56px;">
+    <div class="anim" style="margin-bottom:52px;">
       <div style="font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#8A919B;">Compare</div>
       <h2 class="h2" style="font-weight:600;font-size:44px;line-height:1.05;letter-spacing:-.025em;margin:16px 0 0;">The three teen packages.</h2>
     </div>
     <div class="g3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
-      <div style="border:1px solid #E2E3E6;border-radius:14px;padding:34px 30px;display:flex;flex-direction:column;">
+      <div class="anim" style="border:1px solid #E2E3E6;border-radius:14px;padding:34px 30px;display:flex;flex-direction:column;">
         <span style="font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#0B5BD3;">Teen #1</span>
         <h3 style="font-size:21px;font-weight:700;letter-spacing:-.01em;margin:12px 0 0;">Essentials</h3>
         <div style="font-size:42px;font-weight:800;letter-spacing:-.03em;margin:14px 0 8px;">$400</div>
@@ -174,7 +175,7 @@
         </div>
         <a class="lk" href="book.html" style="margin-top:auto;text-align:center;font-size:15px;font-weight:600;color:#14171C;border:1.5px solid #D5D8DD;border-radius:10px;padding:13px;">Choose Essentials</a>
       </div>
-      <div style="border:1.5px solid #0B5BD3;border-radius:14px;padding:34px 30px;display:flex;flex-direction:column;position:relative;box-shadow:0 20px 50px -24px rgba(11,91,211,.4);">
+      <div class="anim" style="border:1.5px solid #0B5BD3;border-radius:14px;padding:34px 30px;display:flex;flex-direction:column;position:relative;box-shadow:0 20px 50px -24px rgba(11,91,211,.4);">
         <span style="position:absolute;top:-12px;left:30px;background:#0B5BD3;color:#fff;font-size:12px;font-weight:700;padding:6px 13px;border-radius:999px;">★ Most popular</span>
         <span style="font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#0B5BD3;">Teen #2</span>
         <h3 style="font-size:21px;font-weight:700;letter-spacing:-.01em;margin:12px 0 0;">Standard</h3>
@@ -186,7 +187,7 @@
         </div>
         <a class="lk" href="book.html" style="margin-top:auto;text-align:center;font-size:15px;font-weight:600;color:#fff;background:#0B5BD3;border-radius:10px;padding:14px;">Choose Standard</a>
       </div>
-      <div style="border:1px solid #E2E3E6;border-radius:14px;padding:34px 30px;display:flex;flex-direction:column;">
+      <div class="anim" style="border:1px solid #E2E3E6;border-radius:14px;padding:34px 30px;display:flex;flex-direction:column;">
         <span style="font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#0B5BD3;">Teen #3</span>
         <h3 style="font-size:21px;font-weight:700;letter-spacing:-.01em;margin:12px 0 0;">Complete</h3>
         <div style="font-size:42px;font-weight:800;letter-spacing:-.03em;margin:14px 0 8px;">$470</div>
@@ -201,9 +202,9 @@
   </section>
 
   <!-- PARENT REVIEW + BRING -->
-  <section data-reveal style="background:#FAFAFB;border-top:1px solid #ECEDEF;">
+  <section style="background:#FAFAFB;border-top:1px solid #ECEDEF;">
     <div class="pad secpad split" style="max-width:1200px;margin:0 auto;padding:96px 56px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;">
-      <div style="background:#fff;border:1px solid #E2E3E6;border-radius:16px;padding:44px;">
+      <div class="anim" style="background:#fff;border:1px solid #E2E3E6;border-radius:16px;padding:44px;">
         <div style="font-size:15px;font-weight:700;color:#0B5BD3;letter-spacing:.25em;margin-bottom:20px;">★★★★★</div>
         <p style="font-size:22px;line-height:1.5;font-weight:500;letter-spacing:-.015em;margin:0;">"My son was so anxious about driving. His instructor was endlessly patient and he passed first try. We've already booked his sister."</p>
         <div style="margin-top:30px;display:flex;align-items:center;gap:13px;">
@@ -211,7 +212,7 @@
           <div><div style="font-size:15px;font-weight:700;">Annie W.</div><div style="font-size:13px;color:#9AA1AB;">Parent of a teen driver · Plano</div></div>
         </div>
       </div>
-      <div>
+      <div class="anim">
         <h2 class="h2" style="font-weight:600;font-size:38px;line-height:1.07;letter-spacing:-.025em;margin:0 0 26px;">What parents need to bring.</h2>
         <div style="display:flex;flex-direction:column;gap:16px;margin-bottom:28px;">
           <div style="display:flex;gap:13px;font-size:16.5px;line-height:1.5;color:#4A515C;"><span style="color:#0B5BD3;font-weight:800;">✓</span>Proof of enrollment / school attendance (VOE form)</div>
@@ -226,26 +227,26 @@
 
   <!-- FOOTER -->
   <footer style="background:#14171C;color:#fff;">
-    <div class="pad footgrid" data-reveal style="max-width:1200px;margin:0 auto;padding:80px 56px 56px;display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr;gap:48px;">
-      <div>
+    <div class="pad footgrid" style="max-width:1200px;margin:0 auto;padding:80px 56px 56px;display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr;gap:48px;">
+      <div class="anim">
         <div style="font-size:22px;font-weight:800;letter-spacing:-.02em;">Bluebonnet</div>
         <p style="font-size:14.5px;line-height:1.65;color:#9AA1AB;margin:16px 0 0;max-width:34ch;">Patient, TDLR-licensed driving instruction for teens and adults across Plano and the North Dallas area. From first lesson to DPS road test.</p>
       </div>
-      <div>
+      <div class="anim">
         <h5 style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#6B7280;margin:0 0 16px;">Courses</h5>
         <a class="lk" href="teen.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">Teen Driver Education</a>
         <a class="lk" href="adult.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">Adult Driving Lessons</a>
         <a class="lk" href="courses.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">Road Test Service</a>
         <a class="lk" href="pricing.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">Pricing</a>
       </div>
-      <div>
+      <div class="anim">
         <h5 style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#6B7280;margin:0 0 16px;">Company</h5>
         <a class="lk" href="about.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">About Us</a>
         <a class="lk" href="instructors.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">Instructors</a>
         <a class="lk" href="reviews.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">Reviews</a>
         <a class="lk" href="serviceareas.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">Service Areas</a>
       </div>
-      <div>
+      <div class="anim">
         <h5 style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#6B7280;margin:0 0 16px;">Get in touch</h5>
         <a class="lk" href="faq.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">FAQ</a>
         <a class="lk" href="book.html" style="display:block;font-size:14px;font-weight:500;color:#C5CAD2;padding:6px 0;">Book a Lesson</a>
@@ -264,34 +265,43 @@
 </div>
 </x-dc>
 <script>
-(function () {
+(function(){
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduce) return;
-  var SEL = '[data-reveal]';
-  function show(el){ el.classList.add('sr-in'); }
-  var ro = ('IntersectionObserver' in window)
-    ? new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ show(e.target); ro.unobserve(e.target); } }); }, { threshold:0.1, rootMargin:'0px 0px -6% 0px' })
+  if(reduce) return;
+  var SEL = '.anim, .anim-fade';
+  function reveal(el){ el.classList.add('is-visible'); }
+  // stagger siblings so cards/lines cascade in
+  function stagger(el){
+    if(el.getAttribute('data-st')) return;
+    el.setAttribute('data-st','1');
+    var p = el.parentNode; if(!p) return;
+    var sibs = [].filter.call(p.children, function(c){ return c.classList && (c.classList.contains('anim')||c.classList.contains('anim-fade')); });
+    var idx = sibs.indexOf(el);
+    if(idx > 0) el.style.transitionDelay = Math.min(idx*0.08, 0.6) + 's';
+  }
+  var io = ('IntersectionObserver' in window)
+    ? new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ reveal(e.target); io.unobserve(e.target); } }); }, { threshold:0.12, rootMargin:'0px 0px -8% 0px' })
     : null;
-  // Re-scannable: safe to call many times; catches nodes the runtime re-renders.
+  // re-scannable: survives the runtime's DOM re-render
   function wire(){
     [].forEach.call(document.querySelectorAll(SEL), function(el){
-      if (el.getAttribute('data-srw')) return;
-      el.setAttribute('data-srw','1');
-      if (ro) ro.observe(el); else show(el);
+      if(el.getAttribute('data-w')) return;
+      el.setAttribute('data-w','1');
+      stagger(el);
+      if(io) io.observe(el); else reveal(el);
     });
   }
-  if (document.readyState !== 'loading') wire();
+  if(document.readyState !== 'loading') wire();
   else document.addEventListener('DOMContentLoaded', wire);
   window.addEventListener('load', wire);
   setTimeout(wire, 400);
   setTimeout(wire, 1200);
-  if ('MutationObserver' in window){
-    var moT;
-    new MutationObserver(function(){ clearTimeout(moT); moT=setTimeout(wire,90); }).observe(document.documentElement, { childList:true, subtree:true });
+  if('MutationObserver' in window){
+    var t; new MutationObserver(function(){ clearTimeout(t); t=setTimeout(wire,90); }).observe(document.documentElement, { childList:true, subtree:true });
   }
-  // Safety net: never leave anything hidden, even if the observer can't run.
-  setTimeout(function(){ [].forEach.call(document.querySelectorAll(SEL), function(el){ show(el); }); }, 6000);
-}());
+  // safety net: never leave anything hidden
+  setTimeout(function(){ [].forEach.call(document.querySelectorAll(SEL), function(el){ reveal(el); }); }, 6000);
+})();
 </script>
 </body>
 </html>
