@@ -7,6 +7,7 @@
 
 <title>Bluebonnet Driving School</title>
 <script src="./support.js"></script>
+<script>document.documentElement.className+=' sr';</script>
 </head>
 <body>
 <x-dc>
@@ -397,9 +398,16 @@
   }
   @keyframes rvIn{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
   @keyframes rvFadeIn{from{opacity:0;}to{opacity:1;}}
-  [data-reveal]{animation:rvIn .7s cubic-bezier(.22,1,.36,1) both;}
-  .reviewcard{animation:rvIn .7s cubic-bezier(.22,1,.36,1) both;}
-  .packagecard,.processcard,.servicecard{animation:rvFadeIn .7s cubic-bezier(.22,1,.36,1) both;}
+  html.sr [data-reveal],
+  html.sr .reviewcard,
+  html.sr .packagecard,
+  html.sr .processcard,
+  html.sr .servicecard{opacity:0;}
+  [data-reveal].sr-in,
+  .reviewcard.sr-in{animation:rvIn .7s cubic-bezier(.22,1,.36,1) both;}
+  .packagecard.sr-in,
+  .processcard.sr-in,
+  .servicecard.sr-in{animation:rvFadeIn .7s cubic-bezier(.22,1,.36,1) both;}
   .homehero-inner .heroeyebrow{animation-delay:0s;}
   .homehero-inner h1[data-reveal]{animation-delay:.09s;}
   .homehero-inner p[data-reveal]{animation-delay:.18s;}
@@ -420,7 +428,8 @@
   .servicecard:nth-child(7){animation-delay:.3s;}
   .js-count{font-variant-numeric:tabular-nums;}
   @media(prefers-reduced-motion:reduce){
-    [data-reveal],.packagecard,.processcard,.servicecard,.reviewcard{animation:none !important;}
+    html.sr [data-reveal],html.sr .reviewcard,html.sr .packagecard,html.sr .processcard,html.sr .servicecard{opacity:1 !important;}
+    [data-reveal].sr-in,.reviewcard.sr-in,.packagecard.sr-in,.processcard.sr-in,.servicecard.sr-in{animation:none !important;}
   }
 </style>
 </helmet>
@@ -778,6 +787,7 @@
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var DIGITS = '0123456789';
   var UPPER  = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  var REVEAL_SEL = '[data-reveal], .packagecard, .processcard, .servicecard, .reviewcard';
 
   function randFor(c) {
     if (/[0-9]/.test(c)) return DIGITS[(Math.random() * 10) | 0];
@@ -786,51 +796,83 @@
     return c;
   }
 
+  // Slower shuffle: every char keeps flipping for HOLD ms, then locks left-to-right
+  // every STAG ms. STEP throttles how often a new random char is drawn so the
+  // shuffle is readable rather than a blur.
   function scramble(el) {
     var final = (el.getAttribute('data-count') || el.textContent).trim();
-    var chars = final.split(''), DUR = 1100, HOLD = 250, STAG = 60, start = null;
+    var chars = final.split('');
+    var DUR = 1700, HOLD = 750, STAG = 150, STEP = 55;
+    var start = null, lastTick = -1e9, buf = chars.slice();
     function frame(ts) {
       if (start === null) start = ts;
-      var t = ts - start, out = '';
-      for (var i = 0; i < chars.length; i++) {
-        var c = chars[i], lockAt = HOLD + i * STAG;
-        out += (t >= lockAt || !/[a-zA-Z0-9]/.test(c)) ? c : randFor(c);
+      var t = ts - start;
+      if (ts - lastTick >= STEP) {
+        lastTick = ts;
+        for (var i = 0; i < chars.length; i++) {
+          var c = chars[i], lockAt = HOLD + i * STAG;
+          buf[i] = (t >= lockAt || !/[a-zA-Z0-9]/.test(c)) ? c : randFor(c);
+        }
+        el.textContent = buf.join('');
       }
-      el.textContent = out;
-      if (t < DUR) requestAnimationFrame(frame); else el.textContent = final;
+      if (t < DUR) requestAnimationFrame(frame);
+      else el.textContent = final;
     }
     requestAnimationFrame(frame);
   }
 
   if (reduce) return;
 
-  function fire(el) {
+  function showReveal(el) { el.classList.add('sr-in'); }
+  function fireCount(el) {
     if (el.getAttribute('data-done')) return;
     el.setAttribute('data-done', '1');
     scramble(el);
   }
 
-  var io = ('IntersectionObserver' in window)
-    ? new IntersectionObserver(function (es) {
-        es.forEach(function (e) { if (e.isIntersecting) { fire(e.target); io.unobserve(e.target); } });
-      }, { threshold: 0.5 })
-    : null;
+  var hasIO = 'IntersectionObserver' in window;
+  var ro = hasIO ? new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) { showReveal(e.target); ro.unobserve(e.target); } });
+  }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }) : null;
+  var co = hasIO ? new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) { fireCount(e.target); co.unobserve(e.target); } });
+  }, { threshold: 0.5 }) : null;
 
+  // Re-scannable: safe to call many times. Catches any nodes the runtime re-renders.
   function wire() {
+    [].forEach.call(document.querySelectorAll(REVEAL_SEL), function (el) {
+      if (el.getAttribute('data-srw')) return;
+      el.setAttribute('data-srw', '1');
+      if (ro) ro.observe(el); else showReveal(el);
+    });
     [].forEach.call(document.querySelectorAll('.js-count'), function (el) {
-      if (el.getAttribute('data-wired')) return;
-      el.setAttribute('data-wired', '1');
+      if (el.getAttribute('data-cnw')) return;
+      el.setAttribute('data-cnw', '1');
       var f = (el.getAttribute('data-count') || el.textContent).trim();
       el.setAttribute('data-count', f);
-      if (io) io.observe(el); else fire(el);
+      if (co) co.observe(el); else fireCount(el);
     });
   }
 
   if (document.readyState !== 'loading') wire();
   else document.addEventListener('DOMContentLoaded', wire);
   window.addEventListener('load', wire);
-  setTimeout(wire, 500);
-  setTimeout(wire, 1500);
+  setTimeout(wire, 400);
+  setTimeout(wire, 1200);
+
+  // Re-wire whenever the runtime rebuilds the DOM (debounced).
+  if ('MutationObserver' in window) {
+    var moT;
+    new MutationObserver(function () {
+      clearTimeout(moT);
+      moT = setTimeout(wire, 90);
+    }).observe(document.documentElement, { childList: true, subtree: true });
+  }
+
+  // Safety net: never leave anything hidden, even if the observer can't run.
+  setTimeout(function () {
+    [].forEach.call(document.querySelectorAll(REVEAL_SEL), function (el) { showReveal(el); });
+  }, 6000);
 }());
 </script>
 </body>
