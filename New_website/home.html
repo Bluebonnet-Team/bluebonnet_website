@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿```html
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
@@ -34,7 +35,15 @@
       radial-gradient(640px 360px at 100% 18%,rgba(91,155,240,.08),rgba(91,155,240,0) 70%),
       linear-gradient(180deg,rgba(255,255,255,.78),rgba(255,255,255,1) 240px);
   }
-  .navlink:hover{color:#0B5BD3;}
+  
+  /* ADDED HOVER EFFECTS FOR NAV ITEMS */
+  .navlink, .navphone, .nav-logo span {
+    transition: color 0.2s ease;
+  }
+  .navlink:hover, .navphone:hover, .nav-logo:hover span {
+    color: #0B5BD3 !important;
+  }
+
   .pathgrid{
     display:grid;
     grid-template-columns:repeat(3,1fr);
@@ -439,7 +448,7 @@
     <!-- NAV -->
   <header class="anim-fade" style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,.86);backdrop-filter:saturate(1.5) blur(12px);border-bottom:1px solid #ECEDEF;">
     <nav class="pad" style="max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:32px;padding:18px 56px;">
-      <a href="home.html" style="display:flex;align-items:center;gap:12px;flex:0 0 auto;">
+      <a href="home.html" class="nav-logo" style="display:flex;align-items:center;gap:12px;flex:0 0 auto;">
         <img src="./bluebonnet-logo.png" alt="Bluebonnet logo" style="width:52px;height:52px;object-fit:contain;display:block;filter:drop-shadow(0 6px 16px rgba(11,91,211,.16));">
         <span style="display:flex;flex-direction:column;">
           <span style="font-size:23px;font-weight:800;letter-spacing:-.02em;line-height:1;">Bluebonnet</span>
@@ -447,7 +456,7 @@
         </span>
       </a>
       <div class="navmenu" style="flex:1;display:flex;justify-content:center;gap:30px;">
-        <a class="navlink" href="courses.html" style="font-size:14px;font-weight:600;color:#0B5BD3;">Courses</a>
+        <a class="navlink" href="courses.html" style="font-size:14px;font-weight:600;color:#4A515C;">Courses</a>
         <a class="navlink" href="pricing.html" style="font-size:14px;font-weight:600;color:#4A515C;">Pricing</a>
         <a class="navlink" href="serviceareas.html" style="font-size:14px;font-weight:600;color:#4A515C;">Service Areas</a>
         <a class="navlink" href="about.html" style="font-size:14px;font-weight:600;color:#4A515C;">About</a>
@@ -877,3 +886,4 @@
 </script>
 </body>
 </html>
+
