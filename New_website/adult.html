@@ -7,6 +7,7 @@
 
 <title>Bluebonnet Driving School</title>
 <script src="./support.js"></script>
+<script>document.documentElement.className+=' sr';</script>
 </head>
 <body>
 <x-dc>
@@ -39,6 +40,13 @@
     .footgrid{grid-template-columns:1fr !important;}
     .h1{font-size:33px !important;}
   }
+  @keyframes rvIn{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+  html.sr [data-reveal]{opacity:0;}
+  [data-reveal].sr-in{animation:rvIn .7s cubic-bezier(.22,1,.36,1) both;}
+  @media(prefers-reduced-motion:reduce){
+    html.sr [data-reveal]{opacity:1 !important;}
+    [data-reveal].sr-in{animation:none !important;}
+  }
 </style>
 </helmet>
 
@@ -69,7 +77,7 @@
   </header>
 
   <!-- PAGE HEADER -->
-  <section style="border-bottom:1px solid #ECEDEF;">
+  <section data-reveal style="border-bottom:1px solid #ECEDEF;">
     <div class="pad" style="max-width:1200px;margin:0 auto;padding:60px 56px 56px;">
       <div style="font-size:13px;font-weight:600;color:#9AA1AB;display:flex;gap:9px;align-items:center;flex-wrap:wrap;">
         <a class="lk" href="home.html">Home</a><span>/</span><a class="lk" href="courses.html">Courses</a><span>/</span><span style="color:#4A515C;">Adult Driving Lessons</span>
@@ -85,7 +93,7 @@
   </section>
 
   <!-- WHO IT'S FOR -->
-  <section class="pad secpad" style="max-width:1200px;margin:0 auto;padding:96px 56px;">
+  <section data-reveal class="pad secpad" style="max-width:1200px;margin:0 auto;padding:96px 56px;">
     <div style="margin-bottom:52px;">
       <div style="font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#8A919B;">Who it's for</div>
       <h2 class="h2" style="font-weight:600;font-size:44px;line-height:1.05;letter-spacing:-.025em;margin:16px 0 0;">Built for every kind of adult learner.</h2>
@@ -115,7 +123,7 @@
   </section>
 
   <!-- WHAT LESSONS COVER -->
-  <section style="background:#FAFAFB;border-top:1px solid #ECEDEF;border-bottom:1px solid #ECEDEF;">
+  <section data-reveal style="background:#FAFAFB;border-top:1px solid #ECEDEF;border-bottom:1px solid #ECEDEF;">
     <div class="pad secpad split" style="max-width:1200px;margin:0 auto;padding:96px 56px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;">
       <div>
         <div style="font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#8A919B;">What lessons cover</div>
@@ -135,7 +143,7 @@
   </section>
 
   <!-- ADULT PACKAGES -->
-  <section class="pad secpad" style="max-width:1200px;margin:0 auto;padding:96px 56px;">
+  <section data-reveal class="pad secpad" style="max-width:1200px;margin:0 auto;padding:96px 56px;">
     <div style="margin-bottom:52px;">
       <div style="font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#8A919B;">Adult packages</div>
       <h2 class="h2" style="font-weight:600;font-size:44px;line-height:1.05;letter-spacing:-.025em;margin:16px 0 0;">Choose your pace.</h2>
@@ -179,7 +187,7 @@
   </section>
 
   <!-- SUPPORT CALLOUT -->
-  <section class="pad" style="max-width:1200px;margin:0 auto;padding:0 56px 96px;">
+  <section data-reveal class="pad" style="max-width:1200px;margin:0 auto;padding:0 56px 96px;">
     <div class="colstack" style="background:#FBF6EC;border:1px solid #F0E2C6;border-radius:16px;padding:44px 48px;display:flex;align-items:center;gap:28px;flex-wrap:wrap;">
       <div style="flex:1;min-width:300px;">
         <div style="font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#C9821A;">Need help getting started?</div>
@@ -192,7 +200,7 @@
 
   <!-- FOOTER -->
   <footer style="background:#14171C;color:#fff;">
-    <div class="pad footgrid" style="max-width:1200px;margin:0 auto;padding:80px 56px 56px;display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr;gap:48px;">
+    <div class="pad footgrid" data-reveal style="max-width:1200px;margin:0 auto;padding:80px 56px 56px;display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr;gap:48px;">
       <div>
         <div style="font-size:22px;font-weight:800;letter-spacing:-.02em;">Bluebonnet</div>
         <p style="font-size:14.5px;line-height:1.65;color:#9AA1AB;margin:16px 0 0;max-width:34ch;">Patient, TDLR-licensed driving instruction for teens and adults across Plano and the North Dallas area. From first lesson to DPS road test.</p>
@@ -229,6 +237,36 @@
 
 </div>
 </x-dc>
+<script>
+(function () {
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) return;
+  var SEL = '[data-reveal]';
+  function show(el){ el.classList.add('sr-in'); }
+  var ro = ('IntersectionObserver' in window)
+    ? new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ show(e.target); ro.unobserve(e.target); } }); }, { threshold:0.1, rootMargin:'0px 0px -6% 0px' })
+    : null;
+  // Re-scannable: safe to call many times; catches nodes the runtime re-renders.
+  function wire(){
+    [].forEach.call(document.querySelectorAll(SEL), function(el){
+      if (el.getAttribute('data-srw')) return;
+      el.setAttribute('data-srw','1');
+      if (ro) ro.observe(el); else show(el);
+    });
+  }
+  if (document.readyState !== 'loading') wire();
+  else document.addEventListener('DOMContentLoaded', wire);
+  window.addEventListener('load', wire);
+  setTimeout(wire, 400);
+  setTimeout(wire, 1200);
+  if ('MutationObserver' in window){
+    var moT;
+    new MutationObserver(function(){ clearTimeout(moT); moT=setTimeout(wire,90); }).observe(document.documentElement, { childList:true, subtree:true });
+  }
+  // Safety net: never leave anything hidden, even if the observer can't run.
+  setTimeout(function(){ [].forEach.call(document.querySelectorAll(SEL), function(el){ show(el); }); }, 6000);
+}());
+</script>
 </body>
 </html>
 

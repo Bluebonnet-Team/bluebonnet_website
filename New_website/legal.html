@@ -7,6 +7,7 @@
 
 <title>Bluebonnet Driving School</title>
 <script src="./support.js"></script>
+<script>document.documentElement.className+=' sr';</script>
 </head>
 <body>
 <x-dc>
@@ -38,6 +39,13 @@
     .footgrid{grid-template-columns:1fr !important;}
     .h1{font-size:32px !important;}
   }
+  @keyframes rvFade{from{opacity:0;}to{opacity:1;}}
+  html.sr [data-reveal]{opacity:0;}
+  [data-reveal].sr-in{animation:rvFade .7s cubic-bezier(.22,1,.36,1) both;}
+  @media(prefers-reduced-motion:reduce){
+    html.sr [data-reveal]{opacity:1 !important;}
+    [data-reveal].sr-in{animation:none !important;}
+  }
 </style>
 </helmet>
 
@@ -68,7 +76,7 @@
   </header>
 
   <!-- PAGE HEADER -->
-  <section style="border-bottom:1px solid #ECEDEF;">
+  <section data-reveal style="border-bottom:1px solid #ECEDEF;">
     <div class="pad" style="max-width:1200px;margin:0 auto;padding:60px 56px 56px;">
       <div style="font-size:13px;font-weight:600;color:#9AA1AB;display:flex;gap:9px;align-items:center;">
         <a class="lk" href="home.html">Home</a><span>/</span><span style="color:#4A515C;">Legal</span>
@@ -80,7 +88,7 @@
   </section>
 
   <!-- BODY -->
-  <section class="pad secpad legalsplit" style="max-width:1200px;margin:0 auto;padding:64px 56px 96px;display:grid;grid-template-columns:.7fr 1.3fr;gap:64px;align-items:start;">
+  <section data-reveal class="pad secpad legalsplit" style="max-width:1200px;margin:0 auto;padding:64px 56px 96px;display:grid;grid-template-columns:.7fr 1.3fr;gap:64px;align-items:start;">
     <nav class="legalnav" style="position:sticky;top:110px;border-left:2px solid #ECEDEF;padding-left:20px;display:flex;flex-direction:column;gap:14px;">
       <a class="lk" href="#privacy" style="font-size:14.5px;font-weight:700;color:#14171C;">Privacy Policy</a>
       <a class="lk" href="#data" style="font-size:14.5px;font-weight:500;color:#7A828F;">Information we collect</a>
@@ -116,7 +124,7 @@
 
   <!-- FOOTER -->
   <footer style="background:#14171C;color:#fff;">
-    <div class="pad footgrid" style="max-width:1200px;margin:0 auto;padding:80px 56px 56px;display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr;gap:48px;">
+    <div class="pad footgrid" data-reveal style="max-width:1200px;margin:0 auto;padding:80px 56px 56px;display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr;gap:48px;">
       <div>
         <div style="font-size:22px;font-weight:800;letter-spacing:-.02em;">Bluebonnet</div>
         <p style="font-size:14.5px;line-height:1.65;color:#9AA1AB;margin:16px 0 0;max-width:34ch;">Patient, TDLR-licensed driving instruction for teens and adults across Plano and the North Dallas area. From first lesson to DPS road test.</p>
@@ -153,6 +161,36 @@
 
 </div>
 </x-dc>
+<script>
+(function () {
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) return;
+  var SEL = '[data-reveal]';
+  function show(el){ el.classList.add('sr-in'); }
+  var ro = ('IntersectionObserver' in window)
+    ? new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ show(e.target); ro.unobserve(e.target); } }); }, { threshold:0.1, rootMargin:'0px 0px -6% 0px' })
+    : null;
+  // Re-scannable: safe to call many times; catches nodes the runtime re-renders.
+  function wire(){
+    [].forEach.call(document.querySelectorAll(SEL), function(el){
+      if (el.getAttribute('data-srw')) return;
+      el.setAttribute('data-srw','1');
+      if (ro) ro.observe(el); else show(el);
+    });
+  }
+  if (document.readyState !== 'loading') wire();
+  else document.addEventListener('DOMContentLoaded', wire);
+  window.addEventListener('load', wire);
+  setTimeout(wire, 400);
+  setTimeout(wire, 1200);
+  if ('MutationObserver' in window){
+    var moT;
+    new MutationObserver(function(){ clearTimeout(moT); moT=setTimeout(wire,90); }).observe(document.documentElement, { childList:true, subtree:true });
+  }
+  // Safety net: never leave anything hidden, even if the observer can't run.
+  setTimeout(function(){ [].forEach.call(document.querySelectorAll(SEL), function(el){ show(el); }); }, 6000);
+}());
+</script>
 </body>
 </html>
 
