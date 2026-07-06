@@ -1,4 +1,4 @@
-﻿```html
+﻿
 <!DOCTYPE html>
 <html>
 <head>
@@ -61,10 +61,7 @@
     overflow:hidden;
     box-shadow:0 14px 34px -28px rgba(20,23,28,.22);
     transition:transform .38s cubic-bezier(.22,1,.36,1), box-shadow .38s cubic-bezier(.22,1,.36,1), border-color .38s ease;
-    animation:pathcard-in .65s cubic-bezier(.22,1,.36,1) both;
   }
-  .pathrow:nth-child(2){animation-delay:.08s;}
-  .pathrow:nth-child(3){animation-delay:.16s;}
   .pathrow::before{
     content:"";
     position:absolute;
@@ -290,16 +287,6 @@
     border-radius:24px;
     pointer-events:none;
   }
-  @keyframes pathcard-in{
-    from{
-      opacity:0;
-      transform:translateY(22px);
-    }
-    to{
-      opacity:1;
-      transform:translateY(0);
-    }
-  }
   .areacell:hover{background:#FAFAFB;}
   .lk{transition:opacity .15s;}
   .lk:hover{opacity:.6;}
@@ -387,58 +374,77 @@
     .statgrid{grid-template-columns:1fr !important;}
     .h1{font-size:34px !important;}
   }
-  @media(prefers-reduced-motion:reduce){
-    .pathrow,
-    .pathrow::before,
-    .pathrow::after,
-    .pathindex,
-    .pathkicker,
-    .pathtitle,
-    .pathcopy,
-    .pathcta,
-    .patharrow,
-    .packagecard,
-    .processcard,
-    .reviewcard,
-    .servicecard{
-      animation:none !important;
-      transition:none !important;
-    }
+  
+  /* Scroll Reveal Animations - Replicating serviceareas.html */
+  @keyframes rvIn{
+    from{opacity:0;transform:translateY(26px);}
+    to{opacity:1;transform:none;}
   }
-  @keyframes rvIn{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:translateY(0);}}
-  @keyframes rvFadeIn{from{opacity:0;}to{opacity:1;}}
+
   html.sr [data-reveal],
   html.sr .reviewcard,
   html.sr .packagecard,
   html.sr .processcard,
-  html.sr .servicecard{opacity:0;}
-  [data-reveal].sr-in,
-  .reviewcard.sr-in{animation:rvIn .7s cubic-bezier(.22,1,.36,1) both;}
-  .packagecard.sr-in,
-  .processcard.sr-in,
-  .servicecard.sr-in{animation:rvFadeIn .7s cubic-bezier(.22,1,.36,1) both;}
+  html.sr .servicecard,
+  html.sr .pathrow {
+    opacity:0;
+  }
+
+  [data-reveal].is-visible,
+  .reviewcard.is-visible,
+  .packagecard.is-visible,
+  .processcard.is-visible,
+  .servicecard.is-visible,
+  .pathrow.is-visible {
+    animation:rvIn .95s cubic-bezier(.16,1,.3,1) both;
+  }
+
+  .anim-fade {
+    opacity: 0;
+    transition: opacity .95s ease;
+    will-change: opacity;
+  }
+  .anim-fade.is-visible {
+    opacity: 1;
+  }
+
   .homehero-inner .heroeyebrow{animation-delay:0s;}
-  .homehero-inner h1[data-reveal]{animation-delay:.09s;}
-  .homehero-inner p[data-reveal]{animation-delay:.18s;}
-  .homehero-inner .herocta{animation-delay:.27s;}
-  .homehero-inner .truststrip{animation-delay:.36s;}
+  .homehero-inner h1[data-reveal]{animation-delay:.08s;}
+  .homehero-inner p[data-reveal]{animation-delay:.16s;}
+  .homehero-inner .herocta{animation-delay:.24s;}
+  .homehero-inner .truststrip{animation-delay:.32s;}
+  
+  .pathrow:nth-child(2){animation-delay:.08s;}
+  .pathrow:nth-child(3){animation-delay:.16s;}
+
   .packagecard:nth-child(2){animation-delay:.09s;}
   .packagecard:nth-child(3){animation-delay:.18s;}
+
   .processcard:nth-child(2){animation-delay:.08s;}
   .processcard:nth-child(3){animation-delay:.16s;}
   .processcard:nth-child(4){animation-delay:.24s;}
+
   .reviewcard:nth-child(2){animation-delay:.09s;}
   .reviewcard:nth-child(3){animation-delay:.18s;}
-  .servicecard:nth-child(2){animation-delay:.05s;}
-  .servicecard:nth-child(3){animation-delay:.1s;}
-  .servicecard:nth-child(4){animation-delay:.15s;}
-  .servicecard:nth-child(5){animation-delay:.2s;}
-  .servicecard:nth-child(6){animation-delay:.25s;}
-  .servicecard:nth-child(7){animation-delay:.3s;}
+
+  .servicecard:nth-child(2){animation-delay:.06s;}
+  .servicecard:nth-child(3){animation-delay:.12s;}
+  .servicecard:nth-child(4){animation-delay:.18s;}
+  .servicecard:nth-child(5){animation-delay:.24s;}
+  .servicecard:nth-child(6){animation-delay:.30s;}
+  .servicecard:nth-child(7){animation-delay:.36s;}
+
   .js-count{font-variant-numeric:tabular-nums;}
+
   @media(prefers-reduced-motion:reduce){
-    html.sr [data-reveal],html.sr .reviewcard,html.sr .packagecard,html.sr .processcard,html.sr .servicecard{opacity:1 !important;}
-    [data-reveal].sr-in,.reviewcard.sr-in,.packagecard.sr-in,.processcard.sr-in,.servicecard.sr-in{animation:none !important;}
+    html.sr [data-reveal], html.sr .reviewcard, html.sr .packagecard, html.sr .processcard, html.sr .servicecard, html.sr .pathrow, .anim-fade {
+      opacity:1 !important;
+      transform:none !important;
+    }
+    .is-visible{
+      animation:none !important;
+      transition:none !important;
+    }
   }
 </style>
 </helmet>
@@ -472,15 +478,15 @@
   <!-- ============ HERO ============ -->
   <section class="homehero">
   <div class="pad homehero-inner">
-    <div class="heroeyebrow" data-reveal data-delay="0" style="font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.82);">TDLR-Licensed &middot; Plano &amp; North Dallas</div>
-    <h1 class="h1" data-reveal data-delay="90" style="font-weight:500;font-size:90px;line-height:1.0;letter-spacing:-.035em;margin:26px auto 0;max-width:16ch;color:#fff;">Learn to drive with <span style="font-weight:800;color:#DCEBFF;">confidence.</span></h1>
-    <p data-reveal data-delay="180" style="max-width:56ch;margin:22px auto 0;font-size:20px;line-height:1.6;color:rgba(255,255,255,.9);">Patient, TDLR-licensed instructors for teen driver education, adult lessons, and DPS road tests across the North Dallas area.</p>
-    <div class="herocta" data-reveal data-delay="270" style="display:flex;gap:16px;justify-content:center;margin-top:26px;flex-wrap:wrap;">
+    <div class="heroeyebrow" data-reveal style="font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.82);">TDLR-Licensed &middot; Plano &amp; North Dallas</div>
+    <h1 class="h1" data-reveal style="font-weight:500;font-size:90px;line-height:1.0;letter-spacing:-.035em;margin:26px auto 0;max-width:16ch;color:#fff;">Learn to drive with <span style="font-weight:800;color:#DCEBFF;">confidence.</span></h1>
+    <p data-reveal style="max-width:56ch;margin:22px auto 0;font-size:20px;line-height:1.6;color:rgba(255,255,255,.9);">Patient, TDLR-licensed instructors for teen driver education, adult lessons, and DPS road tests across the North Dallas area.</p>
+    <div class="herocta" data-reveal style="display:flex;gap:16px;justify-content:center;margin-top:26px;flex-wrap:wrap;">
       <a class="lk" href="book.html" style="font-size:16px;font-weight:600;color:#fff;background:#0B5BD3;padding:15px 28px;border-radius:10px;">Book a lesson</a>
       <a class="lk" href="courses.html" style="font-size:16px;font-weight:600;color:#fff;padding:15px 6px;border-bottom:1.5px solid rgba(255,255,255,.85);">See courses &amp; pricing &rarr;</a>
     </div>
     <!-- trust strip -->
-    <div class="truststrip" data-reveal data-delay="360">
+    <div class="truststrip" data-reveal>
       <div style="flex:1;padding:18px 18px;display:flex;flex-direction:column;align-items:center;gap:5px;">
         <div style="display:flex;align-items:center;gap:7px;"><span style="color:#DCEBFF;font-size:18px;">&#9733;</span><span class="js-count" data-count="4.9" style="font-size:26px;font-weight:800;letter-spacing:-.02em;color:#fff;">4.9</span></div>
         <div style="font-size:12.5px;font-weight:600;color:rgba(255,255,255,.78);">on Google &middot; 100+ reviews</div>
@@ -796,7 +802,7 @@
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var DIGITS = '0123456789';
   var UPPER  = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  var REVEAL_SEL = '[data-reveal], .packagecard, .processcard, .servicecard, .reviewcard';
+  var REVEAL_SEL = '[data-reveal], .packagecard, .processcard, .servicecard, .reviewcard, .pathrow, .anim-fade';
 
   function randFor(c) {
     if (/[0-9]/.test(c)) return DIGITS[(Math.random() * 10) | 0];
@@ -832,7 +838,7 @@
 
   if (reduce) return;
 
-  function showReveal(el) { el.classList.add('sr-in'); }
+  function showReveal(el) { el.classList.add('is-visible'); }
   function fireCount(el) {
     if (el.getAttribute('data-done')) return;
     el.setAttribute('data-done', '1');
@@ -886,4 +892,6 @@
 </script>
 </body>
 </html>
+
+
 
