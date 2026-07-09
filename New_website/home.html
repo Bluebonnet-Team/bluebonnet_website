@@ -172,6 +172,56 @@
     color:rgba(255,255,255,.8);
     margin:0;
   }
+  /* ---- Modern ambient motion for the "Why families choose us" info panel (decorative, non-interactive) ---- */
+  .featuregrid{position:relative;overflow:hidden;}
+  /* flowing blue gradient — the whole panel visibly shifts and moves, staggered into a diagonal wave */
+  .featurecard{
+    background:linear-gradient(125deg,#0A4FBA 0%,#0B5BD3 20%,#2E7BEC 46%,#0B5BD3 72%,#0848A7 100%);
+    background-size:300% 300%;
+    animation:featFlow 8s ease-in-out infinite;
+  }
+  .featurecard:nth-child(2){animation-delay:-1.3s;}
+  .featurecard:nth-child(3){animation-delay:-2.6s;}
+  .featurecard:nth-child(4){animation-delay:-3.9s;}
+  .featurecard:nth-child(5){animation-delay:-5.2s;}
+  .featurecard:nth-child(6){animation-delay:-6.5s;}
+  @keyframes featFlow{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+  }
+  /* bright light sweep across the whole panel */
+  .featuregrid::after{
+    content:"";
+    position:absolute;
+    top:-25%;left:-70%;
+    width:48%;height:150%;
+    background:linear-gradient(100deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.30) 50%,rgba(255,255,255,0) 100%);
+    transform:skewX(-16deg);
+    pointer-events:none;z-index:3;
+    animation:featSheen 4.5s cubic-bezier(.5,0,.2,1) infinite;
+  }
+  @keyframes featSheen{
+    0%{left:-70%;}
+    45%{left:140%;}
+    100%{left:140%;}
+  }
+  /* icons rise + pulse with a soft glow to pull the eye to each card */
+  .featureicon{animation:featPulse 3s ease-in-out infinite;will-change:transform,filter;}
+  .featurecard:nth-child(2) .featureicon{animation-delay:.2s;}
+  .featurecard:nth-child(3) .featureicon{animation-delay:.4s;}
+  .featurecard:nth-child(4) .featureicon{animation-delay:.6s;}
+  .featurecard:nth-child(5) .featureicon{animation-delay:.8s;}
+  .featurecard:nth-child(6) .featureicon{animation-delay:1s;}
+  @keyframes featPulse{
+    0%,100%{transform:translateY(0) scale(1);filter:drop-shadow(0 0 0 rgba(255,255,255,0));}
+    50%{transform:translateY(-4px) scale(1.1);filter:drop-shadow(0 0 11px rgba(205,228,255,.75));}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .featurecard{animation:none;background:linear-gradient(180deg,#0B5BD3,#0848A7);}
+    .featuregrid::after{animation:none;opacity:0;}
+    .featureicon{animation:none;}
+  }
   .packagecard{
     border:1px solid #E2E8F2;
     border-radius:22px;
@@ -199,18 +249,37 @@
   }
   .processcard{
     position:relative;
+    overflow:hidden;
     padding:32px 28px 30px;
     border:1px solid #E2E8F2;
     border-radius:22px;
     background:linear-gradient(180deg,#FFFFFF,rgba(247,250,255,.92));
     box-shadow:0 18px 44px -34px rgba(20,23,28,.18);
-    transition:transform .3s cubic-bezier(.22,1,.36,1), border-color .3s ease, box-shadow .3s ease;
+    transition:transform .38s cubic-bezier(.22,1,.36,1), border-color .38s ease, box-shadow .38s ease;
   }
+  /* light streak that sweeps across on hover */
+  .processcard::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-85%;
+    width:60%;
+    height:100%;
+    background:linear-gradient(100deg,rgba(11,91,211,0),rgba(11,91,211,.12),rgba(11,91,211,0));
+    transform:skewX(-18deg);
+    transition:left .75s cubic-bezier(.4,0,.2,1);
+    pointer-events:none;
+    z-index:1;
+  }
+  .processcard > *{position:relative;z-index:2;}
   .processcard:hover{
-    transform:translateY(-6px);
-    border-color:#C9D8F1;
-    box-shadow:0 24px 52px -32px rgba(11,91,211,.2);
+    transform:translateY(-10px);
+    border-color:#8FB6F2;
+    box-shadow:0 30px 60px -28px rgba(11,91,211,.4);
   }
+  .processcard:hover::before{left:130%;}
+  .processcard h4{transition:color .35s ease;}
+  .processcard:hover h4{color:#0B5BD3;}
   .processnum{
     width:44px;
     height:44px;
@@ -223,6 +292,19 @@
     color:#0B5BD3;
     background:#EAF1FC;
     box-shadow:inset 0 0 0 1px rgba(11,91,211,.08);
+    transition:transform .38s cubic-bezier(.22,1,.36,1), background .35s ease, color .35s ease, box-shadow .35s ease;
+  }
+  .processcard:hover .processnum{
+    transform:scale(1.14) translateY(-2px);
+    background:linear-gradient(135deg,#0B5BD3,#0848A7);
+    color:#fff;
+    box-shadow:0 10px 22px -6px rgba(11,91,211,.6), inset 0 0 0 1px rgba(255,255,255,.15);
+  }
+  @media(prefers-reduced-motion:reduce){
+    .processcard,.processcard::before,.processnum{transition:none;}
+    .processcard:hover{transform:none;}
+    .processcard:hover::before{left:-85%;}
+    .processcard:hover .processnum{transform:none;}
   }
   .statband{
     border-radius:34px;
@@ -254,19 +336,45 @@
     gap:14px;
   }
   .servicecard{
+    position:relative;
+    overflow:hidden;
     background:linear-gradient(180deg,#FFFFFF,rgba(246,250,255,.96));
     padding:28px 26px;
     cursor:pointer;
     border:1px solid #E2E8F2;
     border-radius:18px;
     box-shadow:0 16px 34px -30px rgba(20,23,28,.14);
-    transition:transform .28s cubic-bezier(.22,1,.36,1), border-color .28s ease, box-shadow .28s ease;
+    transition:transform .32s cubic-bezier(.22,1,.36,1), border-color .32s ease, box-shadow .32s ease, background .32s ease;
   }
+  /* light streak that sweeps across on hover */
+  .servicecard::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-90%;
+    width:65%;
+    height:100%;
+    background:linear-gradient(100deg,rgba(11,91,211,0),rgba(11,91,211,.12),rgba(11,91,211,0));
+    transform:skewX(-20deg);
+    transition:left .7s cubic-bezier(.4,0,.2,1);
+    pointer-events:none;
+    z-index:1;
+  }
+  .servicecard:last-child::before{
+    background:linear-gradient(100deg,rgba(255,255,255,0),rgba(255,255,255,.26),rgba(255,255,255,0));
+  }
+  .servicecard > *{position:relative;z-index:2;}
   .servicecard:hover{
-    background:linear-gradient(180deg,#FFFFFF,rgba(246,250,255,.96));
-    transform:translateY(-4px);
-    border-color:#BFD3F3;
-    box-shadow:0 22px 40px -28px rgba(11,91,211,.18);
+    transform:translateY(-6px) scale(1.03);
+    border-color:#0B5BD3;
+    box-shadow:0 26px 50px -26px rgba(11,91,211,.4);
+  }
+  .servicecard.areacell:hover{background:linear-gradient(180deg,#FFFFFF,#E8F1FF);}
+  .servicecard:hover::before{left:135%;}
+  @media(prefers-reduced-motion:reduce){
+    .servicecard,.servicecard::before{transition:none;}
+    .servicecard:hover{transform:none;}
+    .servicecard:hover::before{left:-90%;}
   }
   .cta-shell{
     position:relative;
@@ -296,7 +404,7 @@
     background:
       linear-gradient(180deg,rgba(11,91,211,.44),rgba(11,91,211,.38) 48%,rgba(11,91,211,.5)),
       linear-gradient(180deg,rgba(255,255,255,.28),rgba(255,255,255,.22) 48%,rgba(255,255,255,.38)),
-      url("uploads/secondary.png") center 18% / cover no-repeat;
+      url("uploads/driving-lesson-hero.png") center 18% / cover no-repeat;
   }
   .homehero::before{
     content:"";
@@ -950,4 +1058,3 @@
 </script>
 </body>
 </html>
-
