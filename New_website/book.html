@@ -105,24 +105,26 @@
 
   <!-- BOOK -->
   <section class="pad secpad booksplit" style="max-width:1200px;margin:0 auto;padding:72px 56px 96px;display:grid;grid-template-columns:1.25fr .75fr;gap:64px;align-items:start;">
-    <form id="bookingForm" action="PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE" method="POST" target="bookingSubmitFrame" class="formpad rv d5" style="border:1px solid #E2E3E6;border-radius:16px;padding:40px;">
+    <form id="bookingForm" action="https://script.google.com/macros/s/AKfycbwvuMKuZvjzshQkSXnBUhadJ9qU_Z_ROO4l6BwSkaPvZT81XwemaEMCYuiV4STbyvAP/exec" method="POST" target="bookingSubmitFrame" referrerpolicy="strict-origin-when-cross-origin" class="formpad rv d5" style="border:1px solid #E2E3E6;border-radius:16px;padding:40px;">
       <h3 style="font-size:23px;font-weight:700;letter-spacing:-.015em;margin:0 0 22px;">Request your booking</h3>
       <div class="formgrid" style="display:grid;grid-template-columns:1fr 1fr;gap:18px;">
-        <div><label class="lbl" for="studentName">Student name</label><input id="studentName" name="student_name" class="inp" placeholder="Jordan Rivera" required></div>
-        <div><label class="lbl" for="studentAge">Student age</label><input id="studentAge" name="student_age" class="inp" inputmode="numeric" placeholder="16" required></div>
-        <div><label class="lbl" for="email">Email</label><input id="email" name="email" class="inp" type="email" placeholder="you@email.com" required></div>
-        <div><label class="lbl" for="phone">Phone</label><input id="phone" name="phone" class="inp" type="tel" placeholder="(214) 545-7529" required></div>
+        <div><label class="lbl" for="studentName">Student name</label><input id="studentName" name="student_name" class="inp" maxlength="80" autocomplete="name" placeholder="Jordan Rivera" required></div>
+        <div><label class="lbl" for="studentAge">Student age</label><input id="studentAge" name="student_age" class="inp" inputmode="numeric" maxlength="2" pattern="[0-9]{1,2}" placeholder="16" required></div>
+        <div><label class="lbl" for="email">Email</label><input id="email" name="email" class="inp" type="email" maxlength="120" autocomplete="email" placeholder="you@email.com" required></div>
+        <div><label class="lbl" for="phone">Phone</label><input id="phone" name="phone" class="inp" type="tel" maxlength="25" autocomplete="tel" placeholder="(214) 545-7529" required></div>
         <div style="grid-column:1/-1"><label class="lbl" for="package">Package</label><select id="package" name="package" class="inp" required><option value="Package 2 - Teen #2 - $450 (most popular)">Package 2 &middot; Teen #2 &mdash; $450 (most popular)</option><option value="Package 2 - Teen #1 - $400">Package 2 &middot; Teen #1 &mdash; $400</option><option value="Package 2 - Teen #3 - $470">Package 2 &middot; Teen #3 &mdash; $470</option><option value="Package 1 - Adult Complete - $450">Package 1 &mdash; Adult Complete &mdash; $450</option><option value="Package 3 - Adult Extended - $450">Package 3 &mdash; Adult Extended &mdash; $450</option><option value="Package 4 - Road Test Only - $180">Package 4 &mdash; Road Test Only &mdash; $180</option><option value="Package 5 - Straight to Drive - $135">Package 5 &mdash; Straight to Drive &mdash; $135</option></select></div>
         <div><label class="lbl" for="preferredArea">Preferred area</label><select id="preferredArea" name="preferred_area" class="inp" required><option>Plano</option><option>Frisco</option><option>Allen</option><option>McKinney</option><option>Richardson</option><option>Garland</option></select></div>
-        <div><label class="lbl" for="preferredTimes">Preferred days/times</label><input id="preferredTimes" name="preferred_times" class="inp" placeholder="Weekday evenings" required></div>
-        <div style="grid-column:1/-1"><label class="lbl" for="pickupAddress">Pickup address (optional)</label><input id="pickupAddress" name="pickup_address" class="inp" placeholder="Street, city"></div>
-        <div style="grid-column:1/-1"><label class="lbl" for="notes">Anything we should know?</label><textarea id="notes" name="notes" class="inp" placeholder="First-time driver, nervous about highways, prefers Spanish..."></textarea></div>
+        <div><label class="lbl" for="preferredTimes">Preferred days/times</label><input id="preferredTimes" name="preferred_times" class="inp" maxlength="120" placeholder="Weekday evenings" required></div>
+        <div style="grid-column:1/-1"><label class="lbl" for="pickupAddress">Pickup address (optional)</label><input id="pickupAddress" name="pickup_address" class="inp" maxlength="160" autocomplete="street-address" placeholder="Street, city"></div>
+        <div style="grid-column:1/-1"><label class="lbl" for="notes">Anything we should know?</label><textarea id="notes" name="notes" class="inp" maxlength="500" placeholder="First-time driver, nervous about highways, prefers Spanish..."></textarea></div>
       </div>
       <input type="hidden" name="submitted_at" id="submittedAt">
+      <input type="hidden" name="form_loaded_at" id="formLoadedAt">
       <input type="hidden" name="page_url" id="pageUrl">
       <input type="hidden" name="user_agent" id="userAgent">
+      <input type="text" name="company" id="company" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;pointer-events:none;">
       <button id="bookingSubmit" type="submit" style="margin-top:22px;width:100%;font-size:16px;font-weight:600;color:#fff;background:#0B5BD3;border:none;border-radius:10px;padding:16px;cursor:pointer;">Request booking</button>
-      <p id="bookingStatus" aria-live="polite" style="font-size:12.5px;color:#9AA1AB;text-align:center;margin:14px 0 0;">Submissions will be saved to Google Sheets once the backend URL is added.</p>
+      <p id="bookingStatus" aria-live="polite" style="font-size:12.5px;color:#9AA1AB;text-align:center;margin:14px 0 0;">Checking booking connection...</p>
       <iframe name="bookingSubmitFrame" id="bookingSubmitFrame" title="Booking submission" style="display:none;"></iframe>
     </form>
     <div>
@@ -189,41 +191,183 @@
 </x-dc>
 <script>
   (function () {
-    var form = document.getElementById("bookingForm");
-    var frame = document.getElementById("bookingSubmitFrame");
-    var submit = document.getElementById("bookingSubmit");
-    var status = document.getElementById("bookingStatus");
-    var submitted = false;
-    if (!form || !frame || !submit || !status) return;
+    var ENDPOINT_RE = /^\/macros\/s\/[^/]+\/(exec|dev)$/i;
+    var initialized = false;
 
-    form.addEventListener("submit", function (event) {
-      var action = form.getAttribute("action") || "";
-      if (action.indexOf("PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE") !== -1) {
-        event.preventDefault();
-        status.textContent = "Add your Google Apps Script web app URL to connect this form to Google Sheets.";
-        status.style.color = "#C9821A";
+    function getLiveNode(id) {
+      var nodes = document.querySelectorAll("#" + id);
+      for (var i = 0; i < nodes.length; i++) {
+        if (!nodes[i].closest("x-dc")) return nodes[i];
+      }
+      return null;
+    }
+
+    function initBookingForm() {
+      if (initialized) return;
+
+      var form = getLiveNode("bookingForm");
+      var frame = getLiveNode("bookingSubmitFrame");
+      var submit = getLiveNode("bookingSubmit");
+      var status = getLiveNode("bookingStatus");
+      var formLoadedAt = getLiveNode("formLoadedAt");
+      var submitted = false;
+      var fallbackTimer = null;
+
+      if (!form || !frame || !submit || !status || !formLoadedAt) {
+        window.requestAnimationFrame(initBookingForm);
         return;
       }
 
-      document.getElementById("submittedAt").value = new Date().toISOString();
-      document.getElementById("pageUrl").value = window.location.href;
-      document.getElementById("userAgent").value = window.navigator.userAgent;
-      submitted = true;
-      submit.disabled = true;
-      submit.textContent = "Sending...";
-      status.textContent = "Sending your request...";
-      status.style.color = "#6B7280";
-    });
+      initialized = true;
 
-    frame.addEventListener("load", function () {
-      if (!submitted) return;
-      submitted = false;
-      form.reset();
-      submit.disabled = false;
-      submit.textContent = "Request booking";
-      status.textContent = "Request sent. We will confirm by phone or email within one business day.";
-      status.style.color = "#1E9D5B";
-    });
+      function setStatus(message, color) {
+        status.textContent = message;
+        status.style.color = color;
+      }
+
+      function setField(name, value) {
+        if (form.elements[name]) {
+          form.elements[name].value = value;
+        }
+      }
+
+      function clearFallbackTimer() {
+        if (fallbackTimer) {
+          window.clearTimeout(fallbackTimer);
+          fallbackTimer = null;
+        }
+      }
+
+      function resetSubmitButton() {
+        submit.disabled = false;
+        submit.textContent = "Request booking";
+      }
+
+      function finishSuccess(message) {
+        clearFallbackTimer();
+        submitted = false;
+        form.reset();
+        setField("form_loaded_at", new Date().toISOString());
+        resetSubmitButton();
+        setStatus(message || "Request sent. We will confirm by phone or email within one business day.", "#1E9D5B");
+      }
+
+      function finishError(message) {
+        clearFallbackTimer();
+        submitted = false;
+        resetSubmitButton();
+        setStatus("We could not send this booking: " + (message || "please check the form and try again."), "#C9821A");
+      }
+
+      function cleanBackendMessage(message) {
+        return String(message || "").replace(/^error:\s*/i, "");
+      }
+
+      function getEndpointInfo() {
+        var raw = (form.getAttribute("action") || "").trim();
+        if (!raw) {
+          return {
+            configured: false,
+            valid: false,
+            mode: null,
+            message: "Add your Google Apps Script web app URL to connect this form to Google Sheets."
+          };
+        }
+
+        try {
+          var url = new URL(raw, window.location.href);
+          var isValid = url.protocol === "https:" &&
+            url.hostname === "script.google.com" &&
+            ENDPOINT_RE.test(url.pathname);
+
+          if (!isValid) {
+            return {
+              configured: true,
+              valid: false,
+              mode: null,
+              message: "Use the deployed Google Apps Script web app URL from script.google.com ending in /exec."
+            };
+          }
+
+          return {
+            configured: true,
+            valid: true,
+            mode: /\/dev$/i.test(url.pathname) ? "dev" : "exec",
+            message: ""
+          };
+        } catch (error) {
+          return {
+            configured: true,
+            valid: false,
+            mode: null,
+            message: "The booking endpoint URL is invalid. Paste the full Google Apps Script web app URL."
+          };
+        }
+      }
+
+      function syncStatus() {
+        var endpoint = getEndpointInfo();
+        if (!endpoint.configured) {
+          setStatus(endpoint.message, "#C9821A");
+          return endpoint;
+        }
+        if (!endpoint.valid) {
+          setStatus(endpoint.message, "#C9821A");
+          return endpoint;
+        }
+        if (endpoint.mode === "dev") {
+          setStatus("Connected to a test deployment. Use the /exec web app URL before going live.", "#C9821A");
+          return endpoint;
+        }
+
+        setStatus("Booking form connected. We will confirm by phone or email within one business day.", "#6B7280");
+        return endpoint;
+      }
+
+      setField("form_loaded_at", new Date().toISOString());
+      syncStatus();
+
+      form.addEventListener("submit", function (event) {
+        var endpoint = getEndpointInfo();
+        if (!endpoint.valid) {
+          event.preventDefault();
+          setStatus(endpoint.message, "#C9821A");
+          return;
+        }
+
+        clearFallbackTimer();
+        setField("submitted_at", new Date().toISOString());
+        setField("form_loaded_at", form.elements.form_loaded_at.value || new Date().toISOString());
+        setField("page_url", window.location.href);
+        setField("user_agent", window.navigator.userAgent);
+        submitted = true;
+        submit.disabled = true;
+        submit.textContent = "Sending...";
+        setStatus(endpoint.mode === "dev" ? "Sending test request..." : "Sending your request...", "#6B7280");
+      });
+
+      frame.addEventListener("load", function () {
+        if (!submitted) return;
+        clearFallbackTimer();
+        fallbackTimer = window.setTimeout(function () {
+          if (!submitted) return;
+          finishSuccess();
+        }, 3000);
+      });
+
+      window.addEventListener("message", function (event) {
+        var data = event.data;
+        if (!submitted || !data || data.source !== "bluebonnet-booking") return;
+
+        if (data.ok) {
+          finishSuccess("Request sent. We will confirm by phone or email within one business day.");
+        } else {
+          finishError(cleanBackendMessage(data.message));
+        }
+      });
+    }
+
+    initBookingForm();
   }());
 </script>
 </body>
