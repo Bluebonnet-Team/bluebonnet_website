@@ -21,6 +21,14 @@
   .navlink:hover{color:#0B5BD3 !important;}
   .lk{transition:opacity .15s;}
   .lk:hover{opacity:.6;}
+  /* White outline buttons fill with brand blue on hover (existing solid-blue buttons are unaffected) */
+  .btn-outline{transition:background .22s ease,color .22s ease,border-color .22s ease;}
+  .btn-outline:hover{
+    background:#0B5BD3 !important;
+    color:#fff !important;
+    border-color:#0B5BD3 !important;
+    opacity:1 !important;
+  }
   @media(max-width:980px){
     .g3{grid-template-columns:repeat(2,1fr) !important;}
   }
@@ -87,7 +95,7 @@
       <p class="anim" style="max-width:64ch;margin:20px 0 0;font-size:19px;line-height:1.62;color:#4A515C;">Genuine reviews from the families and adult learners we've taught across Plano and North Dallas.</p>
       <div class="anim" style="display:flex;gap:14px;margin-top:30px;flex-wrap:wrap;">
         <a class="lk" href="book.html" style="font-size:15.5px;font-weight:600;color:#fff;background:#0B5BD3;padding:14px 26px;border-radius:10px;">Book a lesson</a>
-        <a class="lk" href="#" style="font-size:15.5px;font-weight:600;color:#14171C;border:1.5px solid #D5D8DD;padding:14px 24px;border-radius:10px;">Leave a Google review</a>
+        <a class="lk btn-outline" href="#" style="font-size:15.5px;font-weight:600;color:#14171C;border:1.5px solid #D5D8DD;padding:14px 24px;border-radius:10px;">Leave a Google review</a>
       </div>
     </div>
   </section>

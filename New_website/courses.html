@@ -32,6 +32,51 @@
     opacity:1 !important;
   }
   .pkg:hover{border-color:#C7CDD5;}
+
+  /* ===== Audience entry cards — elegant brand-blue hover (matches the home page path cards) =====
+     The joined hairline grid is preserved: cards fill in place (no lift), so the 1px dividers stay
+     intact. A brand-blue gradient wipes up from the bottom, a soft light bloom appears top-right,
+     the text flips to white, and the arrow slides. Class-based so it survives the support.js re-render. */
+  .pathrow{position:relative;overflow:hidden;isolation:isolate;}
+  .pathrow > *{position:relative;z-index:1;}
+  /* brand-blue gradient wipes up from the bottom */
+  .pathrow::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg,#0B5BD3,#0848A7);
+    transform:scaleY(0);
+    transform-origin:bottom;
+    transition:transform .45s cubic-bezier(.22,1,.36,1);
+    z-index:0;
+    pointer-events:none;
+  }
+  .pathrow:hover::before{transform:scaleY(1);}
+  /* soft light bloom in the top-right as it fills */
+  .pathrow::after{
+    content:"";
+    position:absolute;
+    top:-90px;right:-80px;
+    width:240px;height:240px;
+    border-radius:50%;
+    background:radial-gradient(circle,rgba(255,255,255,.3),rgba(255,255,255,0) 68%);
+    opacity:0;
+    transform:scale(.85);
+    transition:opacity .45s ease,transform .45s cubic-bezier(.22,1,.36,1);
+    z-index:0;
+    pointer-events:none;
+  }
+  .pathrow:hover::after{opacity:1;transform:scale(1);}
+  /* content colours flip to white over the blue */
+  .pathrow h3,.pathrow p,.pathrow span{transition:color .34s ease,transform .26s ease;}
+  .pathrow:hover h3{color:#fff !important;}
+  .pathrow:hover p{color:rgba(255,255,255,.85) !important;}
+  .pathrow:hover > span{color:#fff !important;}
+  .pathrow:hover > span:first-child{color:rgba(255,255,255,.5) !important;}
+  @media(prefers-reduced-motion:reduce){
+    .pathrow::before,.pathrow::after,.pathrow h3,.pathrow p,.pathrow span{transition:none !important;}
+  }
+
   @media(max-width:980px){
     .g3{grid-template-columns:repeat(2,1fr) !important;}
     .g4{grid-template-columns:repeat(2,1fr) !important;}

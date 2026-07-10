@@ -49,8 +49,89 @@
     .anim,.anim-fade{opacity:1 !important;transform:none !important;transition:none !important;}
   }
   .js-count{font-variant-numeric:tabular-nums;}
+
+  /* ===== Values grid — modern on-scroll entrance (no hover; plays once as it enters view) ===== */
+  /* The joined hairline grid is preserved: the wrapper doesn't move, so the 1px dividers stay seamless.
+     A single choreographed reveal fires when the panel scrolls into view — cards rise in sequence,
+     icons spring-pop with a one-time glow, an accent bar draws along each top edge, and one light
+     sheen sweeps across. It's driven entirely by the .is-visible the existing observer adds,
+     so it survives the support.js re-render. Nothing is interactive. */
+  .valuegrid{position:relative;overflow:hidden;opacity:1 !important;transform:none !important;}
+
+  /* Cards: staggered rise + settle */
+  .valuegrid .valuecell{
+    position:relative;
+    opacity:0;
+    transform:translateY(32px) scale(.98);
+    will-change:opacity,transform;
+  }
+  .valuegrid.is-visible .valuecell{animation:valRise .9s cubic-bezier(.16,1,.3,1) both;}
+  .valuegrid.is-visible .valuecell:nth-child(2){animation-delay:.14s;}
+  .valuegrid.is-visible .valuecell:nth-child(3){animation-delay:.28s;}
+  @keyframes valRise{
+    from{opacity:0;transform:translateY(32px) scale(.98);}
+    to{opacity:1;transform:none;}
+  }
+
+  /* Icon: soft spring-pop with a one-time blue glow, arriving just after its card */
+  .valuegrid .valuecell svg{opacity:0;transform:scale(.7);will-change:opacity,transform,filter;}
+  .valuegrid.is-visible .valuecell svg{animation:valIcon .8s cubic-bezier(.34,1.56,.64,1) both;}
+  .valuegrid.is-visible .valuecell:nth-child(1) svg{animation-delay:.22s;}
+  .valuegrid.is-visible .valuecell:nth-child(2) svg{animation-delay:.36s;}
+  .valuegrid.is-visible .valuecell:nth-child(3) svg{animation-delay:.50s;}
+  @keyframes valIcon{
+    0%{opacity:0;transform:scale(.7);filter:drop-shadow(0 0 0 rgba(91,155,240,0));}
+    55%{opacity:1;transform:scale(1.12);filter:drop-shadow(0 0 10px rgba(91,155,240,.6));}
+    100%{opacity:1;transform:scale(1);filter:drop-shadow(0 0 0 rgba(91,155,240,0));}
+  }
+
+  /* Accent bar: draws in from the left along the top edge, right after each card settles */
+  .valuecell::before{
+    content:"";
+    position:absolute;
+    top:0;left:0;right:0;height:3px;
+    background:linear-gradient(90deg,#0B5BD3,#5B9BF0);
+    transform:scaleX(0);
+    transform-origin:left;
+    z-index:5;
+  }
+  .valuegrid.is-visible .valuecell::before{animation:valBar .7s cubic-bezier(.22,1,.36,1) both;}
+  .valuegrid.is-visible .valuecell:nth-child(1)::before{animation-delay:.38s;}
+  .valuegrid.is-visible .valuecell:nth-child(2)::before{animation-delay:.52s;}
+  .valuegrid.is-visible .valuecell:nth-child(3)::before{animation-delay:.66s;}
+  @keyframes valBar{from{transform:scaleX(0);}to{transform:scaleX(1);}}
+
+  /* One glassy light sheen sweeping across the whole panel as it reveals */
+  .valuegrid::after{
+    content:"";
+    position:absolute;
+    top:-20%;left:-60%;
+    width:42%;height:140%;
+    background:linear-gradient(100deg,
+      rgba(11,91,211,0) 0%,
+      rgba(91,155,240,.14) 50%,
+      rgba(11,91,211,0) 100%);
+    transform:skewX(-16deg);
+    pointer-events:none;
+    z-index:4;
+    opacity:0;
+  }
+  .valuegrid.is-visible::after{animation:valSheen 1.7s ease-out .55s both;}
+  @keyframes valSheen{
+    0%{left:-60%;opacity:0;}
+    12%{opacity:1;}
+    88%{opacity:1;}
+    100%{left:150%;opacity:0;}
+  }
+
+  @media(prefers-reduced-motion:reduce){
+    .valuegrid .valuecell,
+    .valuegrid .valuecell svg{opacity:1 !important;transform:none !important;animation:none !important;}
+    .valuecell::before{transform:scaleX(1);animation:none !important;}
+    .valuegrid::after{display:none;}
+  }
 </style>
-<noscript><style>.anim,.anim-fade{opacity:1 !important;transform:none !important;}</style></noscript>
+<noscript><style>.anim,.anim-fade{opacity:1 !important;transform:none !important;}.valuegrid .valuecell,.valuegrid .valuecell svg{opacity:1 !important;transform:none !important;}.valuecell::before{transform:scaleX(1) !important;}.valuegrid::after{display:none !important;}</style></noscript>
 </helmet>
 
 <div data-screen-label="About" style="background:#fff;">
@@ -135,18 +216,18 @@
       <div style="font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#8A919B;">What we stand for</div>
       <h2 class="h2" style="font-weight:600;font-size:44px;line-height:1.05;letter-spacing:-.025em;margin:16px 0 0;">The values behind every lesson.</h2>
     </div>
-    <div class="g3 anim" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#E2E3E6;border:1px solid #E2E3E6;">
-      <div style="background:#fff;padding:38px 34px;">
+    <div class="g3 anim valuegrid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#E2E3E6;border:1px solid #E2E3E6;">
+      <div class="valuecell" style="background:#fff;padding:38px 34px;">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#14171C" stroke-width="1.6"><path d="M12 21s-7-4.5-7-10a7 7 0 0 1 14 0c0 5.5-7 10-7 10z"/><circle cx="12" cy="11" r="2.5"/></svg>
         <h4 style="font-size:20px;font-weight:700;letter-spacing:-.01em;margin:20px 0 8px;">Patience first</h4>
         <p style="font-size:15px;line-height:1.6;color:#7A828F;margin:0;">Nobody learns under pressure. We meet every student where they are.</p>
       </div>
-      <div style="background:#fff;padding:38px 34px;">
+      <div class="valuecell" style="background:#fff;padding:38px 34px;">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#14171C" stroke-width="1.6"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z" stroke-linejoin="round"/></svg>
         <h4 style="font-size:20px;font-weight:700;letter-spacing:-.01em;margin:20px 0 8px;">Safety always</h4>
         <p style="font-size:15px;line-height:1.6;color:#7A828F;margin:0;">Dual-control cars, certified instructors, and habits that last a lifetime.</p>
       </div>
-      <div style="background:#fff;padding:38px 34px;">
+      <div class="valuecell" style="background:#fff;padding:38px 34px;">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#14171C" stroke-width="1.6"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <h4 style="font-size:20px;font-weight:700;letter-spacing:-.01em;margin:20px 0 8px;">Honest pricing</h4>
         <p style="font-size:15px;line-height:1.6;color:#7A828F;margin:0;">Clear packages, no surprise add-ons. You always know what you're paying for.</p>
