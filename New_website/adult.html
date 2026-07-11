@@ -21,6 +21,14 @@
   .navlink:hover{color:#0B5BD3 !important;}
   .lk{transition:opacity .15s;}
   .lk:hover{opacity:.6;}
+  /* White outline buttons fill with brand blue on hover (existing solid-blue buttons are unaffected) */
+  .btn-outline{transition:background .22s ease,color .22s ease,border-color .22s ease;}
+  .btn-outline:hover{
+    background:#0B5BD3 !important;
+    color:#fff !important;
+    border-color:#0B5BD3 !important;
+    opacity:1 !important;
+  }
   @media(max-width:980px){
     .g3{grid-template-columns:repeat(2,1fr) !important;}
     .g4{grid-template-columns:repeat(2,1fr) !important;}
@@ -47,8 +55,92 @@
   @media(prefers-reduced-motion:reduce){
     .anim,.anim-fade{opacity:1 !important;transform:none !important;transition:none !important;}
   }
+
+  /* ===== "Who it's for" grid — modern on-scroll entrance (no hover; plays once as it enters view) ===== */
+  /* The joined hairline grid is preserved: the wrapper doesn't move, so the 1px dividers stay seamless.
+     A single choreographed reveal fires when the panel scrolls into view — cards rise in sequence,
+     icons spring-pop with a one-time glow, an accent bar draws along each top edge, and one light
+     sheen sweeps across. Driven by the .is-visible the existing observer adds, so it survives the
+     support.js re-render. Nothing is interactive. */
+  .valuegrid{position:relative;overflow:hidden;opacity:1 !important;transform:none !important;}
+
+  /* Cards: staggered rise + settle */
+  .valuegrid .valuecell{
+    position:relative;
+    opacity:0;
+    transform:translateY(32px) scale(.98);
+    will-change:opacity,transform;
+  }
+  .valuegrid.is-visible .valuecell{animation:valRise .9s cubic-bezier(.16,1,.3,1) both;}
+  .valuegrid.is-visible .valuecell:nth-child(2){animation-delay:.12s;}
+  .valuegrid.is-visible .valuecell:nth-child(3){animation-delay:.24s;}
+  .valuegrid.is-visible .valuecell:nth-child(4){animation-delay:.36s;}
+  @keyframes valRise{
+    from{opacity:0;transform:translateY(32px) scale(.98);}
+    to{opacity:1;transform:none;}
+  }
+
+  /* Icon: soft spring-pop with a one-time blue glow, arriving just after its card */
+  .valuegrid .valuecell svg{opacity:0;transform:scale(.7);will-change:opacity,transform,filter;}
+  .valuegrid.is-visible .valuecell svg{animation:valIcon .8s cubic-bezier(.34,1.56,.64,1) both;}
+  .valuegrid.is-visible .valuecell:nth-child(1) svg{animation-delay:.20s;}
+  .valuegrid.is-visible .valuecell:nth-child(2) svg{animation-delay:.32s;}
+  .valuegrid.is-visible .valuecell:nth-child(3) svg{animation-delay:.44s;}
+  .valuegrid.is-visible .valuecell:nth-child(4) svg{animation-delay:.56s;}
+  @keyframes valIcon{
+    0%{opacity:0;transform:scale(.7);filter:drop-shadow(0 0 0 rgba(91,155,240,0));}
+    55%{opacity:1;transform:scale(1.12);filter:drop-shadow(0 0 10px rgba(91,155,240,.6));}
+    100%{opacity:1;transform:scale(1);filter:drop-shadow(0 0 0 rgba(91,155,240,0));}
+  }
+
+  /* Accent bar: draws in from the left along the top edge, right after each card settles */
+  .valuecell::before{
+    content:"";
+    position:absolute;
+    top:0;left:0;right:0;height:3px;
+    background:linear-gradient(90deg,#0B5BD3,#5B9BF0);
+    transform:scaleX(0);
+    transform-origin:left;
+    z-index:5;
+  }
+  .valuegrid.is-visible .valuecell::before{animation:valBar .7s cubic-bezier(.22,1,.36,1) both;}
+  .valuegrid.is-visible .valuecell:nth-child(1)::before{animation-delay:.34s;}
+  .valuegrid.is-visible .valuecell:nth-child(2)::before{animation-delay:.46s;}
+  .valuegrid.is-visible .valuecell:nth-child(3)::before{animation-delay:.58s;}
+  .valuegrid.is-visible .valuecell:nth-child(4)::before{animation-delay:.70s;}
+  @keyframes valBar{from{transform:scaleX(0);}to{transform:scaleX(1);}}
+
+  /* One glassy light sheen sweeping across the whole panel as it reveals */
+  .valuegrid::after{
+    content:"";
+    position:absolute;
+    top:-20%;left:-60%;
+    width:38%;height:140%;
+    background:linear-gradient(100deg,
+      rgba(11,91,211,0) 0%,
+      rgba(91,155,240,.14) 50%,
+      rgba(11,91,211,0) 100%);
+    transform:skewX(-16deg);
+    pointer-events:none;
+    z-index:4;
+    opacity:0;
+  }
+  .valuegrid.is-visible::after{animation:valSheen 1.9s ease-out .5s both;}
+  @keyframes valSheen{
+    0%{left:-60%;opacity:0;}
+    12%{opacity:1;}
+    88%{opacity:1;}
+    100%{left:150%;opacity:0;}
+  }
+
+  @media(prefers-reduced-motion:reduce){
+    .valuegrid .valuecell,
+    .valuegrid .valuecell svg{opacity:1 !important;transform:none !important;animation:none !important;}
+    .valuecell::before{transform:scaleX(1);animation:none !important;}
+    .valuegrid::after{display:none;}
+  }
 </style>
-<noscript><style>.anim,.anim-fade{opacity:1 !important;transform:none !important;}</style></noscript>
+<noscript><style>.anim,.anim-fade{opacity:1 !important;transform:none !important;}.valuegrid .valuecell,.valuegrid .valuecell svg{opacity:1 !important;transform:none !important;}.valuecell::before{transform:scaleX(1) !important;}.valuegrid::after{display:none !important;}</style></noscript>
 </helmet>
 
 <div data-screen-label="Adult" style="background:#fff;">
@@ -99,23 +191,23 @@
       <div style="font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#8A919B;">Who it's for</div>
       <h2 class="h2" style="font-weight:600;font-size:44px;line-height:1.05;letter-spacing:-.025em;margin:16px 0 0;">Built for every kind of adult learner.</h2>
     </div>
-    <div class="g4 anim" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#E2E3E6;border:1px solid #E2E3E6;">
-      <div style="background:#fff;padding:36px 30px;">
+    <div class="g4 anim valuegrid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#E2E3E6;border:1px solid #E2E3E6;">
+      <div class="valuecell" style="background:#fff;padding:36px 30px;">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#14171C" stroke-width="1.6"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7" stroke-linecap="round"/></svg>
         <h4 style="font-size:19px;font-weight:700;letter-spacing:-.01em;margin:20px 0 8px;">First-time adults</h4>
         <p style="font-size:14.5px;line-height:1.6;color:#7A828F;margin:0;">Never driven before? We start with the absolute fundamentals &mdash; no judgment.</p>
       </div>
-      <div style="background:#fff;padding:36px 30px;">
+      <div class="valuecell" style="background:#fff;padding:36px 30px;">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#14171C" stroke-width="1.6"><path d="M3 12a9 9 0 1 0 3-6.7M3 4v4h4" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <h4 style="font-size:19px;font-weight:700;letter-spacing:-.01em;margin:20px 0 8px;">Returning drivers</h4>
         <p style="font-size:14.5px;line-height:1.6;color:#7A828F;margin:0;">Coming back after years away? We'll rebuild your confidence quickly.</p>
       </div>
-      <div style="background:#fff;padding:36px 30px;">
+      <div class="valuecell" style="background:#fff;padding:36px 30px;">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#14171C" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
         <h4 style="font-size:19px;font-weight:700;letter-spacing:-.01em;margin:20px 0 8px;">New to the U.S.</h4>
         <p style="font-size:14.5px;line-height:1.6;color:#7A828F;margin:0;">Transferring from another country? We'll prepare you for Texas roads and rules.</p>
       </div>
-      <div style="background:#fff;padding:36px 30px;">
+      <div class="valuecell" style="background:#fff;padding:36px 30px;">
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#14171C" stroke-width="1.6"><path d="M12 21s-7-4.5-7-10a7 7 0 0 1 14 0c0 5.5-7 10-7 10z"/><circle cx="12" cy="11" r="2.5"/></svg>
         <h4 style="font-size:19px;font-weight:700;letter-spacing:-.01em;margin:20px 0 8px;">Anxious drivers</h4>
         <p style="font-size:14.5px;line-height:1.6;color:#7A828F;margin:0;">Driving anxiety is common. Our instructors specialize in calm, steady progress.</p>
@@ -171,7 +263,7 @@
           <div style="display:flex;gap:10px;font-size:14.5px;color:#4A515C;"><span style="color:#0B5BD3;font-weight:800;">&#10003;</span>Extended lesson plan</div>
           <div style="display:flex;gap:10px;font-size:14.5px;color:#4A515C;"><span style="color:#0B5BD3;font-weight:800;">&#10003;</span>Test prep included</div>
         </div>
-        <a class="lk" href="book.html" style="margin-top:auto;text-align:center;font-size:15px;font-weight:600;color:#14171C;border:1.5px solid #D5D8DD;border-radius:10px;padding:13px;">Choose Package 3</a>
+        <a class="lk btn-outline" href="book.html" style="margin-top:auto;text-align:center;font-size:15px;font-weight:600;color:#14171C;border:1.5px solid #D5D8DD;border-radius:10px;padding:13px;">Choose Package 3</a>
       </div>
       <div class="anim" style="border:1px solid #E2E3E6;border-radius:14px;padding:34px 30px;display:flex;flex-direction:column;">
         <span style="font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#C9821A;">Package 5</span>
@@ -182,7 +274,7 @@
           <div style="display:flex;gap:10px;font-size:14.5px;color:#4A515C;"><span style="color:#0B5BD3;font-weight:800;">&#10003;</span>Single focused session</div>
           <div style="display:flex;gap:10px;font-size:14.5px;color:#4A515C;"><span style="color:#0B5BD3;font-weight:800;">&#10003;</span>Brush up before testing</div>
         </div>
-        <a class="lk" href="book.html" style="margin-top:auto;text-align:center;font-size:15px;font-weight:600;color:#14171C;border:1.5px solid #D5D8DD;border-radius:10px;padding:13px;">Choose Package 5</a>
+        <a class="lk btn-outline" href="book.html" style="margin-top:auto;text-align:center;font-size:15px;font-weight:600;color:#14171C;border:1.5px solid #D5D8DD;border-radius:10px;padding:13px;">Choose Package 5</a>
       </div>
     </div>
   </section>
@@ -195,7 +287,7 @@
         <h3 style="font-size:28px;font-weight:700;letter-spacing:-.02em;margin:12px 0 8px;">We make adult lessons simple.</h3>
         <p style="font-size:16px;line-height:1.6;color:#4A515C;margin:0;max-width:60ch;">Whether you're brand new to driving or brushing up before your road test, we'll help you choose the right package and answer any questions. <a class="lk" href="contact.html" style="color:#0B5BD3;font-weight:600;">Contact us</a> for details.</p>
       </div>
-      <a class="lk" href="contact.html" style="font-size:15.5px;font-weight:600;color:#14171C;background:#fff;border:1.5px solid #E2D6B8;padding:15px 26px;border-radius:10px;flex:0 0 auto;">Contact us</a>
+      <a class="lk btn-outline" href="contact.html" style="font-size:15.5px;font-weight:600;color:#14171C;background:#fff;border:1.5px solid #E2D6B8;padding:15px 26px;border-radius:10px;flex:0 0 auto;">Contact us</a>
     </div>
   </section>
 
