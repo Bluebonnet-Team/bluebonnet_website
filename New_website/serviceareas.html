@@ -14,9 +14,11 @@
   *{box-sizing:border-box;}
   body{margin:0;background:#fff;font-family:'Hanken Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased;color:#14171C;}
   a{text-decoration:none;color:inherit;}
-  .navlink:hover{color:#0B5BD3 !important;}
+  .navlink:hover{color:#4B96D2 !important;}
   .lk{transition:opacity .15s;}
   .lk:hover{opacity:.6;}
+  .service-hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(340px,.9fr);gap:48px;align-items:center;}
+  .service-hero-image{display:block;width:100%;height:310px;object-fit:cover;object-position:center 54%;border-radius:16px;box-shadow:0 24px 54px -36px rgba(20,23,28,.32);}
   .areacell{position:relative;overflow:hidden;transition:background .32s ease,box-shadow .32s ease,transform .32s cubic-bezier(.22,1,.36,1);}
   .areacell::before{
     content:"";
@@ -36,7 +38,7 @@
     background:linear-gradient(180deg,#FFFFFF,#E8F1FF) !important;
     transform:scale(1.03);
     z-index:3;
-    box-shadow:0 20px 44px -22px rgba(11,91,211,.4), inset 0 0 0 1.5px #0B5BD3;
+    box-shadow:0 20px 44px -22px rgba(11,91,211,.4), inset 0 0 0 1.5px #4B96D2;
   }
   .areacell:hover::before{left:135%;}
   @media(prefers-reduced-motion:reduce){
@@ -54,8 +56,10 @@
     .footgrid{grid-template-columns:1fr 1fr !important;gap:34px !important;}
     .h1{font-size:42px !important;line-height:1.06 !important;}
     .h2{font-size:30px !important;}
-    .secpad{padding-top:64px !important;padding-bottom:64px !important;}
+    .secpad{padding-top:48px !important;padding-bottom:48px !important;}
     .colstack{flex-direction:column !important;align-items:flex-start !important;}
+    .service-hero-grid{grid-template-columns:1fr;gap:28px;}
+    .service-hero-image{height:250px;}
   }
   @media(max-width:480px){
     .footgrid{grid-template-columns:1fr !important;}
@@ -72,7 +76,7 @@
   /* ===== Continuous timeline fill animation ("We come to you") ===== */
   .step{position:relative;}
   .tl-track{position:absolute;top:0;left:0;right:0;height:2px;background:#E2E3E6;border-radius:2px;overflow:hidden;}
-  .tl-fill{position:absolute;inset:0;background:#0B5BD3;transform-origin:left center;transform:scaleX(0);border-radius:2px;}
+  .tl-fill{position:absolute;inset:0;background:#4B96D2;transform-origin:left center;transform:scaleX(0);border-radius:2px;}
   .tl-num{display:inline-block;transform-origin:left center;color:#A9BEDD;}
   .tl-fill1{animation:tlFill1 8s ease-in-out infinite;}
   .tl-fill2{animation:tlFill2 8s ease-in-out infinite;}
@@ -88,17 +92,17 @@
   @keyframes tlFill1{0%{transform:scaleX(0);opacity:1}6%{transform:scaleX(0);opacity:1}28%{transform:scaleX(1);opacity:1}90%{transform:scaleX(1);opacity:1}95%{transform:scaleX(1);opacity:0}95.01%{transform:scaleX(0);opacity:0}100%{transform:scaleX(0);opacity:1}}
   @keyframes tlFill2{0%{transform:scaleX(0);opacity:1}34%{transform:scaleX(0);opacity:1}56%{transform:scaleX(1);opacity:1}90%{transform:scaleX(1);opacity:1}95%{transform:scaleX(1);opacity:0}95.01%{transform:scaleX(0);opacity:0}100%{transform:scaleX(0);opacity:1}}
   @keyframes tlFill3{0%{transform:scaleX(0);opacity:1}62%{transform:scaleX(0);opacity:1}84%{transform:scaleX(1);opacity:1}90%{transform:scaleX(1);opacity:1}95%{transform:scaleX(1);opacity:0}95.01%{transform:scaleX(0);opacity:0}100%{transform:scaleX(0);opacity:1}}
-  @keyframes tlNum1{0%{transform:scale(1);color:#A9BEDD}2%{transform:scale(1);color:#A9BEDD}7%{transform:scale(1.45);color:#0B5BD3}28%{transform:scale(1.45);color:#0B5BD3}33%{transform:scale(1);color:#A9BEDD}100%{transform:scale(1);color:#A9BEDD}}
-  @keyframes tlNum2{0%{transform:scale(1);color:#A9BEDD}30%{transform:scale(1);color:#A9BEDD}35%{transform:scale(1.45);color:#0B5BD3}56%{transform:scale(1.45);color:#0B5BD3}61%{transform:scale(1);color:#A9BEDD}100%{transform:scale(1);color:#A9BEDD}}
-  @keyframes tlNum3{0%{transform:scale(1);color:#A9BEDD}58%{transform:scale(1);color:#A9BEDD}63%{transform:scale(1.45);color:#0B5BD3}84%{transform:scale(1.45);color:#0B5BD3}89%{transform:scale(1);color:#A9BEDD}100%{transform:scale(1);color:#A9BEDD}}
-  @keyframes tlDesc1{0%{transform:scale(1);color:#7A828F}2%{transform:scale(1);color:#7A828F}7%{transform:scale(1.05);color:#0B5BD3}28%{transform:scale(1.05);color:#0B5BD3}33%{transform:scale(1);color:#7A828F}100%{transform:scale(1);color:#7A828F}}
-  @keyframes tlDesc2{0%{transform:scale(1);color:#7A828F}30%{transform:scale(1);color:#7A828F}35%{transform:scale(1.05);color:#0B5BD3}56%{transform:scale(1.05);color:#0B5BD3}61%{transform:scale(1);color:#7A828F}100%{transform:scale(1);color:#7A828F}}
-  @keyframes tlDesc3{0%{transform:scale(1);color:#7A828F}58%{transform:scale(1);color:#7A828F}63%{transform:scale(1.05);color:#0B5BD3}84%{transform:scale(1.05);color:#0B5BD3}89%{transform:scale(1);color:#7A828F}100%{transform:scale(1);color:#7A828F}}
+  @keyframes tlNum1{0%{transform:scale(1);color:#A9BEDD}2%{transform:scale(1);color:#A9BEDD}7%{transform:scale(1.45);color:#4B96D2}28%{transform:scale(1.45);color:#4B96D2}33%{transform:scale(1);color:#A9BEDD}100%{transform:scale(1);color:#A9BEDD}}
+  @keyframes tlNum2{0%{transform:scale(1);color:#A9BEDD}30%{transform:scale(1);color:#A9BEDD}35%{transform:scale(1.45);color:#4B96D2}56%{transform:scale(1.45);color:#4B96D2}61%{transform:scale(1);color:#A9BEDD}100%{transform:scale(1);color:#A9BEDD}}
+  @keyframes tlNum3{0%{transform:scale(1);color:#A9BEDD}58%{transform:scale(1);color:#A9BEDD}63%{transform:scale(1.45);color:#4B96D2}84%{transform:scale(1.45);color:#4B96D2}89%{transform:scale(1);color:#A9BEDD}100%{transform:scale(1);color:#A9BEDD}}
+  @keyframes tlDesc1{0%{transform:scale(1);color:#7A828F}2%{transform:scale(1);color:#7A828F}7%{transform:scale(1.05);color:#4B96D2}28%{transform:scale(1.05);color:#4B96D2}33%{transform:scale(1);color:#7A828F}100%{transform:scale(1);color:#7A828F}}
+  @keyframes tlDesc2{0%{transform:scale(1);color:#7A828F}30%{transform:scale(1);color:#7A828F}35%{transform:scale(1.05);color:#4B96D2}56%{transform:scale(1.05);color:#4B96D2}61%{transform:scale(1);color:#7A828F}100%{transform:scale(1);color:#7A828F}}
+  @keyframes tlDesc3{0%{transform:scale(1);color:#7A828F}58%{transform:scale(1);color:#7A828F}63%{transform:scale(1.05);color:#4B96D2}84%{transform:scale(1.05);color:#4B96D2}89%{transform:scale(1);color:#7A828F}100%{transform:scale(1);color:#7A828F}}
 
   @media(prefers-reduced-motion:reduce){
     .anim,.anim-fade{opacity:1 !important;transform:none !important;transition:none !important;}
     .tl-num,.tl-fill,.tl-desc1,.tl-desc2,.tl-desc3{animation:none !important;}
-    .tl-num{transform:none !important;color:#0B5BD3 !important;}
+    .tl-num{transform:none !important;color:#4B96D2 !important;}
     .tl-fill{transform:scaleX(1) !important;opacity:1 !important;}
   }
 </style>
@@ -108,42 +112,47 @@
 
   <!-- NAV -->
   <header class="anim-fade" style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,.86);backdrop-filter:saturate(1.5) blur(12px);border-bottom:1px solid #ECEDEF;">
-    <nav class="pad" style="max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:32px;padding:18px 56px;">
+    <nav class="pad" style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:32px;padding:14px 56px;">
       <a href="home.html" style="display:flex;align-items:center;gap:12px;flex:0 0 auto;">
         <img src="./bluebonnet-logo.png" alt="Bluebonnet logo" style="width:52px;height:52px;object-fit:contain;display:block;filter:drop-shadow(0 6px 16px rgba(11,91,211,.16));">
         <span style="display:flex;flex-direction:column;">
           <span style="font-size:23px;font-weight:800;letter-spacing:-.02em;line-height:1;">Bluebonnet</span>
-          <span style="font-size:9.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#9AA1AB;margin-top:5px;">Driving School &middot; Plano, TX</span>
+          <span style="align-self:stretch;display:flex;justify-content:space-between;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#0848A7;margin-top:5px;"><span>Driving</span><span>School</span></span>
         </span>
       </a>
-      <div class="navmenu" style="flex:1;display:flex;justify-content:center;gap:30px;">
-        <a class="navlink" href="courses.html" style="font-size:14px;font-weight:600;color:#4A515C;">Courses</a>
-        <a class="navlink" href="pricing.html" style="font-size:14px;font-weight:600;color:#4A515C;">Pricing</a>
-        <a class="navlink" href="serviceareas.html" style="font-size:14px;font-weight:600;color:#0B5BD3;">Service Areas</a>
-        <a class="navlink" href="about.html" style="font-size:14px;font-weight:600;color:#4A515C;">About</a>
-        <a class="navlink" href="reviews.html" style="font-size:14px;font-weight:600;color:#4A515C;">Reviews</a>
+      <div class="navmenu" style="flex:0 0 auto;display:flex;justify-content:center;gap:30px;">
+        <a class="navlink" href="courses.html" style="font-size:18px;white-space:nowrap;font-weight:600;color:#4A515C;">Courses</a>
+        <a class="navlink" href="pricing.html" style="font-size:18px;white-space:nowrap;font-weight:600;color:#4A515C;">Pricing</a>
+        <a class="navlink" href="serviceareas.html" style="font-size:18px;white-space:nowrap;font-weight:600;color:#4B96D2;">Service Areas</a>
+        <a class="navlink" href="about.html" style="font-size:18px;white-space:nowrap;font-weight:600;color:#4A515C;">About</a>
+        <a class="navlink" href="reviews.html" style="font-size:18px;white-space:nowrap;font-weight:600;color:#4A515C;">Reviews</a>
       </div>
-      <div style="display:flex;align-items:center;gap:22px;flex:1;justify-content:flex-end;">
+      <div style="display:flex;align-items:center;gap:22px;flex:0 0 auto;justify-content:flex-end;">
         <a class="navphone" href="tel:+12145457529" style="font-size:14px;font-weight:700;color:#14171C;">(214) 545-7529</a>
-        <a class="lk" href="book.html" style="font-size:14px;font-weight:600;color:#fff;background:#0B5BD3;padding:11px 20px;border-radius:9px;">Book a lesson</a>
+        <a class="lk" href="book.html" style="font-size:14px;font-weight:600;color:#fff;background:#4B96D2;padding:11px 20px;border-radius:9px;">Book a lesson</a>
       </div>
     </nav>
   </header>
 
   <!-- PAGE HEADER -->
   <section style="border-bottom:1px solid #ECEDEF;">
-    <div class="pad" style="max-width:1200px;margin:0 auto;padding:60px 56px 56px;">
-      <div class="anim" style="font-size:13px;font-weight:600;color:#9AA1AB;display:flex;gap:9px;align-items:center;transition-delay:.02s;">
-        <a class="lk" href="home.html">Home</a><span>/</span><span style="color:#4A515C;">Service Areas</span>
+    <div class="pad" style="max-width:1200px;margin:0 auto;padding:44px 56px 40px;">
+      <div class="service-hero-grid">
+        <div>
+          <div class="anim" style="font-size:13px;font-weight:600;color:#9AA1AB;display:flex;gap:9px;align-items:center;transition-delay:.02s;">
+            <a class="lk" href="home.html">Home</a><span>/</span><span style="color:#4A515C;">Service Areas</span>
+          </div>
+          <div class="anim" style="margin-top:18px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#4B96D2;transition-delay:.1s;">Where we teach</div>
+          <h1 class="h1 anim" style="font-weight:600;font-size:58px;line-height:1.04;letter-spacing:-.03em;margin:16px 0 0;max-width:18ch;transition-delay:.18s;">Driving lessons across North Dallas.</h1>
+          <p class="anim" style="max-width:64ch;margin:20px 0 0;font-size:19px;line-height:1.62;color:#4A515C;transition-delay:.28s;">Based in Plano, we serve teens and adults across Collin, Denton, and Dallas counties with local pickup and drop-off in every city below. Don't see yours? Call us; we often travel a little farther.</p>
+        </div>
+        <img class="service-hero-image anim" src="uploads/service-areas-driving-lesson.jpg" alt="Students taking a Bluebonnet Driving School lesson" style="transition-delay:.2s;">
       </div>
-      <div class="anim" style="margin-top:24px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#0B5BD3;transition-delay:.1s;">Where we teach</div>
-      <h1 class="h1 anim" style="font-weight:600;font-size:58px;line-height:1.04;letter-spacing:-.03em;margin:16px 0 0;max-width:18ch;transition-delay:.18s;">Driving lessons across North Dallas.</h1>
-      <p class="anim" style="max-width:64ch;margin:20px 0 0;font-size:19px;line-height:1.62;color:#4A515C;transition-delay:.28s;">Based in Plano, we serve teens and adults across Collin, Denton, and Dallas counties with local pickup and drop-off in every city below. Don't see yours? Call us; we often travel a little farther.</p>
     </div>
   </section>
 
   <!-- MAP + LIST -->
-  <section class="pad secpad" style="max-width:1200px;margin:0 auto;padding:80px 56px;">
+  <section class="pad secpad" style="max-width:1200px;margin:0 auto;padding:56px 56px;">
     <div class="split" style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;">
       <div class="anim" style="border:1px solid #E2E3E6;border-radius:14px;height:460px;overflow:hidden;box-shadow:0 24px 54px -36px rgba(20,23,28,.22);background:#EEF1F5;transition-delay:.05s;">
         <iframe
@@ -169,8 +178,8 @@
 
   <!-- HOW PICKUP WORKS -->
   <section style="background:#FAFAFB;border-top:1px solid #ECEDEF;border-bottom:1px solid #ECEDEF;">
-    <div class="pad secpad" style="max-width:1200px;margin:0 auto;padding:96px 56px;">
-      <div class="anim" style="max-width:60ch;margin-bottom:52px;">
+    <div class="pad secpad" style="max-width:1200px;margin:0 auto;padding:60px 56px;">
+      <div class="anim" style="max-width:60ch;margin-bottom:22px;">
         <div style="font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#8A919B;">Local pickup</div>
         <h2 class="h2" style="font-weight:600;font-size:40px;line-height:1.06;letter-spacing:-.025em;margin:16px 0 0;">We come to you.</h2>
       </div>
@@ -198,12 +207,12 @@
   </section>
 
   <!-- CTA -->
-  <section style="background:#0B5BD3;color:#fff;">
-    <div class="pad secpad" style="max-width:1200px;margin:0 auto;padding:96px 56px;text-align:center;">
+  <section style="background:#4B96D2;color:#fff;">
+    <div class="pad secpad" style="max-width:1200px;margin:0 auto;padding:60px 56px;text-align:center;">
       <h2 class="h1 anim" style="font-weight:600;font-size:50px;line-height:1.04;letter-spacing:-.03em;margin:0 auto;max-width:18ch;">Not sure if we cover your area?</h2>
       <p class="anim" style="max-width:50ch;margin:20px auto 0;font-size:19px;line-height:1.6;color:rgba(255,255,255,.82);transition-delay:.1s;">Give us a call — we'll let you know in a minute, and we often travel a little farther.</p>
-      <div class="anim" style="display:flex;gap:16px;justify-content:center;margin-top:38px;flex-wrap:wrap;transition-delay:.2s;">
-        <a class="lk" href="book.html" style="font-size:16px;font-weight:600;color:#0B5BD3;background:#fff;padding:16px 30px;border-radius:10px;">Book a lesson</a>
+      <div class="anim" style="display:flex;gap:16px;justify-content:center;margin-top:26px;flex-wrap:wrap;transition-delay:.2s;">
+        <a class="lk" href="book.html" style="font-size:16px;font-weight:600;color:#4B96D2;background:#fff;padding:16px 30px;border-radius:10px;">Book a lesson</a>
         <a class="lk" href="tel:+12145457529" style="font-size:16px;font-weight:600;color:#fff;border:1.5px solid rgba(255,255,255,.45);padding:16px 30px;border-radius:10px;">Call (214) 545-7529</a>
       </div>
     </div>
@@ -211,7 +220,7 @@
 
   <!-- FOOTER -->
   <footer style="background:#14171C;color:#fff;">
-    <div class="pad footgrid" style="max-width:1200px;margin:0 auto;padding:80px 56px 56px;display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr;gap:48px;">
+    <div class="pad footgrid" style="max-width:1200px;margin:0 auto;padding:56px 56px 40px;display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr;gap:48px;">
       <div class="anim">
         <div style="font-size:22px;font-weight:800;letter-spacing:-.02em;">Bluebonnet</div>
         <p style="font-size:14.5px;line-height:1.65;color:#9AA1AB;margin:16px 0 0;max-width:34ch;">Patient, TDLR-licensed driving instruction for teens and adults across Plano and the North Dallas area. From first lesson to DPS road test.</p>

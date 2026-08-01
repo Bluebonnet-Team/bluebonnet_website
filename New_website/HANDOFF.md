@@ -17,7 +17,7 @@ A complete, responsive redesign of the Bluebonnet Driving School marketing site.
 | Ink (text / dark sections) | `#14171C` |
 | Body text | `#4A515C` |
 | Muted text | `#7A828F` / `#9AA1AB` |
-| Signature blue | `#0B5BD3` |
+| Signature blue | `#4B96D2` |
 | Blue (on dark) | `#5B9BF0` |
 | Blue tint (chips/avatars) | `#EAF1FC` |
 | Surface (alt sections) | `#FAFAFB` |

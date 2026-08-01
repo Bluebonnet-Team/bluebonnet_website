@@ -18,11 +18,33 @@
   *{box-sizing:border-box;}
   body{margin:0;background:#fff;font-family:'Hanken Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased;color:#14171C;}
   a{text-decoration:none;color:inherit;}
-  .navlink:hover{color:#0B5BD3 !important;}
+  .navlink:hover{color:#4B96D2 !important;}
   .lk{transition:opacity .15s;}
   .lk:hover{opacity:.6;}
   .prow:hover{background:#FAFAFB;}
   .prow.hl:hover{background:#EAF1FC;}
+  .pricing-hero{
+    min-height:560px;
+    display:flex;
+    align-items:center;
+    border-bottom:1px solid #ECEDEF;
+    background:
+      linear-gradient(90deg,rgba(8,20,38,.92) 0%,rgba(8,20,38,.74) 36%,rgba(8,20,38,.25) 64%,rgba(8,20,38,.04) 100%),
+      url("uploads/pricing-reception-hero.png") center 48% / cover no-repeat;
+  }
+  .pricing-hero-copy{max-width:620px;}
+  .pricing-hero-copy .h1{color:#fff !important;}
+  .pricing-hero-copy p{color:rgba(255,255,255,.86) !important;}
+  .pricing-hero-copy > div > div:first-child{color:rgba(255,255,255,.68) !important;}
+  .pricing-hero-copy > div > div:first-child span:last-child{color:#fff !important;}
+  @media(max-width:900px){
+    .pricing-hero{
+      min-height:520px;
+      background:
+        linear-gradient(90deg,rgba(8,20,38,.92),rgba(8,20,38,.68)),
+        url("uploads/pricing-reception-hero.png") 58% center / cover no-repeat;
+    }
+  }
   @media(max-width:760px){
     .pad{padding-left:22px !important;padding-right:22px !important;}
     .navmenu,.navphone{display:none !important;}
@@ -30,7 +52,7 @@
     .footgrid{grid-template-columns:1fr 1fr !important;gap:34px !important;}
     .h1{font-size:42px !important;line-height:1.06 !important;}
     .h2{font-size:30px !important;}
-    .secpad{padding-top:64px !important;padding-bottom:64px !important;}
+    .secpad{padding-top:48px !important;padding-bottom:48px !important;}
     .colstack{flex-direction:column !important;align-items:flex-start !important;}
     .ptable{overflow-x:auto !important;-webkit-overflow-scrolling:touch;border-radius:14px;}
     .ptable-inner{min-width:840px !important;}
@@ -56,42 +78,46 @@
 
   <!-- NAV -->
   <header class="anim-fade" style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,.86);backdrop-filter:saturate(1.5) blur(12px);border-bottom:1px solid #ECEDEF;">
-    <nav class="pad" style="max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:32px;padding:18px 56px;">
+    <nav class="pad" style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:32px;padding:14px 56px;">
       <a href="home.html" style="display:flex;align-items:center;gap:12px;flex:0 0 auto;">
         <img src="./bluebonnet-logo.png" alt="Bluebonnet logo" style="width:52px;height:52px;object-fit:contain;display:block;filter:drop-shadow(0 6px 16px rgba(11,91,211,.16));">
         <span style="display:flex;flex-direction:column;">
           <span style="font-size:23px;font-weight:800;letter-spacing:-.02em;line-height:1;">Bluebonnet</span>
-          <span style="font-size:9.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#9AA1AB;margin-top:5px;">Driving School &middot; Plano, TX</span>
+          <span style="align-self:stretch;display:flex;justify-content:space-between;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#0848A7;margin-top:5px;"><span>Driving</span><span>School</span></span>
         </span>
       </a>
-      <div class="navmenu" style="flex:1;display:flex;justify-content:center;gap:30px;">
-        <a class="navlink" href="courses.html" style="font-size:14px;font-weight:600;color:#4A515C;">Courses</a>
-        <a class="navlink" href="pricing.html" style="font-size:14px;font-weight:600;color:#0B5BD3;">Pricing</a>
-        <a class="navlink" href="serviceareas.html" style="font-size:14px;font-weight:600;color:#4A515C;">Service Areas</a>
-        <a class="navlink" href="about.html" style="font-size:14px;font-weight:600;color:#4A515C;">About</a>
-        <a class="navlink" href="reviews.html" style="font-size:14px;font-weight:600;color:#4A515C;">Reviews</a>
+      <div class="navmenu" style="flex:0 0 auto;display:flex;justify-content:center;gap:30px;">
+        <a class="navlink" href="courses.html" style="font-size:18px;white-space:nowrap;font-weight:600;color:#4A515C;">Courses</a>
+        <a class="navlink" href="pricing.html" style="font-size:18px;white-space:nowrap;font-weight:600;color:#4B96D2;">Pricing</a>
+        <a class="navlink" href="serviceareas.html" style="font-size:18px;white-space:nowrap;font-weight:600;color:#4A515C;">Service Areas</a>
+        <a class="navlink" href="about.html" style="font-size:18px;white-space:nowrap;font-weight:600;color:#4A515C;">About</a>
+        <a class="navlink" href="reviews.html" style="font-size:18px;white-space:nowrap;font-weight:600;color:#4A515C;">Reviews</a>
       </div>
-      <div style="display:flex;align-items:center;gap:22px;flex:1;justify-content:flex-end;">
+      <div style="display:flex;align-items:center;gap:22px;flex:0 0 auto;justify-content:flex-end;">
         <a class="navphone" href="tel:+12145457529" style="font-size:14px;font-weight:700;color:#14171C;">(214) 545-7529</a>
-        <a class="lk" href="book.html" style="font-size:14px;font-weight:600;color:#fff;background:#0B5BD3;padding:11px 20px;border-radius:9px;">Book a lesson</a>
+        <a class="lk" href="book.html" style="font-size:14px;font-weight:600;color:#fff;background:#4B96D2;padding:11px 20px;border-radius:9px;">Book a lesson</a>
       </div>
     </nav>
   </header>
 
   <!-- PAGE HEADER -->
-  <section style="border-bottom:1px solid #ECEDEF;">
-    <div class="pad" style="max-width:1200px;margin:0 auto;padding:60px 56px 56px;">
-      <div class="anim" style="font-size:13px;font-weight:600;color:#9AA1AB;display:flex;gap:9px;align-items:center;">
-        <a class="lk" href="home.html">Home</a><span>/</span><span style="color:#4A515C;">Pricing</span>
+  <section class="pricing-hero">
+    <div class="pad" style="width:100%;max-width:1200px;margin:0 auto;padding:60px 56px;">
+      <div class="pricing-hero-copy">
+        <div>
+          <div class="anim" style="font-size:13px;font-weight:600;color:rgba(255,255,255,.68);display:flex;gap:9px;align-items:center;">
+            <a class="lk" href="home.html">Home</a><span>/</span><span style="color:#4A515C;">Pricing</span>
+          </div>
+          <div class="anim" style="margin-top:18px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#8CC5F3;">Pricing</div>
+          <h1 class="h1 anim" style="font-weight:600;font-size:58px;line-height:1.04;letter-spacing:-.03em;margin:16px 0 0;max-width:16ch;">Simple, honest pricing — no hidden fees.</h1>
+          <p class="anim" style="max-width:64ch;margin:20px 0 0;font-size:19px;line-height:1.62;color:#4A515C;">Every package includes a certified instructor, a safe dual-control vehicle, and your completion certificate. Compare them side by side, then book in minutes.</p>
+        </div>
       </div>
-      <div class="anim" style="margin-top:24px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#0B5BD3;">Pricing</div>
-      <h1 class="h1 anim" style="font-weight:600;font-size:58px;line-height:1.04;letter-spacing:-.03em;margin:16px 0 0;max-width:16ch;">Simple, honest pricing — no hidden fees.</h1>
-      <p class="anim" style="max-width:64ch;margin:20px 0 0;font-size:19px;line-height:1.62;color:#4A515C;">Every package includes a certified instructor, a safe dual-control vehicle, and your completion certificate. Compare them side by side, then book in minutes.</p>
     </div>
   </section>
 
   <!-- PRICING TABLE -->
-  <section class="pad secpad" style="max-width:1200px;margin:0 auto;padding:72px 56px 40px;">
+  <section class="pad secpad" style="max-width:1200px;margin:0 auto;padding:56px 56px 32px;">
     <div class="scrollhint" style="display:none;font-size:13px;font-weight:600;color:#9AA1AB;margin-bottom:12px;">Swipe the table sideways to see all columns →</div>
     <div class="ptable anim" style="border:1px solid #E2E3E6;border-radius:14px;overflow:hidden;">
       <div class="ptable-inner">
@@ -112,8 +138,8 @@
         <div style="padding:18px 14px;font-size:13.5px;color:#7A828F;line-height:1.45;">Adults wanting the whole path to licensed</div>
       </div>
       <div class="prow hl" style="display:grid;grid-template-columns:1.6fr .8fr .7fr .9fr .9fr 1.6fr;border-bottom:1px solid #ECEDEF;align-items:center;background:#F4F8FE;transition:background .15s;">
-        <div style="padding:18px 22px;font-size:15.5px;font-weight:700;display:flex;align-items:center;gap:9px;flex-wrap:wrap;">Package 2 · Teen #2 <span style="font-size:10.5px;font-weight:700;color:#0B5BD3;background:#EAF1FC;padding:3px 8px;border-radius:999px;">★ Popular</span></div>
-        <div style="padding:18px 14px;"><span style="font-size:11.5px;font-weight:700;color:#0B5BD3;background:#EAF1FC;padding:4px 9px;border-radius:6px;">Teen</span></div>
+        <div style="padding:18px 22px;font-size:15.5px;font-weight:700;display:flex;align-items:center;gap:9px;flex-wrap:wrap;">Package 2 · Teen #2 <span style="font-size:10.5px;font-weight:700;color:#4B96D2;background:#EAF1FC;padding:3px 8px;border-radius:999px;">★ Popular</span></div>
+        <div style="padding:18px 14px;"><span style="font-size:11.5px;font-weight:700;color:#4B96D2;background:#EAF1FC;padding:4px 9px;border-radius:6px;">Teen</span></div>
         <div style="padding:18px 14px;font-size:18px;font-weight:800;letter-spacing:-.02em;">$450</div>
         <div style="padding:18px 14px;font-size:14px;color:#4A515C;">Extended</div>
         <div style="padding:18px 14px;font-size:13.5px;font-weight:600;color:#1E9D5B;">✓ Included</div>
@@ -121,7 +147,7 @@
       </div>
       <div class="prow" style="display:grid;grid-template-columns:1.6fr .8fr .7fr .9fr .9fr 1.6fr;border-bottom:1px solid #ECEDEF;align-items:center;transition:background .15s;">
         <div style="padding:18px 22px;font-size:15.5px;font-weight:700;">Package 2 · Teen #1</div>
-        <div style="padding:18px 14px;"><span style="font-size:11.5px;font-weight:700;color:#0B5BD3;background:#EAF1FC;padding:4px 9px;border-radius:6px;">Teen</span></div>
+        <div style="padding:18px 14px;"><span style="font-size:11.5px;font-weight:700;color:#4B96D2;background:#EAF1FC;padding:4px 9px;border-radius:6px;">Teen</span></div>
         <div style="padding:18px 14px;font-size:18px;font-weight:800;letter-spacing:-.02em;">$400</div>
         <div style="padding:18px 14px;font-size:14px;color:#4A515C;">Essential</div>
         <div style="padding:18px 14px;font-size:13.5px;font-weight:600;color:#9AA1AB;">Add-on</div>
@@ -129,7 +155,7 @@
       </div>
       <div class="prow" style="display:grid;grid-template-columns:1.6fr .8fr .7fr .9fr .9fr 1.6fr;border-bottom:1px solid #ECEDEF;align-items:center;transition:background .15s;">
         <div style="padding:18px 22px;font-size:15.5px;font-weight:700;">Package 2 · Teen #3</div>
-        <div style="padding:18px 14px;"><span style="font-size:11.5px;font-weight:700;color:#0B5BD3;background:#EAF1FC;padding:4px 9px;border-radius:6px;">Teen</span></div>
+        <div style="padding:18px 14px;"><span style="font-size:11.5px;font-weight:700;color:#4B96D2;background:#EAF1FC;padding:4px 9px;border-radius:6px;">Teen</span></div>
         <div style="padding:18px 14px;font-size:18px;font-weight:800;letter-spacing:-.02em;">$470</div>
         <div style="padding:18px 14px;font-size:14px;color:#4A515C;">Maximum</div>
         <div style="padding:18px 14px;font-size:13.5px;font-weight:600;color:#1E9D5B;">✓ Included</div>
@@ -166,15 +192,15 @@
 
   <!-- ALWAYS INCLUDED -->
   <section style="background:#FAFAFB;border-top:1px solid #ECEDEF;border-bottom:1px solid #ECEDEF;">
-    <div class="pad secpad split" style="max-width:1200px;margin:0 auto;padding:96px 56px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;">
+    <div class="pad secpad split" style="max-width:1200px;margin:0 auto;padding:60px 56px;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;">
       <div class="anim">
         <div style="font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#8A919B;">Always included</div>
         <h2 class="h2" style="font-weight:600;font-size:40px;line-height:1.06;letter-spacing:-.025em;margin:16px 0 28px;">What every package comes with.</h2>
         <div style="display:flex;flex-direction:column;gap:16px;">
-          <div style="display:flex;gap:13px;font-size:17px;line-height:1.5;color:#4A515C;"><span style="color:#0B5BD3;font-weight:800;">✓</span><span>A <b style="color:#14171C;font-weight:700;">TDLR-certified instructor</b> for every lesson.</span></div>
-          <div style="display:flex;gap:13px;font-size:17px;line-height:1.5;color:#4A515C;"><span style="color:#0B5BD3;font-weight:800;">✓</span><span>A <b style="color:#14171C;font-weight:700;">safe, dual-control vehicle</b>, maintained to standard.</span></div>
-          <div style="display:flex;gap:13px;font-size:17px;line-height:1.5;color:#4A515C;"><span style="color:#0B5BD3;font-weight:800;">✓</span><span>Your <b style="color:#14171C;font-weight:700;">state-accepted completion certificate</b>.</span></div>
-          <div style="display:flex;gap:13px;font-size:17px;line-height:1.5;color:#4A515C;"><span style="color:#0B5BD3;font-weight:800;">✓</span><span><b style="color:#14171C;font-weight:700;">Local pickup &amp; drop-off</b> within our service areas.</span></div>
+          <div style="display:flex;gap:13px;font-size:17px;line-height:1.5;color:#4A515C;"><span style="color:#4B96D2;font-weight:800;">✓</span><span>A <b style="color:#14171C;font-weight:700;">TDLR-certified instructor</b> for every lesson.</span></div>
+          <div style="display:flex;gap:13px;font-size:17px;line-height:1.5;color:#4A515C;"><span style="color:#4B96D2;font-weight:800;">✓</span><span>A <b style="color:#14171C;font-weight:700;">safe, dual-control vehicle</b>, maintained to standard.</span></div>
+          <div style="display:flex;gap:13px;font-size:17px;line-height:1.5;color:#4A515C;"><span style="color:#4B96D2;font-weight:800;">✓</span><span>Your <b style="color:#14171C;font-weight:700;">state-accepted completion certificate</b>.</span></div>
+          <div style="display:flex;gap:13px;font-size:17px;line-height:1.5;color:#4A515C;"><span style="color:#4B96D2;font-weight:800;">✓</span><span><b style="color:#14171C;font-weight:700;">Local pickup &amp; drop-off</b> within our service areas.</span></div>
         </div>
       </div>
       <div class="anim" style="background:#fff;border:1px solid #E2E3E6;border-radius:14px;padding:36px;">
@@ -182,19 +208,19 @@
         <div style="margin-top:16px;display:flex;flex-direction:column;">
           <div style="padding:16px 0;border-bottom:1px solid #ECEDEF;"><div style="font-size:15px;font-weight:700;">Payment</div><p style="font-size:14px;color:#7A828F;margin:5px 0 0;line-height:1.55;">Pay per package up front. Major cards and common digital wallets accepted.</p></div>
           <div style="padding:16px 0;border-bottom:1px solid #ECEDEF;"><div style="font-size:15px;font-weight:700;">Reschedule</div><p style="font-size:14px;color:#7A828F;margin:5px 0 0;line-height:1.55;">Need to move a lesson? Give us 24 hours' notice and we'll reschedule at no charge.</p></div>
-          <div style="padding:16px 0;"><div style="font-size:15px;font-weight:700;">Refunds</div><p style="font-size:14px;color:#7A828F;margin:5px 0 0;line-height:1.55;">Refund terms for unused sessions are summarized in our <a class="lk" href="legal.html" style="color:#0B5BD3;font-weight:600;">Terms &amp; Conditions</a>.</p></div>
+          <div style="padding:16px 0;"><div style="font-size:15px;font-weight:700;">Refunds</div><p style="font-size:14px;color:#7A828F;margin:5px 0 0;line-height:1.55;">Refund terms for unused sessions are summarized in our <a class="lk" href="legal.html" style="color:#4B96D2;font-weight:600;">Terms &amp; Conditions</a>.</p></div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <section style="background:#0B5BD3;color:#fff;">
-    <div class="pad secpad" style="max-width:1200px;margin:0 auto;padding:96px 56px;text-align:center;">
+  <section style="background:#4B96D2;color:#fff;">
+    <div class="pad secpad" style="max-width:1200px;margin:0 auto;padding:60px 56px;text-align:center;">
       <h2 class="h1 anim" style="font-weight:600;font-size:50px;line-height:1.04;letter-spacing:-.03em;margin:0 auto;max-width:18ch;">Still not sure which to pick?</h2>
       <p class="anim" style="max-width:50ch;margin:20px auto 0;font-size:19px;line-height:1.6;color:rgba(255,255,255,.82);">Call us and we'll match you to the right package in two minutes — no pressure.</p>
-      <div class="anim" style="display:flex;gap:16px;justify-content:center;margin-top:38px;flex-wrap:wrap;">
-        <a class="lk" href="book.html" style="font-size:16px;font-weight:600;color:#0B5BD3;background:#fff;padding:16px 30px;border-radius:10px;">Book a lesson</a>
+      <div class="anim" style="display:flex;gap:16px;justify-content:center;margin-top:26px;flex-wrap:wrap;">
+        <a class="lk" href="book.html" style="font-size:16px;font-weight:600;color:#4B96D2;background:#fff;padding:16px 30px;border-radius:10px;">Book a lesson</a>
         <a class="lk" href="tel:+12145457529" style="font-size:16px;font-weight:600;color:#fff;border:1.5px solid rgba(255,255,255,.45);padding:16px 30px;border-radius:10px;">Call (214) 545-7529</a>
       </div>
     </div>
@@ -202,7 +228,7 @@
 
   <!-- FOOTER -->
   <footer style="background:#14171C;color:#fff;">
-    <div class="pad footgrid" style="max-width:1200px;margin:0 auto;padding:80px 56px 56px;display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr;gap:48px;">
+    <div class="pad footgrid" style="max-width:1200px;margin:0 auto;padding:56px 56px 40px;display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr;gap:48px;">
       <div class="anim">
         <div style="font-size:22px;font-weight:800;letter-spacing:-.02em;">Bluebonnet</div>
         <p style="font-size:14.5px;line-height:1.65;color:#9AA1AB;margin:16px 0 0;max-width:34ch;">Patient, TDLR-licensed driving instruction for teens and adults across Plano and the North Dallas area. From first lesson to DPS road test.</p>

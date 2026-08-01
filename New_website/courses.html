@@ -18,7 +18,7 @@
   *{box-sizing:border-box;}
   body{margin:0;background:#fff;font-family:'Hanken Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased;color:#14171C;}
   a{text-decoration:none;color:inherit;}
-  .navlink:hover{color:#0B5BD3 !important;}
+  .navlink:hover{color:#4B96D2 !important;}
   .pathrow:hover .patharrow{transform:translateX(5px);}
   .patharrow{transition:transform .2s ease;}
   .lk{transition:opacity .15s;}
@@ -26,12 +26,22 @@
   /* White outline buttons fill with brand blue on hover (existing solid-blue buttons are unaffected) */
   .btn-outline{transition:background .22s ease,color .22s ease,border-color .22s ease;}
   .btn-outline:hover{
-    background:#0B5BD3 !important;
+    background:#4B96D2 !important;
     color:#fff !important;
-    border-color:#0B5BD3 !important;
+    border-color:#4B96D2 !important;
     opacity:1 !important;
   }
   .pkg:hover{border-color:#C7CDD5;}
+  .courses-hero{
+    min-height:560px;
+    display:flex;
+    align-items:center;
+    border-bottom:1px solid #ECEDEF;
+    background:
+      linear-gradient(90deg,rgba(8,20,38,.9) 0%,rgba(8,20,38,.72) 36%,rgba(8,20,38,.2) 64%,rgba(8,20,38,.03) 100%),
+      url("uploads/courses-road-test-hero.png") center top / cover no-repeat;
+  }
+  .courses-hero-copy{max-width:620px;}
 
   /* ===== Audience entry cards — elegant brand-blue hover (matches the home page path cards) =====
      The joined hairline grid is preserved: cards fill in place (no lift), so the 1px dividers stay
@@ -44,7 +54,7 @@
     content:"";
     position:absolute;
     inset:0;
-    background:linear-gradient(180deg,#0B5BD3,#0848A7);
+    background:linear-gradient(180deg,#4B96D2,#0848A7);
     transform:scaleY(0);
     transform-origin:bottom;
     transition:transform .45s cubic-bezier(.22,1,.36,1);
@@ -88,8 +98,14 @@
     .footgrid{grid-template-columns:1fr 1fr !important;gap:34px !important;}
     .h1{font-size:42px !important;line-height:1.06 !important;}
     .h2{font-size:30px !important;}
-    .secpad{padding-top:64px !important;padding-bottom:64px !important;}
+    .secpad{padding-top:48px !important;padding-bottom:48px !important;}
     .colstack{flex-direction:column !important;align-items:flex-start !important;}
+    .courses-hero{
+      min-height:520px;
+      background:
+        linear-gradient(90deg,rgba(8,20,38,.9),rgba(8,20,38,.68)),
+        url("uploads/courses-road-test-hero.png") 62% top / cover no-repeat;
+    }
   }
   @media(max-width:480px){
     .footgrid{grid-template-columns:1fr !important;}
@@ -111,71 +127,73 @@
 
   <!-- NAV -->
   <header class="anim-fade" style="position:sticky;top:0;z-index:50;background:rgba(255,255,255,.86);backdrop-filter:saturate(1.5) blur(12px);border-bottom:1px solid #ECEDEF;">
-    <nav class="pad" style="max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:32px;padding:18px 56px;">
+    <nav class="pad" style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:32px;padding:14px 56px;">
       <a href="home.html" style="display:flex;align-items:center;gap:12px;flex:0 0 auto;">
         <img src="./bluebonnet-logo.png" alt="Bluebonnet logo" style="width:52px;height:52px;object-fit:contain;display:block;filter:drop-shadow(0 6px 16px rgba(11,91,211,.16));">
         <span style="display:flex;flex-direction:column;">
           <span style="font-size:23px;font-weight:800;letter-spacing:-.02em;line-height:1;">Bluebonnet</span>
-          <span style="font-size:9.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#9AA1AB;margin-top:5px;">Driving School &middot; Plano, TX</span>
+          <span style="align-self:stretch;display:flex;justify-content:space-between;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#0848A7;margin-top:5px;"><span>Driving</span><span>School</span></span>
         </span>
       </a>
-      <div class="navmenu" style="flex:1;display:flex;justify-content:center;gap:30px;">
-        <a class="navlink" href="courses.html" style="font-size:14px;font-weight:600;color:#0B5BD3;">Courses</a>
-        <a class="navlink" href="pricing.html" style="font-size:14px;font-weight:600;color:#4A515C;">Pricing</a>
-        <a class="navlink" href="serviceareas.html" style="font-size:14px;font-weight:600;color:#4A515C;">Service Areas</a>
-        <a class="navlink" href="about.html" style="font-size:14px;font-weight:600;color:#4A515C;">About</a>
-        <a class="navlink" href="reviews.html" style="font-size:14px;font-weight:600;color:#4A515C;">Reviews</a>
+      <div class="navmenu" style="flex:0 0 auto;display:flex;justify-content:center;gap:30px;">
+        <a class="navlink" href="courses.html" style="font-size:18px;white-space:nowrap;font-weight:600;color:#4B96D2;">Courses</a>
+        <a class="navlink" href="pricing.html" style="font-size:18px;white-space:nowrap;font-weight:600;color:#4A515C;">Pricing</a>
+        <a class="navlink" href="serviceareas.html" style="font-size:18px;white-space:nowrap;font-weight:600;color:#4A515C;">Service Areas</a>
+        <a class="navlink" href="about.html" style="font-size:18px;white-space:nowrap;font-weight:600;color:#4A515C;">About</a>
+        <a class="navlink" href="reviews.html" style="font-size:18px;white-space:nowrap;font-weight:600;color:#4A515C;">Reviews</a>
       </div>
-      <div style="display:flex;align-items:center;gap:22px;flex:1;justify-content:flex-end;">
+      <div style="display:flex;align-items:center;gap:22px;flex:0 0 auto;justify-content:flex-end;">
         <a class="navphone" href="tel:+12145457529" style="font-size:14px;font-weight:700;color:#14171C;">(214) 545-7529</a>
-        <a class="lk" href="book.html" style="font-size:14px;font-weight:600;color:#fff;background:#0B5BD3;padding:11px 20px;border-radius:9px;">Book a lesson</a>
+        <a class="lk" href="book.html" style="font-size:14px;font-weight:600;color:#fff;background:#4B96D2;padding:11px 20px;border-radius:9px;">Book a lesson</a>
       </div>
     </nav>
   </header>
 
   <!-- PAGE HEADER -->
-  <section style="border-bottom:1px solid #ECEDEF;">
-    <div class="pad" style="max-width:1200px;margin:0 auto;padding:60px 56px 56px;">
-      <div class="anim" style="font-size:13px;font-weight:600;color:#9AA1AB;display:flex;gap:9px;align-items:center;">
-        <a class="lk" href="home.html">Home</a><span>/</span><span style="color:#4A515C;">Courses</span>
+  <section class="courses-hero">
+    <div class="pad" style="width:100%;max-width:1200px;margin:0 auto;padding:60px 56px;">
+      <div class="courses-hero-copy">
+      <div class="anim" style="font-size:13px;font-weight:600;color:rgba(255,255,255,.68);display:flex;gap:9px;align-items:center;">
+        <a class="lk" href="home.html">Home</a><span>/</span><span style="color:#fff;">Courses</span>
       </div>
-      <div class="anim" style="margin-top:24px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#0B5BD3;">Courses · Packages 1 → 5</div>
-      <h1 class="h1 anim" style="font-weight:600;font-size:58px;line-height:1.04;letter-spacing:-.03em;margin:16px 0 0;max-width:17ch;">Find the course that fits — in one click.</h1>
-      <p class="anim" style="max-width:64ch;margin:20px 0 0;font-size:19px;line-height:1.62;color:#4A515C;">Whether you're a teen getting your first license, an adult brushing up, or you just need to take your road test, there's a Bluebonnet package built for it. Start by picking who you are, or browse every option below.</p>
+      <div class="anim" style="margin-top:18px;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#8CC5F3;">Courses · Packages 1 → 5</div>
+      <h1 class="h1 anim" style="font-weight:600;font-size:58px;line-height:1.04;letter-spacing:-.03em;margin:16px 0 0;max-width:17ch;color:#fff;">Find the course that fits — in one click.</h1>
+      <p class="anim" style="max-width:64ch;margin:20px 0 0;font-size:19px;line-height:1.62;color:rgba(255,255,255,.86);">Whether you're a teen getting your first license, an adult brushing up, or you just need to take your road test, there's a Bluebonnet package built for it. Start by picking who you are, or browse every option below.</p>
+      </div>
     </div>
   </section>
 
   <!-- AUDIENCE ENTRY -->
-  <section class="pad secpad" style="max-width:1200px;margin:0 auto;padding:80px 56px;">
+  <section class="pad secpad" style="max-width:1200px;margin:0 auto;padding:56px 56px;">
     <div class="g3" style="display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid #E2E3E6;border-bottom:1px solid #E2E3E6;">
       <a class="pathrow anim" href="teen.html" style="display:flex;flex-direction:column;padding:44px 40px 40px;cursor:pointer;">
         <span style="font-size:13px;font-weight:800;color:#C5CAD2;letter-spacing:.04em;">01</span>
-        <span style="margin-top:28px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#0B5BD3;">Ages 14–17</span>
+        <span style="margin-top:20px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#4B96D2;">Ages 14–17</span>
         <h3 style="font-size:27px;font-weight:700;letter-spacing:-.02em;margin:12px 0 0;">Teen Driver Education</h3>
         <p style="font-size:15px;line-height:1.6;color:#7A828F;margin:12px 0 0;">State-approved program — the three teen packages, permit to license.</p>
-        <span style="margin-top:28px;font-size:14px;font-weight:700;color:#0B5BD3;display:inline-flex;align-items:center;gap:9px;">Explore teen courses <span class="patharrow">→</span></span>
+        <span style="margin-top:20px;font-size:14px;font-weight:700;color:#4B96D2;display:inline-flex;align-items:center;gap:9px;">Explore teen courses <span class="patharrow">→</span></span>
       </a>
       <a class="pathrow anim" href="adult.html" style="display:flex;flex-direction:column;padding:44px 40px 40px;border-left:1px solid #E2E3E6;cursor:pointer;">
         <span style="font-size:13px;font-weight:800;color:#C5CAD2;letter-spacing:.04em;">02</span>
-        <span style="margin-top:28px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#0B5BD3;">Ages 18+</span>
+        <span style="margin-top:20px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#4B96D2;">Ages 18+</span>
         <h3 style="font-size:27px;font-weight:700;letter-spacing:-.02em;margin:12px 0 0;">Adult Driving Lessons</h3>
         <p style="font-size:15px;line-height:1.6;color:#7A828F;margin:12px 0 0;">Lessons &amp; the required adult course — Packages 1, 3, and 5.</p>
-        <span style="margin-top:28px;font-size:14px;font-weight:700;color:#0B5BD3;display:inline-flex;align-items:center;gap:9px;">Explore adult courses <span class="patharrow">→</span></span>
+        <span style="margin-top:20px;font-size:14px;font-weight:700;color:#4B96D2;display:inline-flex;align-items:center;gap:9px;">Explore adult courses <span class="patharrow">→</span></span>
       </a>
       <a class="pathrow anim" href="book.html" style="display:flex;flex-direction:column;padding:44px 40px 40px;border-left:1px solid #E2E3E6;cursor:pointer;">
         <span style="font-size:13px;font-weight:800;color:#C5CAD2;letter-spacing:.04em;">03</span>
-        <span style="margin-top:28px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#0B5BD3;">Road test</span>
+        <span style="margin-top:20px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#4B96D2;">Road test</span>
         <h3 style="font-size:27px;font-weight:700;letter-spacing:-.02em;margin:12px 0 0;">DPS Road Test Service</h3>
         <p style="font-size:15px;line-height:1.6;color:#7A828F;margin:12px 0 0;">Already drive? Take your test with us — Package 4, skip the wait.</p>
-        <span style="margin-top:28px;font-size:14px;font-weight:700;color:#0B5BD3;display:inline-flex;align-items:center;gap:9px;">Book the road test <span class="patharrow">→</span></span>
+        <span style="margin-top:20px;font-size:14px;font-weight:700;color:#4B96D2;display:inline-flex;align-items:center;gap:9px;">Book the road test <span class="patharrow">→</span></span>
       </a>
     </div>
   </section>
 
   <!-- ALL PACKAGES -->
   <section style="background:#FAFAFB;border-top:1px solid #ECEDEF;border-bottom:1px solid #ECEDEF;">
-    <div class="pad secpad" style="max-width:1200px;margin:0 auto;padding:96px 56px;">
-      <div class="anim" style="max-width:64ch;margin-bottom:52px;">
+    <div class="pad secpad" style="max-width:1200px;margin:0 auto;padding:60px 56px;">
+      <div class="anim" style="max-width:64ch;margin-bottom:22px;">
         <div style="font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#8A919B;">All packages</div>
         <h2 class="h2" style="font-weight:600;font-size:44px;line-height:1.06;letter-spacing:-.025em;margin:16px 0 14px;">Every option, in order — Package 1 to 5.</h2>
         <p style="font-size:18px;line-height:1.6;color:#4A515C;margin:0;">Each package includes a certified instructor, a dual-control vehicle, and your completion certificate.</p>
@@ -186,43 +204,43 @@
           <h3 style="font-size:20px;font-weight:700;letter-spacing:-.01em;margin:12px 0 0;">Package 1 — Complete</h3>
           <div style="font-size:38px;font-weight:800;letter-spacing:-.03em;margin:14px 0 8px;">$450</div>
           <p style="font-size:14px;color:#7A828F;margin:0 0 20px;line-height:1.55;">Behind-the-wheel training plus your DPS road test, start to finish.</p>
-          <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px;">
-            <div style="display:flex;gap:10px;font-size:14px;color:#4A515C;"><span style="color:#0B5BD3;font-weight:800;">✓</span>Full lesson series</div>
-            <div style="display:flex;gap:10px;font-size:14px;color:#4A515C;"><span style="color:#0B5BD3;font-weight:800;">✓</span>Road test included</div>
+          <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:18px;">
+            <div style="display:flex;gap:10px;font-size:14px;color:#4A515C;"><span style="color:#4B96D2;font-weight:800;">✓</span>Full lesson series</div>
+            <div style="display:flex;gap:10px;font-size:14px;color:#4A515C;"><span style="color:#4B96D2;font-weight:800;">✓</span>Road test included</div>
           </div>
           <a class="lk btn-outline" href="adult.html" style="margin-top:auto;text-align:center;font-size:14.5px;font-weight:600;color:#14171C;border:1.5px solid #D5D8DD;border-radius:10px;padding:12px;">View details</a>
         </div>
-        <div class="anim" style="background:#fff;border:1.5px solid #0B5BD3;border-radius:14px;padding:32px 28px;display:flex;flex-direction:column;position:relative;box-shadow:0 20px 50px -24px rgba(11,91,211,.4);">
-          <span style="position:absolute;top:-12px;left:28px;background:#0B5BD3;color:#fff;font-size:12px;font-weight:700;padding:6px 13px;border-radius:999px;">★ Most popular</span>
-          <span style="font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#0B5BD3;">Teen</span>
+        <div class="anim" style="background:#fff;border:1.5px solid #4B96D2;border-radius:14px;padding:32px 28px;display:flex;flex-direction:column;position:relative;box-shadow:0 20px 50px -24px rgba(11,91,211,.4);">
+          <span style="position:absolute;top:-12px;left:28px;background:#4B96D2;color:#fff;font-size:12px;font-weight:700;padding:6px 13px;border-radius:999px;">★ Most popular</span>
+          <span style="font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#4B96D2;">Teen</span>
           <h3 style="font-size:20px;font-weight:700;letter-spacing:-.01em;margin:12px 0 0;">Package 2 · Teen #2</h3>
           <div style="font-size:38px;font-weight:800;letter-spacing:-.03em;margin:14px 0 8px;">$450</div>
           <p style="font-size:14px;color:#7A828F;margin:0 0 20px;line-height:1.55;">Our most popular teen package — more hours plus road-test prep.</p>
-          <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px;">
-            <div style="display:flex;gap:10px;font-size:14px;color:#4A515C;"><span style="color:#0B5BD3;font-weight:800;">✓</span>Extended in-car hours</div>
-            <div style="display:flex;gap:10px;font-size:14px;color:#4A515C;"><span style="color:#0B5BD3;font-weight:800;">✓</span>Mock + DPS road test</div>
+          <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:18px;">
+            <div style="display:flex;gap:10px;font-size:14px;color:#4A515C;"><span style="color:#4B96D2;font-weight:800;">✓</span>Extended in-car hours</div>
+            <div style="display:flex;gap:10px;font-size:14px;color:#4A515C;"><span style="color:#4B96D2;font-weight:800;">✓</span>Mock + DPS road test</div>
           </div>
-          <a class="lk" href="book.html" style="margin-top:auto;text-align:center;font-size:14.5px;font-weight:600;color:#fff;background:#0B5BD3;border-radius:10px;padding:13px;">Book now</a>
+          <a class="lk" href="book.html" style="margin-top:auto;text-align:center;font-size:14.5px;font-weight:600;color:#fff;background:#4B96D2;border-radius:10px;padding:13px;">Book now</a>
         </div>
         <div class="pkg anim" style="background:#fff;border:1px solid #E2E3E6;border-radius:14px;padding:32px 28px;display:flex;flex-direction:column;transition:border-color .2s;">
-          <span style="font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#0B5BD3;">Teen</span>
+          <span style="font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#4B96D2;">Teen</span>
           <h3 style="font-size:20px;font-weight:700;letter-spacing:-.01em;margin:12px 0 0;">Package 2 · Teen #1</h3>
           <div style="font-size:38px;font-weight:800;letter-spacing:-.03em;margin:14px 0 8px;">$400</div>
           <p style="font-size:14px;color:#7A828F;margin:0 0 20px;line-height:1.55;">The teen starter — core hours to build first-time confidence.</p>
-          <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px;">
-            <div style="display:flex;gap:10px;font-size:14px;color:#4A515C;"><span style="color:#0B5BD3;font-weight:800;">✓</span>Essential in-car hours</div>
-            <div style="display:flex;gap:10px;font-size:14px;color:#4A515C;"><span style="color:#0B5BD3;font-weight:800;">✓</span>State certificate</div>
+          <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:18px;">
+            <div style="display:flex;gap:10px;font-size:14px;color:#4A515C;"><span style="color:#4B96D2;font-weight:800;">✓</span>Essential in-car hours</div>
+            <div style="display:flex;gap:10px;font-size:14px;color:#4A515C;"><span style="color:#4B96D2;font-weight:800;">✓</span>State certificate</div>
           </div>
           <a class="lk btn-outline" href="teen.html" style="margin-top:auto;text-align:center;font-size:14.5px;font-weight:600;color:#14171C;border:1.5px solid #D5D8DD;border-radius:10px;padding:12px;">View details</a>
         </div>
         <div class="pkg anim" style="background:#fff;border:1px solid #E2E3E6;border-radius:14px;padding:32px 28px;display:flex;flex-direction:column;transition:border-color .2s;">
-          <span style="font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#0B5BD3;">Teen</span>
+          <span style="font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#4B96D2;">Teen</span>
           <h3 style="font-size:20px;font-weight:700;letter-spacing:-.01em;margin:12px 0 0;">Package 2 · Teen #3</h3>
           <div style="font-size:38px;font-weight:800;letter-spacing:-.03em;margin:14px 0 8px;">$470</div>
           <p style="font-size:14px;color:#7A828F;margin:0 0 20px;line-height:1.55;">The full teen package — maximum practice plus the road test.</p>
-          <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px;">
-            <div style="display:flex;gap:10px;font-size:14px;color:#4A515C;"><span style="color:#0B5BD3;font-weight:800;">✓</span>Maximum hours</div>
-            <div style="display:flex;gap:10px;font-size:14px;color:#4A515C;"><span style="color:#0B5BD3;font-weight:800;">✓</span>DPS road test included</div>
+          <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:18px;">
+            <div style="display:flex;gap:10px;font-size:14px;color:#4A515C;"><span style="color:#4B96D2;font-weight:800;">✓</span>Maximum hours</div>
+            <div style="display:flex;gap:10px;font-size:14px;color:#4A515C;"><span style="color:#4B96D2;font-weight:800;">✓</span>DPS road test included</div>
           </div>
           <a class="lk btn-outline" href="teen.html" style="margin-top:auto;text-align:center;font-size:14.5px;font-weight:600;color:#14171C;border:1.5px solid #D5D8DD;border-radius:10px;padding:12px;">View details</a>
         </div>
@@ -231,9 +249,9 @@
           <h3 style="font-size:20px;font-weight:700;letter-spacing:-.01em;margin:12px 0 0;">Package 3 — Extended</h3>
           <div style="font-size:38px;font-weight:800;letter-spacing:-.03em;margin:14px 0 8px;">$450</div>
           <p style="font-size:14px;color:#7A828F;margin:0 0 20px;line-height:1.55;">Extra time for drivers who want more practice before testing.</p>
-          <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px;">
-            <div style="display:flex;gap:10px;font-size:14px;color:#4A515C;"><span style="color:#0B5BD3;font-weight:800;">✓</span>Extended lesson plan</div>
-            <div style="display:flex;gap:10px;font-size:14px;color:#4A515C;"><span style="color:#0B5BD3;font-weight:800;">✓</span>Test prep</div>
+          <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:18px;">
+            <div style="display:flex;gap:10px;font-size:14px;color:#4A515C;"><span style="color:#4B96D2;font-weight:800;">✓</span>Extended lesson plan</div>
+            <div style="display:flex;gap:10px;font-size:14px;color:#4A515C;"><span style="color:#4B96D2;font-weight:800;">✓</span>Test prep</div>
           </div>
           <a class="lk btn-outline" href="adult.html" style="margin-top:auto;text-align:center;font-size:14.5px;font-weight:600;color:#14171C;border:1.5px solid #D5D8DD;border-radius:10px;padding:12px;">View details</a>
         </div>
@@ -242,9 +260,9 @@
           <h3 style="font-size:20px;font-weight:700;letter-spacing:-.01em;margin:12px 0 0;">Package 4 — Road Test Only</h3>
           <div style="font-size:38px;font-weight:800;letter-spacing:-.03em;margin:14px 0 8px;">$180</div>
           <p style="font-size:14px;color:#7A828F;margin:0 0 20px;line-height:1.55;">Already know how to drive? Take your DPS test and skip the wait.</p>
-          <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:24px;">
-            <div style="display:flex;gap:10px;font-size:14px;color:#4A515C;"><span style="color:#0B5BD3;font-weight:800;">✓</span>DPS road skills test</div>
-            <div style="display:flex;gap:10px;font-size:14px;color:#4A515C;"><span style="color:#0B5BD3;font-weight:800;">✓</span>Use of our vehicle</div>
+          <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:18px;">
+            <div style="display:flex;gap:10px;font-size:14px;color:#4A515C;"><span style="color:#4B96D2;font-weight:800;">✓</span>DPS road skills test</div>
+            <div style="display:flex;gap:10px;font-size:14px;color:#4A515C;"><span style="color:#4B96D2;font-weight:800;">✓</span>Use of our vehicle</div>
           </div>
           <a class="lk btn-outline" href="book.html" style="margin-top:auto;text-align:center;font-size:14.5px;font-weight:600;color:#14171C;border:1.5px solid #D5D8DD;border-radius:10px;padding:12px;">Book the test</a>
         </div>
@@ -261,26 +279,26 @@
   </section>
 
   <!-- HELPER + REASSURANCE -->
-  <section class="pad secpad" style="max-width:1200px;margin:0 auto;padding:96px 56px;">
+  <section class="pad secpad" style="max-width:1200px;margin:0 auto;padding:60px 56px;">
     <div class="split" style="display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;">
       <div class="anim" style="background:#FBF6EC;border:1px solid #F0E2C6;border-radius:14px;padding:36px;">
         <div style="font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#C9821A;">Need a hand?</div>
         <h3 style="font-size:26px;font-weight:700;letter-spacing:-.02em;margin:14px 0 10px;">Not sure which package fits?</h3>
-        <p style="font-size:16px;line-height:1.62;color:#4A515C;margin:0;">Call us at <a class="lk" href="tel:+12145457529" style="color:#0B5BD3;font-weight:600;">(214) 545-7529</a> — we'll point you to the right one in two minutes. No pressure, ever.</p>
+        <p style="font-size:16px;line-height:1.62;color:#4A515C;margin:0;">Call us at <a class="lk" href="tel:+12145457529" style="color:#4B96D2;font-weight:600;">(214) 545-7529</a> — we'll point you to the right one in two minutes. No pressure, ever.</p>
       </div>
       <div class="anim" style="display:flex;flex-direction:column;gap:18px;">
-        <div style="display:flex;gap:13px;font-size:17px;line-height:1.5;color:#4A515C;"><span style="color:#0B5BD3;font-weight:800;">✓</span><span><b style="color:#14171C;font-weight:700;">TDLR-licensed</b> &amp; Texas DPS-approved school.</span></div>
+        <div style="display:flex;gap:13px;font-size:17px;line-height:1.5;color:#4A515C;"><span style="color:#4B96D2;font-weight:800;">✓</span><span><b style="color:#14171C;font-weight:700;">TDLR-licensed</b> &amp; Texas DPS-approved school.</span></div>
         <div style="height:1px;background:#ECEDEF;"></div>
-        <div style="display:flex;gap:13px;font-size:17px;line-height:1.5;color:#4A515C;"><span style="color:#0B5BD3;font-weight:800;">✓</span><span><b style="color:#14171C;font-weight:700;">State-accepted certificate</b> on completion.</span></div>
+        <div style="display:flex;gap:13px;font-size:17px;line-height:1.5;color:#4A515C;"><span style="color:#4B96D2;font-weight:800;">✓</span><span><b style="color:#14171C;font-weight:700;">State-accepted certificate</b> on completion.</span></div>
         <div style="height:1px;background:#ECEDEF;"></div>
-        <div style="display:flex;gap:13px;font-size:17px;line-height:1.5;color:#4A515C;"><span style="color:#0B5BD3;font-weight:800;">✓</span><span><b style="color:#14171C;font-weight:700;">First-try pass rate</b> parents talk about.</span></div>
+        <div style="display:flex;gap:13px;font-size:17px;line-height:1.5;color:#4A515C;"><span style="color:#4B96D2;font-weight:800;">✓</span><span><b style="color:#14171C;font-weight:700;">First-try pass rate</b> parents talk about.</span></div>
       </div>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer style="background:#14171C;color:#fff;">
-    <div class="pad footgrid" style="max-width:1200px;margin:0 auto;padding:80px 56px 56px;display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr;gap:48px;">
+    <div class="pad footgrid" style="max-width:1200px;margin:0 auto;padding:56px 56px 40px;display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr;gap:48px;">
       <div class="anim">
         <div style="font-size:22px;font-weight:800;letter-spacing:-.02em;">Bluebonnet</div>
         <p style="font-size:14.5px;line-height:1.65;color:#9AA1AB;margin:16px 0 0;max-width:34ch;">Patient, TDLR-licensed driving instruction for teens and adults across Plano and the North Dallas area. From first lesson to DPS road test.</p>
